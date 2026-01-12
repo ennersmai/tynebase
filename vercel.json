@@ -4,4 +4,10 @@
   "installCommand": "npm install",
   "framework": "nextjs",
   "regions": ["lhr1"],
+  "env": {
+    "NEXT_PUBLIC_SUPABASE_URL": "@tynebase-supabase-url",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "@tynebase-supabase-anon-key",
+    "NEXT_PUBLIC_APP_URL": "@tynebase-app-url",
+    "NEXT_PUBLIC_BASE_DOMAIN": "@tynebase-base-domain"
+  }
 }
