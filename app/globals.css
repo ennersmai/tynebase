@@ -31,19 +31,19 @@
   --brand-dark: #cc3d00;
   
   /* Accent Colors - Royal Blue Theme */
-  --accent-blue: #4169e1;
-  --accent-purple: #4169e1;
-  --accent-pink: #4169e1;
-  --accent-cyan: #4169e1;
-  --accent-royal-blue: #4169e1;
+  --accent-blue: #0842ee;
+  --accent-purple: #194add;
+  --accent-pink: #0d44e9;
+  --accent-cyan: #1242d3;
+  --accent-royal-blue: #1548e0;
   
   /* ─────────────────────────────────────────────────────────────────────
      SEMANTIC TOKENS - Dark Theme (Landing Pages)
      ───────────────────────────────────────────────────────────────────── */
-  --bg-primary: var(--gray-950);
-  --bg-secondary: var(--gray-900);
-  --bg-tertiary: var(--gray-800);
-  --bg-elevated: #111113;
+  --bg-primary: #1a1f2e;
+  --bg-secondary: #1f2937;
+  --bg-tertiary: #374151;
+  --bg-elevated: #4b5563;
   --bg-hover: rgba(255, 255, 255, 0.05);
   --bg-active: rgba(255, 255, 255, 0.08);
   
@@ -125,10 +125,10 @@ html[data-theme="dark"] {
      DASHBOARD DARK MODE TOKENS
      Note: landing already uses dark semantic tokens above.
      ───────────────────────────────────────────────────────────────────── */
-  --surface-ground: #0b0f14;
-  --surface-card: #0f1623;
-  --surface-elevated: #121b2a;
-  --surface-sidebar: #0f1623;
+  --surface-ground: #1a1f2e;
+  --surface-card: #1f2937;
+  --surface-elevated: #374151;
+  --surface-sidebar: #1f2937;
   --surface-hover: rgba(255, 255, 255, 0.06);
   --surface-active: rgba(255, 255, 255, 0.1);
 
@@ -616,7 +616,15 @@ a {
    ═══════════════════════════════════════════════════════════════════════ */
 
 .text-gradient {
-  background: linear-gradient(135deg, #FFA07A 0%, #FFFFFF 50%, #4169E1 100%);
+  background: linear-gradient(135deg, #FFA07A 0%, #FFFFFF 30%, #4169E1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Light mode specific gradient for better visibility */
+html[data-theme="light"] .text-gradient {
+  background: linear-gradient(135deg, #ff4d00 0%, #038eff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

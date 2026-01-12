@@ -49,7 +49,6 @@ export default function IntegrationsPage() {
   return (
     <div className="min-h-screen relative">
       <div className="hero-gradient" />
-      <div className="grid-overlay" />
 
       <SiteNavbar currentPage="other" />
 

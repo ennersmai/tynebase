@@ -46,7 +46,6 @@ export default function ResetPasswordPage() {
   return (
     <div className="min-h-screen relative flex flex-col">
       <div className="hero-gradient" />
-      <div className="grid-overlay" />
 
       <SiteNavbar currentPage="other" />
 
