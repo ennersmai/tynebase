@@ -109,7 +109,6 @@ export default function Home() {
     <div className="min-h-screen relative">
       {/* Animated gradient background */}
       <div className="hero-gradient" />
-      <div className="grid-overlay" />
 
       {/* Header */}
       <SiteNavbar currentPage="home" />
