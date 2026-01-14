@@ -317,7 +317,7 @@ export default function Home() {
 
             {/* Feature 5 - Speed & Security */}
             <div className="bento-item lg:col-span-2 relative" style={{ padding: '32px' }}>
-              <div className="absolute top-8 right-8">
+              <div className="sm:hidden block mb-4">
                 <div className="feature-icon feature-icon-brand" style={{ color: '#ff4d00', background: 'linear-gradient(135deg, rgba(255, 77, 0, 0.2) 0%, rgba(255, 77, 0, 0.05) 100%)' }}>
                   <Shield className="w-6 h-6" />
                 </div>
@@ -589,11 +589,11 @@ export default function Home() {
               const CategoryIcon = categoryIcons[feature.category as keyof typeof categoryIcons];
               return (
                 <div key={index} className="enterprise-card">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="feature-icon feature-icon-brand" style={{ color: '#ff4d00', background: 'linear-gradient(135deg, rgba(255, 77, 0, 0.2) 0%, rgba(255, 77, 0, 0.05) 100%)', width: '36px', height: '36px' }}>
+                  <div className="flex items-start gap-3 mb-4 sm:items-center" style={{ alignItems: 'flex-start' }}>
+                    <div className="feature-icon feature-icon-brand flex-shrink-0" style={{ color: '#ff4d00', background: 'linear-gradient(135deg, rgba(255, 77, 0, 0.2) 0%, rgba(255, 77, 0, 0.05) 100%)', width: '36px', height: '36px', flexShrink: 0 }}>
                       <CategoryIcon className="w-4 h-4" />
                     </div>
-                    <h4 className="flex items-center">{feature.title}</h4>
+                    <h4 style={{ flex: 1, wordWrap: 'break-word', overflowWrap: 'break-word' }}>{feature.title}</h4>
                   </div>
                   <p>{feature.description}</p>
                 </div>
@@ -690,8 +690,8 @@ export default function Home() {
                     ))}
                   </ul>
                 </div>
-                <div className="mt-8">
-                  <Link href="/signup" className="btn btn-secondary w-full">
+                <div style={{ marginTop: '28px' }}>
+                  <Link href="/signup" className="btn btn-secondary w-full" style={{ padding: '16px 32px', fontSize: '15px' }}>
                     Start for Free
                   </Link>
                 </div>
@@ -728,8 +728,8 @@ export default function Home() {
                     ))}
                   </ul>
                 </div>
-                <div className="mt-8">
-                  <Link href="/signup" className="btn btn-primary w-full">
+                <div style={{ marginTop: '28px' }}>
+                  <Link href="/signup" className="btn btn-primary w-full" style={{ padding: '16px 32px', fontSize: '15px' }}>
                     Upgrade Now
                   </Link>
                 </div>
@@ -763,8 +763,8 @@ export default function Home() {
                     ))}
                   </ul>
                 </div>
-                <div className="mt-8">
-                  <Link href="/signup" className="btn btn-secondary w-full">
+                <div style={{ marginTop: '28px' }}>
+                  <Link href="/signup" className="btn btn-secondary w-full" style={{ padding: '16px 32px', fontSize: '15px' }}>
                     Upgrade Now
                   </Link>
                 </div>
@@ -800,8 +800,8 @@ export default function Home() {
                 </div>
                 
                 {/* Section 4: Button */}
-                <div style={{ marginTop: 'auto' }}>
-                  <Link href="/contact" className="btn btn-primary w-full">
+                <div style={{ marginTop: '28px' }}>
+                  <Link href="/contact" className="btn btn-primary w-full" style={{ padding: '16px 32px', fontSize: '15px' }}>
                     Contact sales
                   </Link>
                 </div>
@@ -853,33 +853,33 @@ export default function Home() {
 
               <div className="editor-feature-group">
                 <h4 className="editor-feature-title">Built for teams</h4>
-                <div className="editor-feature-list">
-                  <div className="editor-feature-item">
-                    <Users className="w-5 h-5 text-[var(--brand)]" />
-                    <div>
-                      <strong>Real-time collaboration</strong>
-                      <p>Write together with your team, see changes instantly</p>
+                <div style={{ margin: '0', padding: '0' }}>
+                  <div style={{ marginBottom: '16px', display: 'flex', alignItems: 'flex-start', gap: '14px', margin: '0 0 16px 0', padding: '0' }}>
+                    <Users className="w-5 h-5 text-[var(--brand)] flex-shrink-0" style={{ marginTop: '0' }} />
+                    <div style={{ marginTop: '0', marginBottom: '0' }}>
+                      <strong style={{ display: 'block', marginBottom: '2px', color: '#ffffff' }}>Real-time collaboration</strong>
+                      <p style={{ margin: '0', lineHeight: '1.4' }}>Write together with your team, see changes instantly</p>
                     </div>
                   </div>
-                  <div className="editor-feature-item">
-                    <FileText className="w-5 h-5 text-[var(--brand)]" />
-                    <div>
-                      <strong>Markdown support</strong>
-                      <p>Type in Markdown, export to .md anytime</p>
+                  <div style={{ marginBottom: '16px', display: 'flex', alignItems: 'flex-start', gap: '14px', margin: '0 0 16px 0', padding: '0' }}>
+                    <FileText className="w-5 h-5 text-[var(--brand)] flex-shrink-0" style={{ marginTop: '0' }} />
+                    <div style={{ marginTop: '0', marginBottom: '0' }}>
+                      <strong style={{ display: 'block', marginBottom: '2px', color: '#ffffff' }}>Markdown support</strong>
+                      <p style={{ margin: '0', lineHeight: '1.4' }}>Type in Markdown, export to .md anytime</p>
                     </div>
                   </div>
-                  <div className="editor-feature-item">
-                    <Zap className="w-5 h-5 text-[var(--brand)]" />
-                    <div>
-                      <strong>Keyboard shortcuts</strong>
-                      <p>Power-user combos for everything</p>
+                  <div style={{ marginBottom: '16px', display: 'flex', alignItems: 'flex-start', gap: '14px', margin: '0 0 16px 0', padding: '0' }}>
+                    <Zap className="w-5 h-5 text-[var(--brand)] flex-shrink-0" style={{ marginTop: '0' }} />
+                    <div style={{ marginTop: '0', marginBottom: '0' }}>
+                      <strong style={{ display: 'block', marginBottom: '2px', color: '#ffffff' }}>Keyboard shortcuts</strong>
+                      <p style={{ margin: '0', lineHeight: '1.4' }}>Power-user combos for everything</p>
                     </div>
                   </div>
-                  <div className="editor-feature-item">
-                    <Clock className="w-5 h-5 text-[var(--brand)]" />
-                    <div>
-                      <strong>Version history</strong>
-                      <p>Travel back in time, restore any version</p>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px', margin: '0', padding: '0' }}>
+                    <Clock className="w-5 h-5 text-[var(--brand)] flex-shrink-0" style={{ marginTop: '0' }} />
+                    <div style={{ marginTop: '0', marginBottom: '0' }}>
+                      <strong style={{ display: 'block', marginBottom: '2px', color: '#ffffff' }}>Version history</strong>
+                      <p style={{ margin: '0', lineHeight: '1.4' }}>Travel back in time, restore any version</p>
                     </div>
                   </div>
                 </div>
