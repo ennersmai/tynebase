@@ -589,15 +589,6 @@ export default function Home() {
       <section className="enterprise-section">
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '96px' }}>
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '32px' }}>
-              <Image 
-                src="/enterprise_logo.webp" 
-                alt="Enterprise" 
-                width={141} 
-                height={141} 
-                style={{ width: '141px', height: '141px' }}
-              />
-            </div>
             <p style={{ fontSize: '14px', fontWeight: 600, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '24px' }}>Enterprise</p>
             <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '-0.02em', marginBottom: '32px' }}>
               Scales with your <span className="text-gradient">ambitions</span>
@@ -613,10 +604,10 @@ export default function Home() {
               return (
                 <div key={index} className="enterprise-card">
                   <div className="flex items-start gap-3 mb-4 sm:items-center" style={{ alignItems: 'flex-start' }}>
-                    <div className="feature-icon feature-icon-brand flex-shrink-0" style={{ color: '#ff4d00', background: 'linear-gradient(135deg, rgba(255, 77, 0, 0.2) 0%, rgba(255, 77, 0, 0.05) 100%)', width: '36px', height: '36px', flexShrink: 0 }}>
+                    <div className="feature-icon feature-icon-brand flex-shrink-0" style={{ color: '#ff4d00', background: 'linear-gradient(135deg, rgba(255, 77, 0, 0.2) 0%, rgba(255, 77, 0, 0.05) 100%)', width: '36px', height: '36px', flexShrink: 0, marginTop: '-4px' }}>
                       <CategoryIcon className="w-4 h-4" />
                     </div>
-                    <h4 style={{ flex: 1, wordWrap: 'break-word', overflowWrap: 'break-word' }}>{feature.title}</h4>
+                    <h4 style={{ flex: 1, wordWrap: 'break-word', overflowWrap: 'break-word', marginTop: '4px' }}>{feature.title}</h4>
                   </div>
                   <p>{feature.description}</p>
                 </div>
