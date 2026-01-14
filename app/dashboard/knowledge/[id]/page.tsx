@@ -467,7 +467,7 @@ export default function EditDocumentPage() {
                     <p className="font-semibold text-[var(--dash-text-primary)]">Ask your knowledge base</p>
                   </div>
                   <p className="text-xs text-[var(--dash-text-tertiary)] mt-1">
-                    Get answers grounded in your docs — ready to share with your team.
+                    Get answers grounded in your docs - ready to share with your team.
                   </p>
                 </div>
 

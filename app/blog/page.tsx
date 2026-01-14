@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Calendar, Clock } from "lucide-react";
+import { Calendar, Clock, FileText } from "lucide-react";
 import { SiteNavbar } from "@/components/layout/SiteNavbar";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 
@@ -60,13 +60,17 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen relative">
       <div className="hero-gradient" />
-      <div className="grid-overlay" />
 
       <SiteNavbar currentPage="other" />
 
       {/* Hero */}
       <section className="section pt-[180px] pb-[80px]">
         <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 24px' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '32px' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '64px', height: '64px', borderRadius: '16px', background: 'linear-gradient(135deg, var(--brand), var(--accent-pink))' }}>
+              <FileText style={{ width: '32px', height: '32px', color: 'white' }} />
+            </div>
+          </div>
           <p style={{ fontSize: '14px', fontWeight: 600, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '16px' }}>Blog</p>
           <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 3.75rem)', fontWeight: 600, lineHeight: 1.05, letterSpacing: '-0.02em', marginBottom: '24px', textAlign: 'center' }}>
             Insights & Updates
@@ -84,8 +88,11 @@ export default function BlogPage() {
             {posts.map((post) => (
               <article key={post.slug} className="bento-item group cursor-pointer">
                 <div className="mb-4">
-                  <span className="inline-flex px-3 py-1 text-xs font-medium bg-[var(--brand)] bg-opacity-10 text-[var(--brand)] rounded-full">
-                    {post.category}
+                  <span className="flex items-center gap-2">
+                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--brand)' }}></span>
+                    <span className="text-xs font-medium text-[var(--brand)]">
+                      {post.category}
+                    </span>
                   </span>
                 </div>
                 <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-3 group-hover:text-[var(--brand)] transition-colors">
@@ -113,23 +120,24 @@ export default function BlogPage() {
       {/* Newsletter */}
       <section className="section py-20">
         <div className="container">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-2xl font-semibold text-[var(--text-primary)] mb-4">
+          <div className="text-center">
+            <h2 className="text-2xl font-semibold text-[var(--text-primary)] mb-6">
               Subscribe to our newsletter
             </h2>
-            <p className="text-[var(--text-secondary)] mb-6">
+            <p className="text-[var(--text-secondary)] mb-12">
               Get the latest updates on product features and knowledge management tips.
             </p>
-            <div className="flex gap-3 max-w-md mx-auto">
-              <input 
-                type="email" 
-                placeholder="Enter your email" 
-                className="flex-1 px-4 py-3 bg-[var(--bg-secondary)] border border-[var(--border-subtle)] rounded-lg text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--brand)]"
-              />
-              <button className="btn btn-primary">
-                Subscribe
-              </button>
-            </div>
+          </div>
+          <div className="flex gap-3 justify-center px-6" style={{ marginTop: '48px' }}>
+            <input 
+              type="email" 
+              placeholder="Enter your email" 
+              className="w-full max-w-sm py-3 bg-[var(--bg-secondary)] border border-[var(--border-subtle)] rounded-lg text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--brand)]"
+              style={{ paddingLeft: '24px', paddingRight: '16px' }}
+            />
+            <button className="btn btn-primary">
+              Subscribe
+            </button>
           </div>
         </div>
       </section>

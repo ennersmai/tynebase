@@ -124,10 +124,10 @@ const getActionIcon = (action: string) => {
 };
 
 const getActionColor = (action: string) => {
-  if (action.includes("created") || action.includes("invited") || action.includes("login")) return "green";
+  if (action.includes("created") || action.includes("invited") || action.includes("login")) return "brand";
   if (action.includes("deleted") || action.includes("logout")) return "red";
-  if (action.includes("updated") || action.includes("published")) return "blue";
-  return "gray";
+  if (action.includes("updated") || action.includes("published")) return "brand";
+  return "brand";
 };
 
 const formatAction = (action: string) => {
@@ -226,10 +226,8 @@ export default function AuditLogsPage() {
                   <div className="flex items-start gap-4">
                     {/* Action Icon */}
                     <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                      actionColor === "green" ? "bg-green-500/10 text-green-500" :
                       actionColor === "red" ? "bg-red-500/10 text-red-500" :
-                      actionColor === "blue" ? "bg-blue-500/10 text-blue-500" :
-                      "bg-[var(--surface-ground)] text-[var(--text-tertiary)]"
+                      "bg-[var(--brand)]/10 text-[var(--brand)]"
                     }`}>
                       <ActionIcon className="w-5 h-5" />
                     </div>

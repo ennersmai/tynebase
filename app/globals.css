@@ -592,23 +592,28 @@ a {
 }
 
 .feature-icon-blue {
-  background: linear-gradient(135deg, rgba(65, 105, 225, 0.2) 0%, rgba(65, 105, 225, 0.05) 100%);
-  color: var(--accent-blue);
+  background: linear-gradient(135deg, rgba(255, 77, 0, 0.2) 0%, rgba(255, 77, 0, 0.05) 100%);
+  color: var(--brand);
 }
 
 .feature-icon-purple {
-  background: linear-gradient(135deg, rgba(65, 105, 225, 0.2) 0%, rgba(65, 105, 225, 0.05) 100%);
-  color: var(--accent-purple);
+  background: linear-gradient(135deg, rgba(255, 77, 0, 0.2) 0%, rgba(255, 77, 0, 0.05) 100%);
+  color: var(--brand);
 }
 
 .feature-icon-pink {
-  background: linear-gradient(135deg, rgba(65, 105, 225, 0.2) 0%, rgba(65, 105, 225, 0.05) 100%);
-  color: var(--accent-pink);
+  background: linear-gradient(135deg, rgba(255, 77, 0, 0.2) 0%, rgba(255, 77, 0, 0.05) 100%);
+  color: var(--brand);
 }
 
 .feature-icon-cyan {
-  background: linear-gradient(135deg, rgba(65, 105, 225, 0.2) 0%, rgba(65, 105, 225, 0.05) 100%);
-  color: var(--accent-cyan);
+  background: linear-gradient(135deg, rgba(255, 77, 0, 0.2) 0%, rgba(255, 77, 0, 0.05) 100%);
+  color: var(--brand);
+}
+
+.feature-icon-brand {
+  background: linear-gradient(135deg, rgba(255, 77, 0, 0.2) 0%, rgba(255, 77, 0, 0.05) 100%);
+  color: var(--brand);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════

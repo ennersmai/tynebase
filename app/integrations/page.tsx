@@ -83,8 +83,8 @@ export default function IntegrationsPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
             {popularIntegrations.map((integration) => (
               <div key={integration.name} className="bg-[var(--bg-elevated)] border border-[var(--border-subtle)] rounded-xl p-4 text-center hover:border-[var(--brand)] hover:shadow-lg transition-all cursor-pointer group">
-                <div className={`w-12 h-12 rounded-xl bg-[var(--accent-${integration.color})]/10 flex items-center justify-center mx-auto mb-3`}>
-                  <integration.icon className={`w-6 h-6 text-[var(--accent-${integration.color})]`} />
+                <div className={`w-12 h-12 rounded-xl bg-[var(--brand)]/10 flex items-center justify-center mx-auto mb-3`}>
+                  <integration.icon className={`w-6 h-6 text-[var(--brand)]`} />
                 </div>
                 <p className="font-medium text-[var(--text-primary)] group-hover:text-[var(--brand)] transition-colors">{integration.name}</p>
               </div>
@@ -122,8 +122,8 @@ export default function IntegrationsPage() {
             {filteredIntegrations.map((integration) => (
               <div key={integration.name} className="bg-[var(--bg-elevated)] border border-[var(--border-subtle)] rounded-xl p-6 hover:border-[var(--brand)] hover:shadow-lg transition-all cursor-pointer group">
                 <div className="flex items-start justify-between mb-4">
-                  <div className={`w-12 h-12 rounded-xl bg-[var(--accent-${integration.color})]/10 flex items-center justify-center`}>
-                    <integration.icon className={`w-6 h-6 text-[var(--accent-${integration.color})]`} />
+                  <div className={`w-12 h-12 rounded-xl bg-[var(--brand)]/10 flex items-center justify-center`}>
+                    <integration.icon className={`w-6 h-6 text-[var(--brand)]`} />
                   </div>
                   {integration.popular && (
                     <span className="px-2 py-1 text-xs font-medium bg-[var(--brand)]/10 text-[var(--brand)] rounded-full">Popular</span>

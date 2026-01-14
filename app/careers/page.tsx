@@ -37,7 +37,6 @@ export default function CareersPage() {
   return (
     <div className="min-h-screen relative">
       <div className="hero-gradient" />
-      <div className="grid-overlay" />
 
       <SiteNavbar currentPage="other" />
 
@@ -68,9 +67,9 @@ export default function CareersPage() {
         <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 24px' }}>
           <div style={{ width: '100%', maxWidth: '896px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '32px', textAlign: 'center' }}>Open Positions</h2>
-            <div className="space-y-4">
+            <div className="flex flex-col gap-8">
               {positions.map((position) => (
-                <div key={position.slug} className="bento-item flex flex-col sm:flex-row sm:items-center justify-between gap-4 cursor-pointer group">
+                <div key={position.slug} className="bento-item flex flex-col sm:flex-row sm:items-center justify-between gap-4 cursor-pointer group" style={{ marginBottom: '24px' }}>
                   <div>
                     <h3 className="text-lg font-semibold text-[var(--text-primary)] group-hover:text-[var(--brand)] transition-colors">
                       {position.title}

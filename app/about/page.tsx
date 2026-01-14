@@ -85,7 +85,7 @@ export default function AboutPage() {
               </p>
               <p>
                 Today, we're helping teams across the globe transform how they create, organize, and discover knowledge. 
-                From startups to enterprises, from engineering teams to HR departments—TyneBase scales with your ambitions.
+                From startups to enterprises, from engineering teams to HR departments-TyneBase scales with your ambitions.
               </p>
             </div>
           </div>

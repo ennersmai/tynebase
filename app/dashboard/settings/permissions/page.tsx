@@ -147,8 +147,8 @@ export default function PermissionsPage() {
           >
             <CardContent className="p-4">
               <div className="flex items-start justify-between mb-3">
-                <div className={`w-10 h-10 rounded-lg bg-[var(--accent-${role.color})]/10 flex items-center justify-center`}>
-                  <Shield className={`w-5 h-5 text-[var(--accent-${role.color})]`} />
+                <div className={`w-10 h-10 rounded-lg bg-[var(--brand)]/10 flex items-center justify-center`}>
+                  <Shield className={`w-5 h-5 text-[var(--brand)]`} />
                 </div>
                 {role.isDefault && (
                   <span className="px-2 py-0.5 text-xs font-medium bg-[var(--surface-ground)] text-[var(--text-tertiary)] rounded-full">
@@ -185,7 +185,7 @@ export default function PermissionsPage() {
                   key={role.id} 
                   className={`w-24 text-center text-sm font-medium ${
                     selectedRole === role.id 
-                      ? `text-[var(--accent-${role.color})]` 
+                      ? `text-[var(--brand)]` 
                       : "text-[var(--text-secondary)]"
                   }`}
                 >

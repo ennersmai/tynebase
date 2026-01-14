@@ -243,7 +243,7 @@ export default function SourcesPage() {
 
               <div className="col-span-2">
                 <p className="text-sm text-[var(--dash-text-secondary)]">
-                  {s.chunks ? `${s.chunks} chunks` : "—"}
+                  {s.chunks ? `${s.chunks} chunks` : "-"}
                 </p>
                 <p className="text-xs text-[var(--dash-text-muted)]">
                   {s.tokens ? `${s.tokens.toLocaleString()} tokens` : ""}

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { BookOpen, Sparkles, Users, Palette, Check, ArrowRight, Zap, Shield, Globe, FileCheck, FolderSync, Bot, UserCog, Search, FileText, MessagesSquare, Lock, BarChart3, Database, Key, UserCheck, ShieldCheck, Clock, Headphones } from "lucide-react";
+import { BookOpen, Sparkles, Users, Palette, Check, ArrowRight, Zap, Shield, Globe, FileCheck, FolderSync, Bot, UserCog, Search, FileText, MessagesSquare, Lock, BarChart3, Database, Key, UserCheck, ShieldCheck, Clock, Headphones, ShieldAlert, Settings, FileCheck2 } from "lucide-react";
 import { SiteNavbar } from "@/components/layout/SiteNavbar";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { CookieConsent } from "@/components/ui/CookieConsent";
@@ -11,18 +11,26 @@ import { CookieConsent } from "@/components/ui/CookieConsent";
 const enterpriseFeatures = [
   { category: 'security', title: 'SSO Integration', description: 'Enable secure, seamless access with single sign-on (SSO) through providers like Okta, Google Workspace, and Azure AD.', icon: Key },
   { category: 'security', title: 'Advanced Provisioning', description: 'Automate user lifecycle management with SCIM provisioning for faster, safer onboarding and offboarding.', icon: UserCheck },
+  { category: 'security', title: 'Granular Permissions', description: 'Control access at every level with flexible, detailed permissions for teams and projects.', icon: Lock },
+  { category: 'compliance', title: 'SOC 2 Type II Compliance', description: 'Meet rigorous security standards with SOC II Type II certification, ensuring enterprise-grade data protection.', icon: Shield },
+  { category: 'compliance', title: 'HIPAA Compliance', description: 'Execute a Business Associate Agreement (BAA) to ensure HIPAA-compliant infrastructure with encryption and access controls.', icon: ShieldCheck },
+  { category: 'compliance', title: 'GDPR Compliance', description: 'Operate confidently across regions with GDPR-compliant practices that safeguard data privacy.', icon: Globe },
   { category: 'customization', title: 'Personalized Onboarding', description: 'Kickstart adoption with onboarding tailored to your workflows, guided by our customer success team.', icon: Headphones },
   { category: 'customization', title: 'Reader-Only Roles', description: 'Share knowledge broadly while maintaining control by assigning read-only access to specific users.', icon: Users },
-  { category: 'compliance', title: 'SOC 2 Type II Compliance', description: 'Meet rigorous security standards with SOC II Type II certification, ensuring enterprise-grade data protection.', icon: Shield },
-  { category: 'customization', title: 'HIPAA Compliance', description: 'Execute a Business Associate Agreement (BAA) to ensure HIPAA-compliant infrastructure with encryption and access controls.', icon: ShieldCheck },
-  { category: 'compliance', title: 'GDPR Compliance', description: 'Operate confidently across regions with GDPR-compliant practices that safeguard data privacy.', icon: Globe },
   { category: 'customization', title: 'SLA Guarantee', description: 'Count on guaranteed uptime and response times with a service-level agreement built for enterprise reliability.', icon: Clock },
   { category: 'customization', title: 'Dedicated Support', description: "Access priority, hands-on support from specialists who understand your team's needs.", icon: Headphones },
   { category: 'control', title: 'Analytics Dashboard', description: 'Measure adoption and engagement with usage insights to keep your documentation effective.', icon: BarChart3 },
   { category: 'control', title: 'Automated Backups', description: 'Protect your knowledge base with automated backups and fast recovery when needed.', icon: Database },
-  { category: 'security', title: 'Granular Permissions', description: 'Control access at every level with flexible, detailed permissions for teams and projects.', icon: Lock },
   { category: 'control', title: 'Audit Logs', description: 'Maintain accountability with complete visibility into who accessed and modified content.', icon: FileText },
 ];
+
+// Category icon mapping
+const categoryIcons = {
+  security: Shield,
+  customization: Settings,
+  compliance: ShieldCheck,
+  control: BarChart3,
+};
 
 const knowledgeFeatures = [
   {
@@ -213,7 +221,7 @@ export default function Home() {
           <div className="bento-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: '24px' }}>
             {/* Feature 1 - Large */}
             <div className="bento-item lg:col-span-2 lg:row-span-2" style={{ padding: '32px' }}>
-              <div className="feature-icon feature-icon-blue" style={{ marginBottom: '20px' }}>
+              <div className="feature-icon feature-icon-brand" style={{ marginBottom: '20px', color: '#ff4d00', background: 'linear-gradient(135deg, rgba(255, 77, 0, 0.2) 0%, rgba(255, 77, 0, 0.05) 100%)' }}>
                 <BookOpen className="w-6 h-6" />
               </div>
               <h3 style={{ fontSize: '24px', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '16px' }}>
@@ -227,7 +235,7 @@ export default function Home() {
                 <div style={{ background: 'var(--bg-secondary)', borderRadius: '12px', padding: '20px', border: '1px solid var(--border-subtle)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-purple))', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'linear-gradient(135deg, var(--brand), var(--brand-light))', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <BookOpen className="w-4 h-4 text-white" />
                       </div>
                       <div>
@@ -252,8 +260,8 @@ export default function Home() {
                     </div>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: 'linear-gradient(135deg, var(--brand), var(--accent-pink))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', color: 'white', fontWeight: 500 }}>JD</div>
-                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-cyan))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', color: 'white', fontWeight: 500, marginLeft: '-4px' }}>SK</div>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: 'linear-gradient(135deg, var(--brand), var(--brand-light))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', color: 'white', fontWeight: 500 }}>JD</div>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: 'linear-gradient(135deg, var(--brand), var(--brand-light))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', color: 'white', fontWeight: 500, marginLeft: '-4px' }}>SK</div>
                     <span style={{ fontSize: '12px', color: 'var(--text-muted)', marginLeft: '4px' }}>+8 team members</span>
                   </div>
                 </div>
@@ -283,7 +291,7 @@ export default function Home() {
 
             {/* Feature 3 */}
             <div className="bento-item">
-              <div className="feature-icon feature-icon-pink">
+              <div className="feature-icon feature-icon-brand" style={{ color: '#ff4d00', background: 'linear-gradient(135deg, rgba(255, 77, 0, 0.2) 0%, rgba(255, 77, 0, 0.05) 100%)' }}>
                 <Users className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">
@@ -296,7 +304,7 @@ export default function Home() {
 
             {/* Feature 4 */}
             <div className="bento-item">
-              <div className="feature-icon feature-icon-brand">
+              <div className="feature-icon feature-icon-brand" style={{ color: '#ff4d00', background: 'linear-gradient(135deg, rgba(255, 77, 0, 0.2) 0%, rgba(255, 77, 0, 0.05) 100%)' }}>
                 <Palette className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">
@@ -308,7 +316,12 @@ export default function Home() {
             </div>
 
             {/* Feature 5 - Speed & Security */}
-            <div className="bento-item lg:col-span-2">
+            <div className="bento-item lg:col-span-2 relative" style={{ padding: '32px' }}>
+              <div className="absolute top-8 right-8">
+                <div className="feature-icon feature-icon-brand" style={{ color: '#ff4d00', background: 'linear-gradient(135deg, rgba(255, 77, 0, 0.2) 0%, rgba(255, 77, 0, 0.05) 100%)' }}>
+                  <Shield className="w-6 h-6" />
+                </div>
+              </div>
               <div><br/>
                 <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-4">
                   Enterprise-Grade Performance & Security
@@ -329,7 +342,7 @@ export default function Home() {
                       { icon: Globe, label: 'Uptime', value: '99.99% SLA' },
                     ].map((item) => (
                       <div key={item.label} className="flex items-center gap-3">
-                        <item.icon className="w-5 h-5 text-[var(--text-muted)]" />
+                        <item.icon className="w-5 h-5 text-[var(--brand)]" />
                         <div>
                           <p className="text-xs text-[var(--text-muted)]">{item.label}</p>
                           <p className="text-sm font-medium text-[var(--text-primary)]">{item.value}</p>
@@ -399,9 +412,9 @@ export default function Home() {
               <div className="feature-preview-placeholder">
                 <div className="flex flex-col items-center gap-4">
                   {activeFeature === 0 && <FileCheck className="w-16 h-16 text-[var(--brand)] opacity-60" />}
-                  {activeFeature === 1 && <FolderSync className="w-16 h-16 text-[var(--accent-blue)] opacity-60" />}
-                  {activeFeature === 2 && <Bot className="w-16 h-16 text-[var(--accent-purple)] opacity-60" />}
-                  {activeFeature === 3 && <UserCog className="w-16 h-16 text-[var(--accent-pink)] opacity-60" />}
+                  {activeFeature === 1 && <FolderSync className="w-16 h-16 text-[var(--brand)] opacity-60" />}
+                  {activeFeature === 2 && <Bot className="w-16 h-16 text-[var(--brand)] opacity-60" />}
+                  {activeFeature === 3 && <UserCog className="w-16 h-16 text-[var(--brand)] opacity-60" />}
                   <span className="text-sm text-[var(--text-muted)]">Feature preview placeholder</span>
                   <span className="text-xs text-[var(--text-muted)]">{knowledgeFeatures[activeFeature].title}</span>
                 </div>
@@ -484,7 +497,7 @@ export default function Home() {
 
           <div className="ai-demo-container">
             {/* Glow effect */}
-            <div className="absolute -inset-8 bg-gradient-to-r from-[var(--brand)] via-[var(--accent-purple)] to-[var(--accent-blue)] opacity-15 blur-3xl rounded-3xl" />
+            <div className="absolute -inset-8 bg-gradient-to-r from-[var(--brand)] via-[var(--brand)] to-[var(--brand)] opacity-15 blur-3xl rounded-3xl" />
             
             <div className="ai-demo-modal relative">
               <div className="ai-demo-header">
@@ -572,15 +585,20 @@ export default function Home() {
           </div>
 
           <div className="enterprise-grid">
-            {enterpriseFeatures.map((feature, index) => (
-              <div key={index} className="enterprise-card">
-                <span className={`enterprise-card-category ${feature.category}`}>
-                  {feature.category}
-                </span>
-                <h4>{feature.title}</h4>
-                <p>{feature.description}</p>
-              </div>
-            ))}
+            {enterpriseFeatures.map((feature, index) => {
+              const CategoryIcon = categoryIcons[feature.category as keyof typeof categoryIcons];
+              return (
+                <div key={index} className="enterprise-card">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="feature-icon feature-icon-brand" style={{ color: '#ff4d00', background: 'linear-gradient(135deg, rgba(255, 77, 0, 0.2) 0%, rgba(255, 77, 0, 0.05) 100%)', width: '36px', height: '36px' }}>
+                      <CategoryIcon className="w-4 h-4" />
+                    </div>
+                    <h4 className="flex items-center">{feature.title}</h4>
+                  </div>
+                  <p>{feature.description}</p>
+                </div>
+              );
+            })}
           </div>
 
           <div className="h-4" />
@@ -643,7 +661,7 @@ export default function Home() {
                 <span style={{ padding: '2px 6px' }} className={`text-xs rounded-full ${
                   billingPeriod === 'yearly'
                     ? 'bg-white/20 text-black'
-                    : 'bg-[var(--accent-purple)]/20 text-[var(--accent-purple)]'
+                    : 'bg-[var(--brand)]/20 text-[var(--brand)]'
                 }`}>Save 20%</span>
               </button>
             </div>
@@ -651,14 +669,14 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto items-stretch">
             {/* Free */}
-            <div className="pricing-card" style={{ display: 'flex', flexDirection: 'column' }}>
+            <div className="pricing-card" style={{ display: 'flex', flexDirection: 'column', borderColor: '#ffffff' }}>
               <div style={{ marginBottom: '16px' }}>
                 <h3 className="text-lg font-semibold text-[var(--text-primary)]">Free</h3>
               </div>
               <div style={{ marginBottom: '24px' }}>
                 <div className="mt-4">
                   <span className="text-4xl font-bold text-[var(--text-primary)]">€0</span>
-                  <span className="text-[var(--text-muted)]">/month</span>
+                  <span style={{ color: '#ffffff' }}>/month</span>
                 </div>
               </div>
               <div className="flex-1" style={{ display: 'flex', flexDirection: 'column' }}>
@@ -666,7 +684,7 @@ export default function Home() {
                   <ul className="space-y-3">
                     {['Up to 3 users', '100 documents', 'Basic search', 'Community support'].map((feature) => (
                       <li key={feature} className="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
-                        <Check className="w-4 h-4 text-[var(--accent-cyan)] flex-shrink-0" />
+                        <Check className="w-4 h-4 text-[var(--brand)] flex-shrink-0" />
                         {feature}
                       </li>
                     ))}
@@ -674,7 +692,7 @@ export default function Home() {
                 </div>
                 <div className="mt-8">
                   <Link href="/signup" className="btn btn-secondary w-full">
-                    Get started
+                    Start for Free
                   </Link>
                 </div>
               </div>
@@ -693,7 +711,7 @@ export default function Home() {
                   <span className="text-4xl font-bold text-[var(--text-primary)]">
                     €{billingPeriod === 'monthly' ? '29' : '23'}
                   </span>
-                  <span className="text-[var(--text-muted)]">/month</span>
+                  <span style={{ color: '#ffffff' }}>/month</span>
                   {billingPeriod === 'yearly' && (
                     <p className="text-xs text-[var(--text-muted)] mt-1">Billed annually (€276/year)</p>
                   )}
@@ -712,14 +730,14 @@ export default function Home() {
                 </div>
                 <div className="mt-8">
                   <Link href="/signup" className="btn btn-primary w-full">
-                    Start free trial
+                    Upgrade Now
                   </Link>
                 </div>
               </div>
             </div>
 
             {/* Pro */}
-            <div className="pricing-card">
+            <div className="pricing-card" style={{ borderColor: '#ffffff' }}>
               <div style={{ marginBottom: '16px' }}>
                 <h3 className="text-lg font-semibold text-[var(--text-primary)]">Pro</h3>
               </div>
@@ -728,7 +746,7 @@ export default function Home() {
                   <span className="text-4xl font-bold text-[var(--text-primary)]">
                     €{billingPeriod === 'monthly' ? '99' : '79'}
                   </span>
-                  <span className="text-[var(--text-muted)]">/month</span>
+                  <span style={{ color: '#ffffff' }}>/month</span>
                   {billingPeriod === 'yearly' && (
                     <p className="text-xs text-[var(--text-muted)] mt-1">Billed annually (€948/year)</p>
                   )}
@@ -739,7 +757,7 @@ export default function Home() {
                   <ul className="space-y-3">
                     {['All Base features', 'Up to 50 users', 'Advanced AI', 'White-label', 'Analytics', 'Custom domain'].map((feature) => (
                       <li key={feature} className="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
-                        <Check className="w-4 h-4 text-[var(--accent-cyan)] flex-shrink-0" />
+                        <Check className="w-4 h-4 text-[var(--brand)] flex-shrink-0" />
                         {feature}
                       </li>
                     ))}
@@ -747,7 +765,7 @@ export default function Home() {
                 </div>
                 <div className="mt-8">
                   <Link href="/signup" className="btn btn-secondary w-full">
-                    Start free trial
+                    Upgrade Now
                   </Link>
                 </div>
               </div>
@@ -774,7 +792,7 @@ export default function Home() {
                   <ul className="space-y-3">
                     {['All Pro features', 'Unlimited users', 'Dedicated support', 'Custom integrations', 'SLA guarantee', 'On-premise option', 'Dedicated doc manager', 'Priority onboarding'].map((feature) => (
                       <li key={feature} className="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
-                        <Check className="w-4 h-4 text-[var(--accent-purple)] flex-shrink-0" />
+                        <Check className="w-4 h-4 text-[var(--brand)] flex-shrink-0" />
                         {feature}
                       </li>
                     ))}
@@ -844,21 +862,21 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="editor-feature-item">
-                    <FileText className="w-5 h-5 text-[var(--accent-blue)]" />
+                    <FileText className="w-5 h-5 text-[var(--brand)]" />
                     <div>
                       <strong>Markdown support</strong>
                       <p>Type in Markdown, export to .md anytime</p>
                     </div>
                   </div>
                   <div className="editor-feature-item">
-                    <Zap className="w-5 h-5 text-[var(--accent-purple)]" />
+                    <Zap className="w-5 h-5 text-[var(--brand)]" />
                     <div>
                       <strong>Keyboard shortcuts</strong>
                       <p>Power-user combos for everything</p>
                     </div>
                   </div>
                   <div className="editor-feature-item">
-                    <Clock className="w-5 h-5 text-[var(--accent-pink)]" />
+                    <Clock className="w-5 h-5 text-[var(--brand)]" />
                     <div>
                       <strong>Version history</strong>
                       <p>Travel back in time, restore any version</p>

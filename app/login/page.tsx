@@ -138,7 +138,7 @@ function LoginPageInner() {
       <SiteNavbar currentPage="other" />
 
       {/* Centered Modal Container */}
-      <div className="flex-1 flex items-center justify-center px-6 py-12" style={{ marginTop: '80px' }}>
+      <div className="flex-1 flex items-center justify-center px-6 py-12" style={{ marginTop: '80px', marginBottom: '80px' }}>
         <div className="w-full max-w-md">
           {/* Modal Card */}
           <div style={{ 

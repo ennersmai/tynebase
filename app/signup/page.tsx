@@ -143,7 +143,7 @@ export default function SignupPage() {
       <SiteNavbar currentPage="other" />
 
       {/* Centered Modal Container */}
-      <div className="flex-1 flex items-center justify-center px-6 py-12" style={{ marginTop: '80px' }}>
+      <div className="flex-1 flex items-center justify-center px-6 py-12" style={{ marginTop: '80px', marginBottom: '80px' }}>
         <div className="w-full max-w-md">
           {/* Modal Card */}
           <div style={{ 
@@ -164,7 +164,7 @@ export default function SignupPage() {
                 {step === 1 ? "Create your account" : "Set up your workspace"}
               </h1>
               <p style={{ fontSize: '15px', color: 'var(--text-secondary)' }}>
-                {step === 1 ? "Start your 14-day free trial" : "Where your team will collaborate"}
+                {step === 1 ? (formData.accountType === 'company' ? "Start with a Pro subscription if you choose company" : "Start with a free account") : "Where your team will collaborate"}
               </p>
             </div>
 

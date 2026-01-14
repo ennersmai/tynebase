@@ -177,7 +177,7 @@ export default function ImportExportPage() {
                       : "border-[var(--border-subtle)] opacity-50 cursor-not-allowed"
                   }`}
                 >
-                  <div className={`w-10 h-10 rounded-lg bg-[var(--accent-${source.color})]/10 flex items-center justify-center mb-3 text-sm font-bold text-[var(--accent-${source.color})]`}>
+                  <div className={`w-10 h-10 rounded-lg bg-[var(--brand)]/10 flex items-center justify-center mb-3 text-sm font-bold text-[var(--brand)]`}>
                     {source.icon}
                   </div>
                   <h3 className="font-medium text-[var(--text-primary)]">{source.name}</h3>

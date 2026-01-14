@@ -133,8 +133,8 @@ export default function AnalyticsPage() {
           <Card key={stat.label}>
             <CardContent className="p-5">
               <div className="flex items-start justify-between">
-                <div className={`w-10 h-10 rounded-lg bg-[var(--accent-${stat.color})]/10 flex items-center justify-center`}>
-                  <stat.icon className={`w-5 h-5 text-[var(--accent-${stat.color})]`} />
+                <div className={`w-10 h-10 rounded-lg bg-[var(--brand)]/10 flex items-center justify-center`}>
+                  <stat.icon className={`w-5 h-5 text-[var(--brand)]`} />
                 </div>
                 <div className={`flex items-center gap-1 text-sm font-medium ${
                   stat.trend === "up" ? "text-green-500" : "text-red-500"
@@ -291,7 +291,7 @@ export default function AnalyticsPage() {
                 { name: "Mike Johnson", avatar: "MJ", action: "Reviewed", doc: "Security Policy", time: "2 days ago", color: "cyan" },
               ].map((activity, i) => (
                 <div key={i} className="flex items-center gap-3">
-                  <div className={`w-8 h-8 rounded-full bg-[var(--accent-${activity.color})]/10 flex items-center justify-center text-xs font-medium text-[var(--accent-${activity.color})]`}>
+                  <div className={`w-8 h-8 rounded-full bg-[var(--brand)]/10 flex items-center justify-center text-xs font-medium text-[var(--brand)]`}>
                     {activity.avatar}
                   </div>
                   <div className="flex-1 min-w-0">

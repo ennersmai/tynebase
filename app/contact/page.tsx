@@ -122,7 +122,7 @@ export default function ContactPage() {
 
             {/* Contact Info */}
             <div className="space-y-6">
-              <div className="bento-item">
+              <div className="bento-item" style={{ marginBottom: '32px' }}>
                 <div className="flex items-start gap-4">
                   <div className="feature-icon feature-icon-brand">
                     <Mail className="w-5 h-5" />
@@ -135,7 +135,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="bento-item">
+              <div className="bento-item" style={{ marginBottom: '32px' }}>
                 <div className="flex items-start gap-4">
                   <div className="feature-icon feature-icon-blue">
                     <MessageSquare className="w-5 h-5" />
