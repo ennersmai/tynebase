@@ -105,6 +105,7 @@ export default function Home() {
   const [activeTeam, setActiveTeam] = useState('engineering');
   const [isPaused, setIsPaused] = useState(false);
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('monthly');
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
     if (isPaused) return;
@@ -113,6 +114,28 @@ export default function Home() {
     }, 4000);
     return () => clearInterval(interval);
   }, [isPaused]);
+
+  useEffect(() => {
+    // Check theme on mount and when it changes
+    const checkTheme = () => {
+      const theme = document.documentElement.getAttribute('data-theme');
+      setIsDarkMode(theme !== 'light');
+    };
+    
+    checkTheme();
+    
+    // Listen for theme changes
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, { 
+      attributes: true, 
+      attributeFilter: ['data-theme'] 
+    });
+    
+    return () => observer.disconnect();
+  }, []);
+
+  const getBorderColor = () => isDarkMode ? '#ffffff' : '#000000';
+
   return (
     <div className="min-h-screen relative">
       {/* Animated gradient background */}
@@ -669,14 +692,14 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto items-stretch">
             {/* Free */}
-            <div className="pricing-card" style={{ display: 'flex', flexDirection: 'column', borderColor: '#ffffff' }}>
+            <div className="pricing-card-black-border" style={{ backgroundColor: 'var(--bg-elevated)', borderRadius: 'var(--radius-xl)', padding: '32px', display: 'flex', flexDirection: 'column', transition: 'all var(--duration-normal) var(--ease-out)', border: `1px solid ${getBorderColor()}` }}>
               <div style={{ marginBottom: '16px' }}>
                 <h3 className="text-lg font-semibold text-[var(--text-primary)]">Free</h3>
               </div>
               <div style={{ marginBottom: '24px' }}>
                 <div className="mt-4">
                   <span className="text-4xl font-bold text-[var(--text-primary)]">€0</span>
-                  <span style={{ color: '#ffffff' }}>/month</span>
+                  <span style={{ color: 'var(--text-primary)' }}>/month</span>
                 </div>
               </div>
               <div className="flex-1" style={{ display: 'flex', flexDirection: 'column' }}>
@@ -711,7 +734,7 @@ export default function Home() {
                   <span className="text-4xl font-bold text-[var(--text-primary)]">
                     €{billingPeriod === 'monthly' ? '29' : '23'}
                   </span>
-                  <span style={{ color: '#ffffff' }}>/month</span>
+                  <span style={{ color: 'var(--text-primary)' }}>/month</span>
                   {billingPeriod === 'yearly' && (
                     <p className="text-xs text-[var(--text-muted)] mt-1">Billed annually (€276/year)</p>
                   )}
@@ -737,7 +760,7 @@ export default function Home() {
             </div>
 
             {/* Pro */}
-            <div className="pricing-card" style={{ borderColor: '#ffffff' }}>
+            <div className="pricing-card-black-border" style={{ backgroundColor: 'var(--bg-elevated)', borderRadius: 'var(--radius-xl)', padding: '32px', display: 'flex', flexDirection: 'column', transition: 'all var(--duration-normal) var(--ease-out)', border: `1px solid ${getBorderColor()}` }}>
               <div style={{ marginBottom: '16px' }}>
                 <h3 className="text-lg font-semibold text-[var(--text-primary)]">Pro</h3>
               </div>
@@ -746,7 +769,7 @@ export default function Home() {
                   <span className="text-4xl font-bold text-[var(--text-primary)]">
                     €{billingPeriod === 'monthly' ? '99' : '79'}
                   </span>
-                  <span style={{ color: '#ffffff' }}>/month</span>
+                  <span style={{ color: 'var(--text-primary)' }}>/month</span>
                   {billingPeriod === 'yearly' && (
                     <p className="text-xs text-[var(--text-muted)] mt-1">Billed annually (€948/year)</p>
                   )}
@@ -756,7 +779,7 @@ export default function Home() {
                 <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
                   <ul className="space-y-3">
                     {['All Base features', 'Up to 50 users', 'Advanced AI', 'White-label', 'Analytics', 'Custom domain'].map((feature) => (
-                      <li key={feature} className="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
+                      <li key={feature} className="flex items-center gap-3 text-sm text-[var(--text-secondary)]" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
                         <Check className="w-4 h-4 text-[var(--brand)] flex-shrink-0" />
                         {feature}
                       </li>

@@ -627,6 +627,14 @@ a {
   background-clip: text;
 }
 
+html[data-theme="light"] .pricing-card-black-border {
+  border: 1px solid #000000 !important;
+}
+
+html[data-theme="dark"] .pricing-card-black-border {
+  border: 1px solid #ffffff !important;
+}
+
 /* Light mode specific gradient for better visibility */
 html[data-theme="light"] .text-gradient {
   background: linear-gradient(135deg, #ff4d00 0%, #038eff 100%);
