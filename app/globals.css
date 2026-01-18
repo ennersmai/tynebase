@@ -773,59 +773,8 @@ html[data-theme="light"] .text-gradient {
   padding: 80px 0;
 }
 
-/* Text utilities */
-.text-center {
-  text-align: center;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.text-right {
-  text-align: right;
-}
-
-/* Flex utilities */
-.flex {
-  display: flex;
-}
-
-.flex-col {
-  flex-direction: column;
-}
-
-.items-center {
-  align-items: center;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.justify-between {
-  justify-content: space-between;
-}
-
-.gap-2 {
-  gap: 8px;
-}
-
-.gap-3 {
-  gap: 12px;
-}
-
-.gap-4 {
-  gap: 16px;
-}
-
-.gap-6 {
-  gap: 24px;
-}
-
-.gap-8 {
-  gap: 32px;
-}
+/* Text utilities removed - use Tailwind built-ins */
+/* Flex utilities removed - use Tailwind built-ins */
 
 /* ═══════════════════════════════════════════════════════════════════════
    SELECTION & SCROLLBAR
