@@ -121,16 +121,16 @@ export default function Home() {
       const theme = document.documentElement.getAttribute('data-theme');
       setIsDarkMode(theme !== 'light');
     };
-    
+
     checkTheme();
-    
+
     // Listen for theme changes
     const observer = new MutationObserver(checkTheme);
-    observer.observe(document.documentElement, { 
-      attributes: true, 
-      attributeFilter: ['data-theme'] 
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
     });
-    
+
     return () => observer.disconnect();
   }, []);
 
@@ -150,11 +150,11 @@ export default function Home() {
           {/* Announcement badge */}
           <div className="animate-in animate-delay-1" style={{ marginBottom: '48px' }}>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '16px', padding: '12px 24px', borderRadius: '9999px', background: 'var(--bg-secondary)', border: '1px solid var(--border-subtle)' }}>
-              <Image 
-                src="/find_tyne_logo.webp" 
-                alt="Find" 
-                width={72} 
-                height={72} 
+              <Image
+                src="/find_tyne_logo.webp"
+                alt="Find"
+                width={72}
+                height={72}
                 style={{ width: '42px', height: '42px' }}
               />
               <span style={{ fontSize: '16px', color: 'var(--text-secondary)' }}>Bridging the Gap Between What You Know and What You Can Find.</span>
@@ -171,9 +171,9 @@ export default function Home() {
           {/* Subheadline */}
           <div style={{ textAlign: 'center', marginBottom: '48px', padding: '24px 0' }} className="animate-in animate-delay-3">
             <p style={{ fontSize: '24px', color: 'var(--text-primary)', maxWidth: '900px', margin: '0 auto 32px auto', lineHeight: 1.5, fontWeight: 500, textAlign: 'center' }}>
-             The AI-Native Knowledge Base That Integrates With Your Team
+              The AI-Native Knowledge Base That Integrates With Your Team
             </p>
-            
+
             <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'left', gap: '12px', maxWidth: '800px', margin: '0 auto' }}>
               <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: 'var(--brand)', marginTop: '8px', flexShrink: 0 }} />
               <p style={{ fontSize: '18px', color: 'var(--text-secondary)', lineHeight: 1.6, textAlign: 'left' }}>
@@ -183,7 +183,7 @@ export default function Home() {
                 <br />
                 <br />
                 Deploy a white-label platform that transforms your team's raw data into refined, accessible wisdom, seamlessly branded as your own.
-                <br /> 
+                <br />
               </p>
             </div>
           </div>
@@ -223,11 +223,11 @@ export default function Home() {
           {/* Section header */}
           <div style={{ textAlign: 'center', marginBottom: '96px' }}>
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '32px' }}>
-              <Image 
-                src="/features_logo2.webp" 
-                alt="Features" 
-                width={107} 
-                height={107} 
+              <Image
+                src="/features_logo2.webp"
+                alt="Features"
+                width={107}
+                height={107}
                 style={{ width: '107px', height: '107px' }}
               />
             </div>
@@ -251,7 +251,7 @@ export default function Home() {
                 Rich Documentation Editor
               </h3>
               <p style={{ color: 'var(--text-secondary)', marginBottom: '24px', maxWidth: '400px', lineHeight: 1.6 }}>
-                Create beautiful, structured documentation with our powerful block-based editor. 
+                Create beautiful, structured documentation with our powerful block-based editor.
                 Organize content with nested pages, real-time collaboration, version history, and instant search across all your knowledge.
               </p>
               <div style={{ marginTop: 'auto', paddingTop: '24px' }}>
@@ -294,11 +294,11 @@ export default function Home() {
             {/* Feature 2 - AI Assistant */}
             <div className="bento-item">
               <div className="w-12 h-12 mb-5">
-                <Image 
-                  src="/ai_logo_tynebase.webp" 
-                  alt="AI Assistant" 
-                  width={60} 
-                  height={60} 
+                <Image
+                  src="/ai_logo_tynebase.webp"
+                  alt="AI Assistant"
+                  width={60}
+                  height={60}
                   style={{ padding: '2px' }}
                   className="w-12 h-12 object-contain"
                 />
@@ -345,20 +345,20 @@ export default function Home() {
                   <Shield className="w-6 h-6" />
                 </div>
               </div>
-              <div><br/>
+              <div><br />
                 <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-4">
                   Enterprise-Grade Performance & Security
                 </h3>
                 <p className="text-sm text-[var(--text-secondary)] max-w-lg leading-relaxed mb-8">
                   Lightning-fast performance with sub-100ms response times on a global edge network. Enterprise-ready with SOC2 compliance, GDPR adherence, role-based access control, and audit logs.
                 </p>
-                
+
                 {/* Features with icon on the right */}
-                <div 
+                <div
                   className="grid items-end gap-8"
                   style={{ gridTemplateColumns: 'auto 1fr' }}
                 >
-                  <div className="space-y-4"><br/>
+                  <div className="space-y-4"><br />
                     {[
                       { icon: Zap, label: 'Edge Network', value: '200+ locations' },
                       { icon: Shield, label: 'Security', value: 'SOC2 & GDPR' },
@@ -376,11 +376,11 @@ export default function Home() {
 
                   {/* Lightning icon - next to features */}
                   <div className="flex items-end justify-start">
-                    <Image 
-                      src="/lighting_logo2.webp" 
-                      alt="Enterprise Performance" 
-                      width={80} 
-                      height={80} 
+                    <Image
+                      src="/lighting_logo2.webp"
+                      alt="Enterprise Performance"
+                      width={80}
+                      height={80}
                       className="w-16 h-16 lg:w-[120px] lg:h-[120px] object-contain opacity-80"
                     />
                   </div>
@@ -410,7 +410,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div 
+          <div
             className="feature-showcase"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
@@ -501,11 +501,11 @@ export default function Home() {
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '96px' }}>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
-              <Image 
-                src="/ai_logo1.webp" 
-                alt="AI" 
-                width={32} 
-                height={32} 
+              <Image
+                src="/ai_logo1.webp"
+                alt="AI"
+                width={32}
+                height={32}
                 style={{ width: '43px', height: '43px' }}
               />
               <p style={{ fontSize: '14px', fontWeight: 600, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>AI-Powered Search</p>
@@ -521,19 +521,19 @@ export default function Home() {
           <div className="ai-demo-container">
             {/* Glow effect */}
             <div className="absolute -inset-8 bg-gradient-to-r from-[var(--brand)] via-[var(--brand)] to-[var(--brand)] opacity-15 blur-3xl rounded-3xl" />
-            
+
             <div className="ai-demo-modal relative">
               <div className="ai-demo-header">
-                <Image 
-                  src="/ai_logo1.webp" 
-                  alt="AI" 
-                  width={24} 
-                  height={24} 
+                <Image
+                  src="/ai_logo1.webp"
+                  alt="AI"
+                  width={24}
+                  height={24}
                   style={{ width: '24px', height: '24px' }}
                 />
                 <h4>TyneBase AI Assistant</h4>
               </div>
-              
+
               <div className="ai-demo-body">
                 {/* Search Input */}
                 <div className="ai-demo-input">
@@ -630,11 +630,11 @@ export default function Home() {
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '64px' }}>
             <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '64px', height: '64px', borderRadius: '16px', background: 'linear-gradient(135deg, var(--brand), var(--accent-pink))', marginBottom: '32px' }}>
-              <Image 
-                src="/euro_logo.webp" 
-                alt="Euro" 
-                width={42} 
-                height={42} 
+              <Image
+                src="/pound_logo.png"
+                alt="pound"
+                width={42}
+                height={42}
                 style={{ width: '42px', height: '42px' }}
               />
             </div>
@@ -645,17 +645,16 @@ export default function Home() {
             <p style={{ fontSize: '20px', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto 40px auto', textAlign: 'center', lineHeight: 1.6 }}>
               No hidden fees. No credit card required.
             </p>
-            
+
             {/* Billing Toggle */}
-             <div className="inline-flex items-center gap-4 bg-[var(--bg-secondary)] rounded-full border border-[var(--border-subtle)]"
-                style={{ padding: '0.5rem' }} > 
-                <button
+            <div className="inline-flex items-center gap-4 bg-[var(--bg-secondary)] rounded-full border border-[var(--border-subtle)]"
+              style={{ padding: '0.5rem' }} >
+              <button
                 onClick={() => setBillingPeriod('monthly')}
-                className={`rounded-full text-sm font-medium transition-all ${
-                  billingPeriod === 'monthly'
-                    ? 'bg-[var(--brand)] text-white glow-shadow-brand'
-                    : 'px-5 py-2.5 text- hover:text-'
-                }`}
+                className={`rounded-full text-sm font-medium transition-all ${billingPeriod === 'monthly'
+                  ? 'bg-[var(--brand)] text-white glow-shadow-brand'
+                  : 'px-5 py-2.5 text- hover:text-'
+                  }`}
                 // Use inline style when selected to force padding
                 style={billingPeriod === 'monthly' ? { padding: '0.75rem 2rem' } : {}}
               >
@@ -663,20 +662,18 @@ export default function Home() {
               </button>
               <button
                 onClick={() => setBillingPeriod('yearly')}
-                className={`rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
-                  billingPeriod === 'yearly'
-                    ? 'bg-[var(--brand)] text-white glow-shadow-brand'
-                    : 'px-5 py-2.5 text- hover:text-'
-                }`}
+                className={`rounded-full text-sm font-medium transition-all flex items-center gap-2 ${billingPeriod === 'yearly'
+                  ? 'bg-[var(--brand)] text-white glow-shadow-brand'
+                  : 'px-5 py-2.5 text- hover:text-'
+                  }`}
                 // Use inline style when selected to force padding
                 style={billingPeriod === 'yearly' ? { padding: '0.75rem 2rem' } : {}}
               >
                 Yearly
-                <span style={{ padding: '2px 6px' }} className={`text-xs rounded-full ${
-                  billingPeriod === 'yearly'
-                    ? 'bg-white/20 text-black'
-                    : 'bg-[var(--brand)]/20 text-[var(--brand)]'
-                }`}>Save 20%</span>
+                <span style={{ padding: '2px 6px' }} className={`text-xs rounded-full ${billingPeriod === 'yearly'
+                  ? 'bg-white/20 text-black'
+                  : 'bg-[var(--brand)]/20 text-[var(--brand)]'
+                  }`}>Save 20%</span>
               </button>
             </div>
           </div>
@@ -689,14 +686,14 @@ export default function Home() {
               </div>
               <div style={{ marginBottom: '24px' }}>
                 <div className="mt-4">
-                  <span className="text-4xl font-bold text-[var(--text-primary)]">€0</span>
+                  <span className="text-4xl font-bold text-[var(--text-primary)]">£0</span>
                   <span style={{ color: 'var(--text-primary)' }}>/month</span>
                 </div>
               </div>
               <div className="flex-1" style={{ display: 'flex', flexDirection: 'column' }}>
                 <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
                   <ul className="space-y-3">
-                    {['Up to 3 users', '100 documents', 'Basic search', 'Community support'].map((feature) => (
+                    {['1 solo account', '100 documents max', '10 AI queries/month', 'Basic search', 'Community support'].map((feature) => (
                       <li key={feature} className="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
                         <Check className="w-4 h-4 text-[var(--brand)] flex-shrink-0" />
                         {feature}
@@ -723,18 +720,18 @@ export default function Home() {
               <div style={{ marginBottom: '24px' }}>
                 <div className="mt-4">
                   <span className="text-4xl font-bold text-[var(--text-primary)]">
-                    €{billingPeriod === 'monthly' ? '29' : '23'}
+                    £{billingPeriod === 'monthly' ? '29' : '23'}
                   </span>
                   <span style={{ color: 'var(--text-primary)' }}>/month</span>
                   {billingPeriod === 'yearly' && (
-                    <p className="text-xs text-[var(--text-muted)] mt-1">Billed annually (€276/year)</p>
+                    <p className="text-xs text-[var(--text-muted)] mt-1">Billed annually (£276/year)</p>
                   )}
                 </div>
               </div>
               <div className="flex-1" style={{ display: 'flex', flexDirection: 'column' }}>
                 <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
                   <ul className="space-y-3">
-                    {['Up to 10 users', 'Unlimited documents', 'AI features', 'Priority support', 'Version control'].map((feature) => (
+                    {['Up to 5 users', 'Unlimited documents', '1GB Storage limit', '100 AI queries/month', 'Full AI capabilities', 'Version control', 'Priority support'].map((feature) => (
                       <li key={feature} className="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
                         <Check className="w-4 h-4 text-[var(--brand)] flex-shrink-0" />
                         {feature}
@@ -758,18 +755,18 @@ export default function Home() {
               <div style={{ marginBottom: '24px' }}>
                 <div className="mt-4">
                   <span className="text-4xl font-bold text-[var(--text-primary)]">
-                    €{billingPeriod === 'monthly' ? '99' : '79'}
+                    £{billingPeriod === 'monthly' ? '99' : '79'}
                   </span>
                   <span style={{ color: 'var(--text-primary)' }}>/month</span>
                   {billingPeriod === 'yearly' && (
-                    <p className="text-xs text-[var(--text-muted)] mt-1">Billed annually (€948/year)</p>
+                    <p className="text-xs text-[var(--text-muted)] mt-1">Billed annually (£948/year)</p>
                   )}
                 </div>
               </div>
               <div className="flex-1" style={{ display: 'flex', flexDirection: 'column' }}>
                 <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
                   <ul className="space-y-3">
-                    {['All Base features', 'Up to 50 users', 'Advanced AI', 'White-label', 'Analytics', 'Custom domain'].map((feature) => (
+                    {['Up to 10 users', 'Unlimited documents', '10GB Storage limit', '500 AI queries/month', 'White-label branding', 'Advanced analytics', 'Custom domain', 'Audit logs'].map((feature) => (
                       <li key={feature} className="flex items-center gap-3 text-sm text-[var(--text-secondary)]" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
                         <Check className="w-4 h-4 text-[var(--brand)] flex-shrink-0" />
                         {feature}
@@ -792,7 +789,7 @@ export default function Home() {
                 <div style={{ marginBottom: '16px' }}>
                   <h3 className="text-lg font-semibold text-[var(--text-primary)]">Enterprise</h3>
                 </div>
-                
+
                 {/* Section 2: Price and description */}
                 <div style={{ marginBottom: '24px' }}>
                   <div style={{ marginBottom: '12px' }}>
@@ -800,11 +797,11 @@ export default function Home() {
                   </div>
                   <p className="text-sm text-[var(--text-muted)]">Tailored for your organization</p>
                 </div>
-                
+
                 {/* Section 3: Features */}
                 <div style={{ marginBottom: '24px' }}>
                   <ul className="space-y-3">
-                    {['All Pro features', 'Unlimited users', 'Dedicated support', 'Custom integrations', 'SLA guarantee', 'On-premise option', 'Dedicated doc manager', 'Priority onboarding'].map((feature) => (
+                    {['All Pro features', 'Unlimited Users', 'Unlimited Documents', 'Dedicated support', 'Custom integrations', 'SLA guarantee', 'On-premise option', 'Rollover credits'].map((feature) => (
                       <li key={feature} className="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
                         <Check className="w-4 h-4 text-[var(--brand)] flex-shrink-0" />
                         {feature}
@@ -812,12 +809,42 @@ export default function Home() {
                     ))}
                   </ul>
                 </div>
-                
+
                 {/* Section 4: Button */}
                 <div style={{ marginTop: '28px' }}>
                   <Link href="/contact" className="btn btn-primary w-full" style={{ padding: '16px 32px', fontSize: '15px' }}>
                     Contact sales
                   </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Query Top-ups Section */}
+          <div className="mt-20 max-w-4xl mx-auto p-8 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-subtle)] relative overflow-hidden group hover:border-[var(--brand)] transition-all">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--brand)] opacity-5 blur-3xl -mr-16 -mt-16 group-hover:opacity-10 transition-opacity" />
+            <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2 flex items-center justify-center md:justify-start gap-2">
+                  <Sparkles className="w-5 h-5 text-[var(--brand)]" />
+                  Need more queries?
+                </h3>
+                <p className="text-[var(--text-secondary)]">
+                  Purchase query top-ups anytime. Never run out of AI power for your team.
+                  <span className="block mt-1 text-xs text-[var(--text-muted)]">Available for all paid plans. Expire at month end.</span>
+                </p>
+              </div>
+              <div className="flex flex-col items-center gap-4">
+                <div className="flex items-center gap-6">
+                  <div className="text-center">
+                    <p className="text-2xl font-bold text-[var(--text-primary)]">£9.99</p>
+                    <p className="text-xs text-[var(--text-muted)]">100 Queries</p>
+                  </div>
+                  <div className="w-px h-8 bg-[var(--border-subtle)]" />
+                  <div className="text-center">
+                    <p className="text-2xl font-bold text-[var(--text-primary)]">£39.99</p>
+                    <p className="text-xs text-[var(--text-muted)]">500 Queries</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -932,12 +959,12 @@ export default function Home() {
                     </button>
                   </div>
                 </div>
-                
+
                 {/* Editor content */}
                 <div className="editor-content">
                   <h1 className="editor-h1">Getting Started with TyneBase</h1>
                   <p className="editor-paragraph">Welcome to your new knowledge base. This guide will help you get up and running in minutes.</p>
-                  
+
                   <h2 className="editor-h2">Quick Start</h2>
                   <ul className="editor-list">
                     <li><Check className="w-4 h-4 text-[var(--brand)]" /> Create your first document</li>
@@ -966,7 +993,7 @@ export default function Home() {
           <div style={{ position: 'relative', width: '100%', maxWidth: '896px' }}>
             {/* Background glow */}
             <div className="absolute -inset-4 bg-gradient-to-r from-[var(--accent-blue)] via-[var(--accent-purple)] to-[var(--accent-pink)] opacity-20 blur-3xl rounded-3xl" />
-            
+
             <div style={{ position: 'relative', background: 'var(--bg-elevated)', border: '1px solid var(--border-subtle)', borderRadius: '16px', padding: '64px 48px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <h2 style={{ fontSize: 'clamp(1.875rem, 4vw, 2.5rem)', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '24px' }}>
                 Ready to get started?

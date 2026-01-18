@@ -200,7 +200,7 @@ export default function DashboardPage() {
                   className="block hover:bg-[var(--surface-hover)] transition-colors"
                 >
                   {/* Desktop View */}
-                  <div className="hidden sm:flex items-center gap-4 px-6 py-5">
+                  <div className="hidden md:flex items-center gap-4 px-6 py-5">
                     <div className="p-2.5 rounded-lg bg-[var(--surface-ground)]">
                       <FileText className="w-5 h-5 text-[var(--dash-text-tertiary)]" />
                     </div>
@@ -223,7 +223,7 @@ export default function DashboardPage() {
                   </div>
 
                   {/* Mobile View - Contact Card Style */}
-                  <div className="flex sm:hidden items-start gap-3 p-4">
+                  <div className="flex md:hidden items-start gap-3 p-4">
                     <div className="p-2 rounded-lg bg-[var(--surface-ground)] mt-1">
                       <FileText className="w-4 h-4 text-[var(--dash-text-tertiary)]" />
                     </div>
