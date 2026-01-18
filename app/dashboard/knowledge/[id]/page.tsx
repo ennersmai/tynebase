@@ -6,10 +6,10 @@ import { DocumentEditor } from "@/components/editor/DocumentEditor";
 import { MarkdownReader } from "@/components/ui/MarkdownReader";
 import { VersionHistory } from "@/components/ui/VersionHistory";
 import { Button } from "@/components/ui/Button";
-import { 
-  ArrowLeft, 
-  Save, 
-  Eye, 
+import {
+  ArrowLeft,
+  Save,
+  Eye,
   MoreHorizontal,
   Globe,
   Lock,
@@ -26,6 +26,7 @@ import {
   Send
 } from "lucide-react";
 import Link from "next/link";
+import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "@/components/ui/Card";
 
 function htmlToPlainText(html: string) {
   return html
@@ -237,32 +238,29 @@ export default function EditDocumentPage() {
           <div className="flex items-center p-1 bg-[var(--surface-ground)] border border-[var(--dash-border-subtle)] rounded-xl">
             <button
               onClick={() => setMode("edit")}
-              className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                mode === "edit"
-                  ? "bg-[var(--surface-card)] text-[var(--dash-text-primary)]"
-                  : "text-[var(--dash-text-tertiary)] hover:text-[var(--dash-text-primary)]"
-              }`}
+              className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${mode === "edit"
+                ? "bg-[var(--surface-card)] text-[var(--dash-text-primary)]"
+                : "text-[var(--dash-text-tertiary)] hover:text-[var(--dash-text-primary)]"
+                }`}
             >
               Edit
             </button>
             <button
               onClick={() => setMode("read")}
-              className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                mode === "read"
-                  ? "bg-[var(--surface-card)] text-[var(--dash-text-primary)]"
-                  : "text-[var(--dash-text-tertiary)] hover:text-[var(--dash-text-primary)]"
-              }`}
+              className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${mode === "read"
+                ? "bg-[var(--surface-card)] text-[var(--dash-text-primary)]"
+                : "text-[var(--dash-text-tertiary)] hover:text-[var(--dash-text-primary)]"
+                }`}
             >
               Reader
             </button>
           </div>
 
           {/* Status Badge */}
-          <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium ${
-            status === "draft" 
-              ? "bg-amber-500/10 text-amber-600" 
-              : "bg-green-500/10 text-green-600"
-          }`}>
+          <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium ${status === "draft"
+            ? "bg-amber-500/10 text-amber-600"
+            : "bg-green-500/10 text-green-600"
+            }`}>
             {status === "draft" ? (
               <>
                 <Clock className="w-3.5 h-3.5" />
@@ -277,8 +275,8 @@ export default function EditDocumentPage() {
           </div>
 
           {/* Version History */}
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
             className="gap-2"
             onClick={() => setShowHistory(!showHistory)}
           >
@@ -363,17 +361,15 @@ export default function EditDocumentPage() {
                         <button
                           key={option.id}
                           onClick={() => setVisibility(option.id as typeof visibility)}
-                          className={`w-full flex items-center gap-3 p-3 rounded-lg border transition-all ${
-                            visibility === option.id
-                              ? "border-[var(--brand)] bg-[var(--brand)]/10"
-                              : "border-[var(--dash-border-subtle)] hover:border-[var(--dash-border-default)]"
-                          }`}
+                          className={`w-full flex items-center gap-3 p-3 rounded-lg border transition-all ${visibility === option.id
+                            ? "border-[var(--brand)] bg-[var(--brand)]/10"
+                            : "border-[var(--dash-border-subtle)] hover:border-[var(--dash-border-default)]"
+                            }`}
                         >
-                          <option.icon className={`w-4 h-4 ${
-                            visibility === option.id 
-                              ? "text-[var(--brand)]" 
-                              : "text-[var(--dash-text-tertiary)]"
-                          }`} />
+                          <option.icon className={`w-4 h-4 ${visibility === option.id
+                            ? "text-[var(--brand)]"
+                            : "text-[var(--dash-text-tertiary)]"
+                            }`} />
                           <div className="text-left">
                             <p className="text-sm font-medium text-[var(--dash-text-primary)]">{option.label}</p>
                             <p className="text-xs text-[var(--dash-text-tertiary)]">{option.desc}</p>
@@ -425,8 +421,8 @@ export default function EditDocumentPage() {
                       <ExternalLink className="w-4 h-4" />
                       Copy Public Link
                     </Button>
-                    <Button 
-                      variant="ghost" 
+                    <Button
+                      variant="ghost"
                       className="w-full justify-start gap-2 text-red-500 hover:text-red-600 hover:bg-red-500/10"
                       onClick={handleDelete}
                     >
@@ -460,18 +456,18 @@ export default function EditDocumentPage() {
               <MarkdownReader content={htmlToPlainText(content)} />
             </div>
             <div className="col-span-12 xl:col-span-4 space-y-4">
-              <div className="rounded-2xl border border-[var(--dash-border-subtle)] bg-[var(--surface-card)] overflow-hidden">
-                <div className="px-5 py-4 border-b border-[var(--dash-border-subtle)] bg-[var(--surface-ground)]">
+              <Card>
+                <CardHeader className="pb-4 border-b border-[var(--dash-border-subtle)] bg-[var(--surface-ground)] rounded-t-[var(--radius-lg)]">
                   <div className="flex items-center gap-2">
                     <Sparkles className="w-4 h-4 text-[var(--brand)]" />
-                    <p className="font-semibold text-[var(--dash-text-primary)]">Ask your knowledge base</p>
+                    <CardTitle className="text-base font-semibold">Ask your knowledge base</CardTitle>
                   </div>
-                  <p className="text-xs text-[var(--dash-text-tertiary)] mt-1">
+                  <CardDescription className="text-xs mt-1">
                     Get answers grounded in your docs - ready to share with your team.
-                  </p>
-                </div>
+                  </CardDescription>
+                </CardHeader>
 
-                <div className="p-5 space-y-3">
+                <CardContent className="p-6 space-y-3">
                   <textarea
                     value={kbQuestion}
                     onChange={(e) => setKbQuestion(e.target.value)}
@@ -521,8 +517,8 @@ export default function EditDocumentPage() {
                       </div>
                     </div>
                   )}
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         )}

@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { 
-  Webhook, 
-  Plus, 
-  Edit3, 
-  Trash2, 
-  Check, 
+import {
+  Webhook,
+  Plus,
+  Edit3,
+  Trash2,
+  Check,
   X,
   Copy,
   RefreshCw,
@@ -57,23 +57,29 @@ const webhooks = [
 ];
 
 const availableEvents = [
-  { category: "Documents", events: [
-    { id: "document.created", label: "Document Created" },
-    { id: "document.updated", label: "Document Updated" },
-    { id: "document.published", label: "Document Published" },
-    { id: "document.deleted", label: "Document Deleted" },
-    { id: "document.viewed", label: "Document Viewed" },
-  ]},
-  { category: "Users", events: [
-    { id: "user.invited", label: "User Invited" },
-    { id: "user.joined", label: "User Joined" },
-    { id: "user.role_changed", label: "Role Changed" },
-    { id: "user.removed", label: "User Removed" },
-  ]},
-  { category: "Search", events: [
-    { id: "search.performed", label: "Search Performed" },
-    { id: "search.no_results", label: "No Results Found" },
-  ]},
+  {
+    category: "Documents", events: [
+      { id: "document.created", label: "Document Created" },
+      { id: "document.updated", label: "Document Updated" },
+      { id: "document.published", label: "Document Published" },
+      { id: "document.deleted", label: "Document Deleted" },
+      { id: "document.viewed", label: "Document Viewed" },
+    ]
+  },
+  {
+    category: "Users", events: [
+      { id: "user.invited", label: "User Invited" },
+      { id: "user.joined", label: "User Joined" },
+      { id: "user.role_changed", label: "Role Changed" },
+      { id: "user.removed", label: "User Removed" },
+    ]
+  },
+  {
+    category: "Search", events: [
+      { id: "search.performed", label: "Search Performed" },
+      { id: "search.no_results", label: "No Results Found" },
+    ]
+  },
 ];
 
 const recentDeliveries = [
@@ -125,28 +131,26 @@ export default function WebhooksPage() {
       <div className="space-y-4">
         {webhooks.map((webhook) => (
           <Card key={webhook.id}>
-            <CardContent className="p-5">
+            <CardContent className="p-6">
               <div className="flex items-start justify-between">
                 <div className="flex items-start gap-4">
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                    webhook.status === "active" 
-                      ? "bg-green-500/10 text-green-500" 
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${webhook.status === "active"
+                      ? "bg-green-500/10 text-green-500"
                       : "bg-amber-500/10 text-amber-500"
-                  }`}>
+                    }`}>
                     <Webhook className="w-5 h-5" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
                       <h3 className="font-semibold text-[var(--text-primary)]">{webhook.name}</h3>
-                      <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${
-                        webhook.status === "active"
+                      <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${webhook.status === "active"
                           ? "bg-green-500/10 text-green-500"
                           : "bg-amber-500/10 text-amber-500"
-                      }`}>
+                        }`}>
                         {webhook.status === "active" ? "Active" : "Paused"}
                       </span>
                     </div>
-                    
+
                     {/* URL */}
                     <div className="flex items-center gap-2 mt-2">
                       <code className="text-sm text-[var(--text-tertiary)] bg-[var(--surface-ground)] px-2 py-1 rounded">
@@ -224,11 +228,10 @@ export default function WebhooksPage() {
             {recentDeliveries.map((delivery) => (
               <div key={delivery.id} className="flex items-center justify-between p-3 bg-[var(--surface-ground)] rounded-lg">
                 <div className="flex items-center gap-3">
-                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                    delivery.status === "success"
+                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${delivery.status === "success"
                       ? "bg-green-500/10 text-green-500"
                       : "bg-red-500/10 text-red-500"
-                  }`}>
+                    }`}>
                     {delivery.status === "success" ? (
                       <CheckCircle className="w-4 h-4" />
                     ) : (

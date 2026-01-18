@@ -5,10 +5,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/Button";
 import { Modal, ModalFooter } from "@/components/ui/Modal";
 import { Avatar } from "@/components/ui/Avatar";
-import { 
-  Users, 
-  Plus, 
-  Search, 
+import {
+  Users,
+  Plus,
+  Search,
   MoreHorizontal,
   Mail,
   Shield,
@@ -23,55 +23,55 @@ import {
 
 // Mock team data
 const teamMembers = [
-  { 
-    id: 1, 
+  {
+    id: 1,
     name: "Daniel G",
-    email: "support@tynebase.com", 
-    role: "SEO", 
+    email: "support@tynebase.com",
+    role: "SEO",
     status: "active",
     avatar: null,
     lastActive: "Just now",
     documents: 45,
     joinedAt: "Jan 2024"
   },
-  { 
-    id: 2, 
-    name: "Mai", 
-    email: "ennersmai@gmail.com", 
-    role: "CEO", 
+  {
+    id: 2,
+    name: "Mai",
+    email: "ennersmai@gmail.com",
+    role: "CEO",
     status: "active",
     avatar: null,
     lastActive: "2 hours ago",
     documents: 28,
     joinedAt: "Mar 2024"
   },
-  { 
-    id: 3, 
-    name: "Emily Davis", 
-    email: "emily@company.com", 
-    role: "Contributor", 
+  {
+    id: 3,
+    name: "Emily Davis",
+    email: "emily@company.com",
+    role: "Contributor",
     status: "active",
     avatar: null,
     lastActive: "Yesterday",
     documents: 12,
     joinedAt: "Jun 2024"
   },
-  { 
-    id: 4, 
-    name: "Mike Johnson", 
-    email: "mike@company.com", 
-    role: "Viewer", 
+  {
+    id: 4,
+    name: "Mike Johnson",
+    email: "mike@company.com",
+    role: "Viewer",
     status: "active",
     avatar: null,
     lastActive: "3 days ago",
     documents: 0,
     joinedAt: "Sep 2024"
   },
-  { 
-    id: 5, 
-    name: "Lisa Wang", 
-    email: "lisa@company.com", 
-    role: "Editor", 
+  {
+    id: 5,
+    name: "Lisa Wang",
+    email: "lisa@company.com",
+    role: "Editor",
     status: "pending",
     avatar: null,
     lastActive: "Never",
@@ -119,7 +119,7 @@ function UsersStats({ totalCount, activeCount, pendingCount }: { totalCount: num
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
       <Card>
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center">
               <Users className="w-5 h-5 text-blue-600" />
@@ -132,7 +132,7 @@ function UsersStats({ totalCount, activeCount, pendingCount }: { totalCount: num
         </CardContent>
       </Card>
       <Card>
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center">
               <CheckCircle2 className="w-5 h-5 text-green-600" />
@@ -145,7 +145,7 @@ function UsersStats({ totalCount, activeCount, pendingCount }: { totalCount: num
         </CardContent>
       </Card>
       <Card>
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center">
               <Clock className="w-5 h-5 text-amber-600" />
@@ -158,7 +158,7 @@ function UsersStats({ totalCount, activeCount, pendingCount }: { totalCount: num
         </CardContent>
       </Card>
       <Card>
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center">
               <Shield className="w-5 h-5 text-purple-600" />
@@ -268,7 +268,7 @@ export default function UsersPage() {
   const [inviteRole, setInviteRole] = useState("Contributor");
 
   const filteredMembers = teamMembers.filter((member) => {
-    const matchesSearch = 
+    const matchesSearch =
       member.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       member.email.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesRole = roleFilter === "all" || member.role === roleFilter;

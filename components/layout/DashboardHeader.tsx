@@ -12,16 +12,17 @@ import {
   User,
   LogOut,
   HelpCircle,
-  Moon,
-  Sun,
+  Menu,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { AccessibilityWidget } from "@/components/ui/AccessibilityWidget";
 
 interface DashboardHeaderProps {
   onOpenCommandPalette?: () => void;
+  onMenuClick?: () => void;
 }
 
-export function DashboardHeader({ onOpenCommandPalette }: DashboardHeaderProps) {
+export function DashboardHeader({ onOpenCommandPalette, onMenuClick }: DashboardHeaderProps) {
   const { user, signOut } = useAuth();
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
@@ -35,20 +36,48 @@ export function DashboardHeader({ onOpenCommandPalette }: DashboardHeaderProps) 
   const unreadCount = notifications.filter((n) => n.unread).length;
 
   return (
-    <header className="h-16 border-b border-[var(--dash-border-subtle)] bg-[var(--surface-card)] flex items-center justify-between px-6">
-      {/* Search Bar */}
-      <div className="flex-1 max-w-xl">
+    <header className="h-16 border-b border-[var(--dash-border-subtle)] bg-[var(--surface-card)] flex items-center justify-between px-4 sm:px-6">
+      <div className="flex items-center gap-3 w-full sm:w-auto flex-1 max-w-xl">
         <button
-          onClick={onOpenCommandPalette}
-          className="w-full flex items-center gap-3 px-4 py-2.5 bg-[var(--surface-ground)] border border-[var(--dash-border-subtle)] rounded-lg text-[var(--dash-text-tertiary)] hover:border-[var(--dash-border-default)] transition-colors"
+          onClick={onMenuClick}
+          className="lg:hidden p-2 -ml-2 text-[var(--dash-text-secondary)] hover:bg-[var(--surface-hover)] rounded-md"
         >
-          <Search className="w-4 h-4" />
-          <span className="flex-1 text-left text-sm">Search documents, templates...</span>
-          <kbd className="hidden sm:flex items-center gap-1 px-2 py-0.5 bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded text-xs font-medium">
-            <Command className="w-3 h-3" />
-            <span>K</span>
-          </kbd>
+          <Menu className="w-5 h-5" />
         </button>
+
+        {/* Search Bar - Responsive */}
+        <div className="flex-1 w-full flex justify-end sm:justify-start">
+          <button
+            onClick={onOpenCommandPalette}
+            className="w-full hidden sm:flex items-center gap-3 px-4 py-2.5 bg-[var(--surface-ground)] border border-[var(--dash-border-subtle)] rounded-lg text-[var(--dash-text-tertiary)] hover:border-[var(--dash-border-default)] transition-colors"
+          >
+            <Search className="w-4 h-4" />
+            <span className="flex-1 text-left text-sm">Search documents, templates...</span>
+            <kbd className="hidden md:flex items-center gap-1 px-2 py-0.5 bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded text-xs font-medium">
+              <Command className="w-3 h-3" />
+              <span>K</span>
+            </kbd>
+          </button>
+
+          <div className="flex items-center gap-1 sm:hidden">
+            {/* Mobile Accessibility Widget */}
+            <div className="relative">
+              <AccessibilityWidget customTrigger={
+                <button className="p-2 text-[var(--dash-text-secondary)] hover:bg-[var(--surface-hover)] rounded-md">
+                  <img src="/accessibility-2-128.ico" alt="Accessibility" className="w-5 h-5" />
+                </button>
+              } />
+            </div>
+
+            {/* Mobile Search Icon Only */}
+            <button
+              onClick={onOpenCommandPalette}
+              className="p-2 text-[var(--dash-text-secondary)] hover:bg-[var(--surface-hover)] rounded-md"
+            >
+              <Search className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Right Actions */}
@@ -80,10 +109,10 @@ export function DashboardHeader({ onOpenCommandPalette }: DashboardHeaderProps) 
                 className="fixed inset-0 z-40"
                 onClick={() => setShowNotifications(false)}
               />
-              <div className="absolute right-0 top-full mt-2 w-80 bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl shadow-lg z-50 overflow-hidden">
-                <div className="px-4 py-3 border-b border-[var(--dash-border-subtle)] flex items-center justify-between">
-                  <h3 className="font-semibold text-[var(--dash-text-primary)]">Notifications</h3>
-                  <button className="text-xs text-[var(--brand)] hover:underline">
+              <div className="fixed left-4 right-4 top-[4.5rem] sm:absolute sm:top-full sm:right-0 sm:left-auto sm:mt-2 sm:w-80 bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl shadow-lg z-50 overflow-hidden">
+                <div className="px-4 py-3 border-b border-[var(--dash-border-subtle)] flex items-center justify-between gap-4">
+                  <h3 className="font-semibold text-[var(--dash-text-primary)] truncate">Notifications</h3>
+                  <button className="text-xs text-[var(--brand)] hover:underline whitespace-nowrap flex-shrink-0">
                     Mark all read
                   </button>
                 </div>

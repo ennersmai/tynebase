@@ -4,11 +4,11 @@ import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { 
-  Shield, 
-  Key, 
-  Plus, 
-  Check, 
+import {
+  Shield,
+  Key,
+  Plus,
+  Check,
   AlertCircle,
   ExternalLink,
   Copy,
@@ -79,7 +79,7 @@ export default function SSOPage() {
       {/* Status Overview */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Card>
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center">
                 <Check className="w-5 h-5 text-green-600" />
@@ -92,7 +92,7 @@ export default function SSOPage() {
           </CardContent>
         </Card>
         <Card>
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center">
                 <Users className="w-5 h-5 text-blue-600" />
@@ -105,7 +105,7 @@ export default function SSOPage() {
           </CardContent>
         </Card>
         <Card>
-          <CardContent className="p-4">
+          <CardContent className="p-6">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center">
                 <Lock className="w-5 h-5 text-purple-600" />
@@ -128,7 +128,7 @@ export default function SSOPage() {
         <CardContent className="p-0">
           <div className="divide-y divide-[var(--border-subtle)]">
             {ssoProviders.map((provider) => (
-              <div 
+              <div
                 key={provider.id}
                 className="flex items-center justify-between p-4 hover:bg-[var(--surface-ground)] transition-colors"
               >
@@ -160,8 +160,8 @@ export default function SSOPage() {
                       </Button>
                     </>
                   ) : (
-                    <Button 
-                      variant="outline" 
+                    <Button
+                      variant="outline"
                       size="sm"
                       onClick={() => setActiveProvider(provider.id)}
                     >
@@ -194,16 +194,14 @@ export default function SSOPage() {
             <div className="flex items-center gap-4 mb-8">
               {[1, 2, 3].map((step) => (
                 <div key={step} className="flex items-center gap-2">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
-                    configStep >= step 
-                      ? "bg-[var(--brand-primary)] text-white" 
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${configStep >= step
+                      ? "bg-[var(--brand-primary)] text-white"
                       : "bg-[var(--surface-ground)] text-[var(--text-tertiary)]"
-                  }`}>
+                    }`}>
                     {configStep > step ? <Check className="w-4 h-4" /> : step}
                   </div>
-                  <span className={`text-sm ${
-                    configStep >= step ? "text-[var(--text-primary)]" : "text-[var(--text-tertiary)]"
-                  }`}>
+                  <span className={`text-sm ${configStep >= step ? "text-[var(--text-primary)]" : "text-[var(--text-tertiary)]"
+                    }`}>
                     {step === 1 ? "Service Provider" : step === 2 ? "Identity Provider" : "Test & Enable"}
                   </span>
                   {step < 3 && <div className="w-12 h-px bg-[var(--border-subtle)]" />}
@@ -218,16 +216,16 @@ export default function SSOPage() {
                   <p className="text-sm text-[var(--text-tertiary)] mb-4">
                     Add these values to your identity provider configuration
                   </p>
-                  
+
                   <div className="space-y-4">
                     <div>
                       <label className="text-sm font-medium text-[var(--text-secondary)] mb-1 block">
                         Entity ID (Issuer)
                       </label>
                       <div className="flex items-center gap-2">
-                        <Input 
-                          value="https://tynebase.com/saml/metadata" 
-                          readOnly 
+                        <Input
+                          value="https://tynebase.com/saml/metadata"
+                          readOnly
                           className="flex-1 bg-[var(--surface-card)]"
                         />
                         <Button variant="outline" size="sm">
@@ -235,15 +233,15 @@ export default function SSOPage() {
                         </Button>
                       </div>
                     </div>
-                    
+
                     <div>
                       <label className="text-sm font-medium text-[var(--text-secondary)] mb-1 block">
                         ACS URL (Reply URL)
                       </label>
                       <div className="flex items-center gap-2">
-                        <Input 
-                          value="https://tynebase.com/saml/acs" 
-                          readOnly 
+                        <Input
+                          value="https://tynebase.com/saml/acs"
+                          readOnly
                           className="flex-1 bg-[var(--surface-card)]"
                         />
                         <Button variant="outline" size="sm">
@@ -257,9 +255,9 @@ export default function SSOPage() {
                         Metadata URL
                       </label>
                       <div className="flex items-center gap-2">
-                        <Input 
-                          value="https://tynebase.com/saml/metadata.xml" 
-                          readOnly 
+                        <Input
+                          value="https://tynebase.com/saml/metadata.xml"
+                          readOnly
                           className="flex-1 bg-[var(--surface-card)]"
                         />
                         <Button variant="outline" size="sm">
@@ -299,7 +297,7 @@ export default function SSOPage() {
                     <label className="text-sm font-medium text-[var(--text-secondary)] mb-1 block">
                       X.509 Certificate
                     </label>
-                    <textarea 
+                    <textarea
                       placeholder="-----BEGIN CERTIFICATE-----&#10;...&#10;-----END CERTIFICATE-----"
                       rows={4}
                       className="w-full px-3 py-2 bg-[var(--surface-ground)] border border-[var(--border-subtle)] rounded-lg text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] focus:outline-none focus:border-[var(--brand-primary)] font-mono text-sm resize-none"

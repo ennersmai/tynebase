@@ -16,6 +16,7 @@ import {
   Sparkles,
   ArrowRight,
 } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/Card";
 
 type SourceType = "pdf" | "docx" | "md";
 
@@ -110,13 +111,13 @@ function TypeBadge({ type }: { type: SourceType }) {
 function StatusBadge({ status }: { status: SourceStatus }) {
   const map: Record<SourceStatus, { label: string; fg: string; bg: string; icon?: any }>
     = {
-      uploaded: { label: "Uploaded", fg: "#6b7280", bg: "#6b728015", icon: Clock },
-      normalizing: { label: "Normalizing", fg: "#8b5cf6", bg: "#8b5cf615", icon: Sparkles },
-      normalized: { label: "Normalized", fg: "#0ea5e9", bg: "#0ea5e915", icon: CheckCircle },
-      chunking: { label: "Chunking", fg: "#f59e0b", bg: "#f59e0b15", icon: Clock },
-      embedded: { label: "Embedded", fg: "#10b981", bg: "#10b98115", icon: CheckCircle },
-      failed: { label: "Failed", fg: "#ef4444", bg: "#ef444415", icon: AlertTriangle },
-    };
+    uploaded: { label: "Uploaded", fg: "#6b7280", bg: "#6b728015", icon: Clock },
+    normalizing: { label: "Normalizing", fg: "#8b5cf6", bg: "#8b5cf615", icon: Sparkles },
+    normalized: { label: "Normalized", fg: "#0ea5e9", bg: "#0ea5e915", icon: CheckCircle },
+    chunking: { label: "Chunking", fg: "#f59e0b", bg: "#f59e0b15", icon: Clock },
+    embedded: { label: "Embedded", fg: "#10b981", bg: "#10b98115", icon: CheckCircle },
+    failed: { label: "Failed", fg: "#ef4444", bg: "#ef444415", icon: AlertTriangle },
+  };
 
   const item = map[status];
   const Icon = item.icon;
@@ -176,22 +177,30 @@ export default function SourcesPage() {
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl p-5">
-          <p className="text-xs text-[var(--dash-text-muted)]">Total Sources</p>
-          <p className="text-2xl font-bold text-[var(--dash-text-primary)] mt-1">{stats.total}</p>
-        </div>
-        <div className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl p-5">
-          <p className="text-xs text-[var(--dash-text-muted)]">Embedded</p>
-          <p className="text-2xl font-bold text-[var(--status-success)] mt-1">{stats.embedded}</p>
-        </div>
-        <div className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl p-5">
-          <p className="text-xs text-[var(--dash-text-muted)]">Processing</p>
-          <p className="text-2xl font-bold text-[var(--status-warning)] mt-1">{stats.processing}</p>
-        </div>
-        <div className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl p-5">
-          <p className="text-xs text-[var(--dash-text-muted)]">Failed</p>
-          <p className="text-2xl font-bold text-[var(--status-error)] mt-1">{stats.failed}</p>
-        </div>
+        <Card>
+          <CardContent className="p-6">
+            <p className="text-xs text-[var(--dash-text-muted)]">Total Sources</p>
+            <p className="text-2xl font-bold text-[var(--dash-text-primary)] mt-1">{stats.total}</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="p-6">
+            <p className="text-xs text-[var(--dash-text-muted)]">Embedded</p>
+            <p className="text-2xl font-bold text-[var(--status-success)] mt-1">{stats.embedded}</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="p-6">
+            <p className="text-xs text-[var(--dash-text-muted)]">Processing</p>
+            <p className="text-2xl font-bold text-[var(--status-warning)] mt-1">{stats.processing}</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="p-6">
+            <p className="text-xs text-[var(--dash-text-muted)]">Failed</p>
+            <p className="text-2xl font-bold text-[var(--status-error)] mt-1">{stats.failed}</p>
+          </CardContent>
+        </Card>
       </div>
 
       <div className="flex flex-col sm:flex-row gap-4">
@@ -211,7 +220,7 @@ export default function SourcesPage() {
       </div>
 
       <div className="flex-1 min-h-0 bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-2xl overflow-hidden flex flex-col">
-        <div className="grid grid-cols-12 gap-4 px-6 py-4 bg-[var(--surface-ground)] border-b border-[var(--dash-border-subtle)] text-xs font-medium text-[var(--dash-text-muted)] uppercase tracking-wider">
+        <div className="hidden md:grid grid-cols-12 gap-4 px-6 py-4 bg-[var(--surface-ground)] border-b border-[var(--dash-border-subtle)] text-xs font-medium text-[var(--dash-text-muted)] uppercase tracking-wider">
           <div className="col-span-5">Source</div>
           <div className="col-span-2">Type</div>
           <div className="col-span-2">Status</div>
@@ -221,43 +230,80 @@ export default function SourcesPage() {
 
         <div className="flex-1 min-h-0 overflow-auto divide-y divide-[var(--dash-border-subtle)]">
           {filtered.map((s) => (
-            <div key={s.id} className="grid grid-cols-12 gap-4 px-6 py-5 items-center hover:bg-[var(--surface-hover)] transition-colors">
-              <div className="col-span-5 flex items-center gap-3 min-w-0">
-                <span className="w-10 h-10 rounded-xl bg-[var(--surface-ground)] border border-[var(--dash-border-subtle)] flex items-center justify-center">
-                  <Database className="w-5 h-5 text-[var(--dash-text-tertiary)]" />
-                </span>
-                <div className="min-w-0">
-                  <p className="font-semibold text-[var(--dash-text-primary)] truncate">{s.title}</p>
-                  <p className="text-xs text-[var(--dash-text-muted)] truncate">{s.filename} • {s.sizeMb.toFixed(1)}MB • Updated {s.updatedAt}</p>
-                  {s.notes && <p className="text-xs text-[var(--dash-text-tertiary)] mt-1 truncate">{s.notes}</p>}
+            <div key={s.id} className="block hover:bg-[var(--surface-hover)] transition-colors">
+              {/* Desktop Table View */}
+              <div className="hidden md:grid grid-cols-12 gap-4 px-6 py-5 items-center">
+                <div className="col-span-5 flex items-center gap-3 min-w-0">
+                  <span className="w-10 h-10 rounded-xl bg-[var(--surface-ground)] border border-[var(--dash-border-subtle)] flex items-center justify-center">
+                    <Database className="w-5 h-5 text-[var(--dash-text-tertiary)]" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="font-semibold text-[var(--dash-text-primary)] truncate">{s.title}</p>
+                    <p className="text-xs text-[var(--dash-text-muted)] truncate">{s.filename} • {s.sizeMb.toFixed(1)}MB • Updated {s.updatedAt}</p>
+                    {s.notes && <p className="text-xs text-[var(--dash-text-tertiary)] mt-1 truncate">{s.notes}</p>}
+                  </div>
+                </div>
+
+                <div className="col-span-2">
+                  <TypeBadge type={s.type} />
+                </div>
+
+                <div className="col-span-2">
+                  <StatusBadge status={s.status} />
+                </div>
+
+                <div className="col-span-2">
+                  <p className="text-sm text-[var(--dash-text-secondary)]">
+                    {s.chunks ? `${s.chunks} chunks` : "-"}
+                  </p>
+                  <p className="text-xs text-[var(--dash-text-muted)]">
+                    {s.tokens ? `${s.tokens.toLocaleString()} tokens` : ""}
+                  </p>
+                </div>
+
+                <div className="col-span-1 flex justify-end">
+                  <Link
+                    href="/dashboard/sources/normalized"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand)] hover:underline"
+                  >
+                    View
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
                 </div>
               </div>
 
-              <div className="col-span-2">
-                <TypeBadge type={s.type} />
-              </div>
+              {/* Mobile Card View */}
+              <div className="flex md:hidden flex-col gap-4 p-5 border-b border-[var(--dash-border-subtle)] last:border-0 pointer-events-none sm:pointer-events-auto">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-start gap-3 min-w-0">
+                    <span className="w-10 h-10 rounded-xl bg-[var(--surface-ground)] border border-[var(--dash-border-subtle)] flex items-center justify-center flex-shrink-0">
+                      <Database className="w-5 h-5 text-[var(--dash-text-tertiary)]" />
+                    </span>
+                    <div className="min-w-0 pointer-events-auto">
+                      <p className="font-semibold text-[var(--dash-text-primary)] line-clamp-1">{s.title}</p>
+                      <div className="flex items-center gap-2 mt-1">
+                        <TypeBadge type={s.type} />
+                        <span className="text-xs text-[var(--dash-text-muted)]">{s.sizeMb.toFixed(1)}MB</span>
+                      </div>
+                    </div>
+                  </div>
+                  <StatusBadge status={s.status} />
+                </div>
 
-              <div className="col-span-2">
-                <StatusBadge status={s.status} />
-              </div>
+                {s.notes && <p className="text-xs text-[var(--dash-text-tertiary)] bg-[var(--surface-ground)] p-2 rounded-lg">{s.notes}</p>}
 
-              <div className="col-span-2">
-                <p className="text-sm text-[var(--dash-text-secondary)]">
-                  {s.chunks ? `${s.chunks} chunks` : "-"}
-                </p>
-                <p className="text-xs text-[var(--dash-text-muted)]">
-                  {s.tokens ? `${s.tokens.toLocaleString()} tokens` : ""}
-                </p>
-              </div>
-
-              <div className="col-span-1 flex justify-end">
-                <Link
-                  href="/dashboard/sources/normalized"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand)] hover:underline"
-                >
-                  View
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+                <div className="flex items-center justify-between text-xs text-[var(--dash-text-muted)] pt-2 border-t border-[var(--dash-border-subtle)] pointer-events-auto">
+                  <div className="flex flex-col gap-0.5">
+                    <span>Updated {s.updatedAt}</span>
+                    <span>{s.chunks || 0} chunks • {s.tokens?.toLocaleString() || 0} tokens</span>
+                  </div>
+                  <Link
+                    href="/dashboard/sources/normalized"
+                    className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--brand)]"
+                  >
+                    View <ArrowRight className="w-3 h-3" />
+                  </Link>
+                </div>
               </div>
             </div>
           ))}

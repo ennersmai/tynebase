@@ -33,7 +33,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
           <TenantProvider>
             <AuthProvider>
               {children}
-              <AccessibilityWidget />
+              <div className="hidden md:block">
+                <AccessibilityWidget />
+              </div>
             </AuthProvider>
           </TenantProvider>
         </ToastProvider>

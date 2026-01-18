@@ -12,6 +12,7 @@ import {
   TrendingUp,
   Filter,
 } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/Card";
 
 type Tag = {
   id: string;
@@ -202,45 +203,47 @@ export default function TagsPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 flex-1 content-start">
         {filtered.map((t) => (
-          <div
+          <Card
             key={t.id}
-            className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl p-6 sm:p-7 hover:shadow-lg hover:border-[var(--brand)] transition-all"
+            className="hover:shadow-lg hover:border-[var(--brand)] transition-all"
           >
-            <div className="flex items-start justify-between gap-3">
-              <div className="min-w-0">
-                <div className="flex items-center gap-2">
-                  <span className="w-10 h-10 rounded-xl bg-[var(--surface-ground)] flex items-center justify-center">
-                    <Hash className="w-5 h-5 text-[var(--dash-text-tertiary)]" />
-                  </span>
-                  <div className="min-w-0">
-                    <h3 className="font-semibold text-[var(--dash-text-primary)] truncate">#{t.name}</h3>
-                    <p className="text-xs text-[var(--dash-text-muted)]">{t.documents} docs</p>
+            <CardContent className="p-6">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span className="w-10 h-10 rounded-xl bg-[var(--surface-ground)] flex items-center justify-center">
+                      <Hash className="w-5 h-5 text-[var(--dash-text-tertiary)]" />
+                    </span>
+                    <div className="min-w-0">
+                      <h3 className="font-semibold text-[var(--dash-text-primary)] truncate">#{t.name}</h3>
+                      <p className="text-xs text-[var(--dash-text-muted)]">{t.documents} docs</p>
+                    </div>
                   </div>
+                  <p className="text-sm text-[var(--dash-text-tertiary)] mt-3 line-clamp-2">{t.description}</p>
                 </div>
-                <p className="text-sm text-[var(--dash-text-tertiary)] mt-3 line-clamp-2">{t.description}</p>
+                <div className="flex flex-col items-end gap-2">
+                  <TrendBadge trend={t.trend} />
+                  {t.aiSuggested && (
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-medium bg-[var(--brand)]/10 text-[var(--brand)]">
+                      <Sparkles className="w-3 h-3" />
+                      AI
+                    </span>
+                  )}
+                </div>
               </div>
-              <div className="flex flex-col items-end gap-2">
-                <TrendBadge trend={t.trend} />
-                {t.aiSuggested && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-medium bg-[var(--brand)]/10 text-[var(--brand)]">
-                    <Sparkles className="w-3 h-3" />
-                    AI
-                  </span>
-                )}
-              </div>
-            </div>
 
-            <div className="mt-4 flex items-center justify-between">
-              <span className="text-xs text-[var(--dash-text-muted)]">Updated {t.updatedAt}</span>
-              <Link
-                href="/dashboard/knowledge"
-                className="inline-flex items-center gap-2 text-sm font-medium text-[var(--brand)] hover:underline"
-              >
-                View docs
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
+              <div className="mt-4 flex items-center justify-between">
+                <span className="text-xs text-[var(--dash-text-muted)]">Updated {t.updatedAt}</span>
+                <Link
+                  href="/dashboard/knowledge"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-[var(--brand)] hover:underline"
+                >
+                  View docs
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </div>

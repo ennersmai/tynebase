@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { 
+import {
   Search, BookOpen, MessageSquare, Video, Mail, ChevronRight,
   FileText, Sparkles, Users, Shield, Zap, HelpCircle, ExternalLink
 } from "lucide-react";
@@ -102,85 +102,85 @@ export default function HelpPage() {
   return (
     <div className="w-full h-full min-h-0 flex flex-col gap-8">
       {/* Header */}
-      <div className="text-center">
-        <h1 className="text-3xl font-bold text-[var(--dash-text-primary)]">Help Center</h1>
-        <p className="text-[var(--dash-text-tertiary)] mt-2 text-lg">
+      <div className="text-center py-6 sm:py-10">
+        <h1 className="text-3xl sm:text-4xl font-bold text-[var(--dash-text-primary)] tracking-tight">Help Center</h1>
+        <p className="text-[var(--dash-text-tertiary)] mt-3 text-lg max-w-2xl mx-auto px-4">
           Find answers, guides, and support for TyneBase
         </p>
       </div>
 
       {/* Search */}
-      <div className="max-w-2xl mx-auto">
-        <div className="relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--dash-text-muted)]" />
-          <input
-            type="text"
-            placeholder="Search for help articles..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-12 pr-4 py-4 bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl text-[var(--dash-text-primary)] placeholder:text-[var(--dash-text-muted)] focus:outline-none focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--brand)]/20 text-lg transition-all"
-          />
+      <div className="max-w-2xl mx-auto w-full px-4 sm:px-0">
+        <div className="relative group z-10">
+          <div className="absolute inset-0 bg-[var(--brand)]/20 blur-xl rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="relative">
+            <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--dash-text-muted)]" />
+            <input
+              type="text"
+              placeholder="Search for help articles..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-14 pr-6 py-4 bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-2xl text-[var(--dash-text-primary)] placeholder:text-[var(--dash-text-muted)] focus:outline-none focus:border-[var(--brand)] focus:ring-4 focus:ring-[var(--brand)]/10 text-lg transition-all shadow-sm"
+            />
+          </div>
         </div>
       </div>
 
       {/* Quick Links */}
-      <div className="flex items-center justify-center gap-4">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0">
         <Link
           href="/dashboard/community"
-          className="flex items-center gap-2 px-4 py-2.5 bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-lg text-[var(--dash-text-secondary)] hover:border-[var(--brand)] hover:text-[var(--brand)] transition-all"
+          className="flex items-center justify-center gap-2 px-6 py-3 bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl text-[var(--dash-text-secondary)] font-medium hover:border-[var(--brand)] hover:text-[var(--brand)] hover:shadow-md transition-all"
         >
-          <MessageSquare className="w-4 h-4" />
+          <MessageSquare className="w-5 h-5" />
           Ask Community
         </Link>
         <a
           href="mailto:support@tynebase.com"
-          className="flex items-center gap-2 px-4 py-2.5 bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-lg text-[var(--dash-text-secondary)] hover:border-[var(--brand)] hover:text-[var(--brand)] transition-all"
+          className="flex items-center justify-center gap-2 px-6 py-3 bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl text-[var(--dash-text-secondary)] font-medium hover:border-[var(--brand)] hover:text-[var(--brand)] hover:shadow-md transition-all"
         >
-          <Mail className="w-4 h-4" />
+          <Mail className="w-5 h-5" />
           Contact Support
         </a>
         <a
           href="#"
-          className="flex items-center gap-2 px-4 py-2.5 bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-lg text-[var(--dash-text-secondary)] hover:border-[var(--brand)] hover:text-[var(--brand)] transition-all"
+          className="flex items-center justify-center gap-2 px-6 py-3 bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl text-[var(--dash-text-secondary)] font-medium hover:border-[var(--brand)] hover:text-[var(--brand)] hover:shadow-md transition-all"
         >
-          <Video className="w-4 h-4" />
+          <Video className="w-5 h-5" />
           Video Tutorials
         </a>
       </div>
 
       {/* Categories Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-0">
         {helpCategories.map((category) => (
           <div
             key={category.id}
-            className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl overflow-hidden hover:shadow-lg hover:border-[var(--dash-border-default)] transition-all group"
+            className="group bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-2xl p-6 hover:shadow-xl hover:border-[var(--brand)]/30 transition-all duration-300 relative overflow-hidden"
           >
-            <div className="p-6">
-              <div className="flex items-start gap-4">
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ backgroundColor: `${category.color}15` }}
-                >
-                  <category.icon className="w-6 h-6" style={{ color: category.color }} />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-[var(--dash-text-primary)] group-hover:text-[var(--brand)] transition-colors">
-                    {category.title}
-                  </h3>
-                  <p className="text-sm text-[var(--dash-text-tertiary)] mt-1">
-                    {category.description}
-                  </p>
-                </div>
+            <div className="relative">
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 shadow-sm"
+                style={{ backgroundColor: `${category.color}15`, color: category.color }}
+              >
+                <category.icon className="w-6 h-6" />
               </div>
-              <div className="mt-4 space-y-2">
+
+              <h3 className="text-lg font-bold text-[var(--dash-text-primary)] group-hover:text-[var(--brand)] transition-colors">
+                {category.title}
+              </h3>
+              <p className="text-sm text-[var(--dash-text-tertiary)] mt-1 mb-4">
+                {category.description}
+              </p>
+
+              <div className="space-y-1">
                 {category.articles.map((article) => (
                   <Link
                     key={article.title}
                     href={article.href}
-                    className="flex items-center justify-between py-2 text-sm text-[var(--dash-text-secondary)] hover:text-[var(--brand)] transition-colors"
+                    className="block py-1.5 text-sm text-[var(--dash-text-secondary)] hover:text-[var(--brand)] hover:translate-x-1 transition-all"
                   >
-                    <span>{article.title}</span>
-                    <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    {article.title}
                   </Link>
                 ))}
               </div>
@@ -189,58 +189,35 @@ export default function HelpPage() {
         ))}
       </div>
 
-      {/* Popular Articles */}
-      <div className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl overflow-hidden">
-        <div className="px-6 py-4 border-b border-[var(--dash-border-subtle)]">
-          <h2 className="font-semibold text-[var(--dash-text-primary)] flex items-center gap-2">
-            <HelpCircle className="w-5 h-5 text-[var(--brand)]" />
-            Popular Articles
-          </h2>
-        </div>
-        <div className="divide-y divide-[var(--dash-border-subtle)]">
-          {popularArticles.map((article, index) => (
-            <Link
-              key={article.title}
-              href="#"
-              className="flex items-center justify-between px-6 py-4 hover:bg-[var(--surface-hover)] transition-colors group"
-            >
-              <div className="flex items-center gap-4">
-                <span className="w-8 h-8 rounded-full bg-[var(--surface-ground)] flex items-center justify-center text-sm font-medium text-[var(--dash-text-tertiary)]">
-                  {index + 1}
-                </span>
-                <span className="text-[var(--dash-text-primary)] group-hover:text-[var(--brand)] transition-colors">
-                  {article.title}
-                </span>
-              </div>
-              <span className="text-sm text-[var(--dash-text-muted)]">{article.views} views</span>
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* Contact Support */}
-      <div className="bg-gradient-to-r from-[var(--brand)] to-[var(--brand-dark)] rounded-xl p-8 text-center">
-        <h2 className="text-2xl font-bold text-white">Still need help?</h2>
-        <p className="text-white/80 mt-2">
-          Our support team is here to assist you with any questions or issues.
-        </p>
-        <div className="flex items-center justify-center gap-4 mt-6">
-          <a
-            href="mailto:support@tynebase.com"
-            className="flex items-center gap-2 px-6 py-3 bg-white text-[var(--brand)] rounded-xl font-semibold hover:bg-white/90 transition-colors"
-          >
-            <Mail className="w-4 h-4" />
-            Email Support
-          </a>
-          <Link
-            href="/dashboard/community"
-            className="flex items-center gap-2 px-6 py-3 bg-white/10 text-white border border-white/20 rounded-xl font-semibold hover:bg-white/20 transition-colors"
-          >
-            <MessageSquare className="w-4 h-4" />
-            Community Forum
-          </Link>
+      {/* Footer / Contact */}
+      <div className="px-4 sm:px-0 pb-10">
+        <div className="bg-gradient-to-br from-[var(--brand)] to-[var(--brand-dark)] rounded-3xl p-8 sm:p-12 text-center text-white shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full bg-white/5 opacity-50 backdrop-blur-3xl" />
+          <div className="relative z-10">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-3">Still need help?</h2>
+            <p className="text-white/80 text-lg max-w-xl mx-auto mb-8">
+              Our support team is here to assist you with any questions or issues you might have.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="mailto:support@tynebase.com"
+                style={{ backgroundColor: "#ffffff", color: "#000000" }}
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-bold hover:bg-zinc-50 hover:scale-105 transition-all shadow-lg"
+              >
+                <Mail className="w-5 h-5" />
+                Email Support
+              </a>
+              <Link
+                href="/dashboard/community"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3.5 bg-white/10 text-white border border-white/20 rounded-xl font-bold hover:bg-white/20 transition-all backdrop-blur-sm"
+              >
+                <MessageSquare className="w-5 h-5" />
+                Community Forum
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }

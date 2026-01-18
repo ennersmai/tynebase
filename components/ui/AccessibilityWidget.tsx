@@ -18,7 +18,7 @@ function setDocumentContrast(mode: ContrastMode) {
   }
 }
 
-export function AccessibilityWidget() {
+export function AccessibilityWidget({ customTrigger }: { customTrigger?: ReactNode }) {
   const { theme, setTheme } = useTheme();
   const [open, setOpen] = useState(false);
   const [contrastMode, setContrastMode] = useState<ContrastMode>("normal");
@@ -70,11 +70,16 @@ export function AccessibilityWidget() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[60]">
+    <div className={cn("z-[60]", !customTrigger && "fixed bottom-6 right-6")}>
       {open && (
         <>
           <div className="fixed inset-0 z-[59]" onClick={() => setOpen(false)} />
-          <div className="absolute bottom-14 right-0 z-[61] w-[320px] rounded-2xl border border-[var(--dash-border-subtle)] bg-[var(--surface-card)] shadow-xl overflow-hidden">
+          <div className={cn(
+            "rounded-2xl border border-[var(--dash-border-subtle)] bg-[var(--surface-card)] shadow-xl overflow-hidden",
+            customTrigger
+              ? "fixed top-[20%] left-1/2 -translate-x-1/2 w-[90vw] max-w-sm origin-center z-[100]"
+              : "absolute bottom-14 right-0 w-[320px] z-[100]"
+          )}>
             <div
               className="border-b border-[var(--dash-border-subtle)]"
               style={{ padding: "13px 12px" }}
@@ -133,13 +138,17 @@ export function AccessibilityWidget() {
         </>
       )}
 
-      <button
-        onClick={() => setOpen((v) => !v)}
-        className="w-12 h-12 rounded-full bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] shadow-lg flex items-center justify-center hover:border-[var(--brand)] transition-colors"
-        aria-label="Open accessibility settings"
-      >
-        <img src="/accessibility-2-128.ico" alt="Accessibility" className="w-8 h-8" />
-      </button>
+      {customTrigger ? (
+        <div onClick={() => setOpen(!open)}>{customTrigger}</div>
+      ) : (
+        <button
+          onClick={() => setOpen((v) => !v)}
+          className="w-12 h-12 rounded-full bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] shadow-lg flex items-center justify-center hover:border-[var(--brand)] transition-colors"
+          aria-label="Open accessibility settings"
+        >
+          <img src="/accessibility-2-128.ico" alt="Accessibility" className="w-8 h-8" />
+        </button>
+      )}
     </div>
   );
 }

@@ -124,23 +124,21 @@ export default function VideoPage() {
           {/* Source Selection */}
           <div className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl p-6 sm:p-7">
             <h2 className="text-lg font-semibold text-[var(--dash-text-primary)] mb-5">Select Video Source</h2>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-7">
               {sourceOptions.map((source) => (
                 <button
                   key={source.id}
                   onClick={() => setActiveSource(source.id)}
-                  className={`p-5 rounded-xl border-2 text-left transition-all ${
-                    activeSource === source.id
+                  className={`p-5 rounded-xl border-2 text-left transition-all ${activeSource === source.id
                       ? "border-[var(--brand)] bg-[var(--brand-primary-muted)]"
                       : "border-[var(--dash-border-subtle)] hover:border-[var(--dash-border-default)]"
-                  }`}
+                    }`}
                 >
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-3 ${
-                    activeSource === source.id
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-3 ${activeSource === source.id
                       ? "bg-[var(--brand)] text-white"
                       : "bg-[var(--surface-ground)] text-[var(--dash-text-tertiary)]"
-                  }`}>
+                    }`}>
                     <source.icon className="w-5 h-5" />
                   </div>
                   <h3 className="font-semibold text-[var(--dash-text-primary)]">{source.label}</h3>
@@ -195,11 +193,10 @@ export default function VideoPage() {
                 onDragLeave={handleDrag}
                 onDragOver={handleDrag}
                 onDrop={handleDrop}
-                className={`border-2 border-dashed rounded-xl p-12 text-center transition-all ${
-                  dragActive
+                className={`border-2 border-dashed rounded-xl p-12 text-center transition-all ${dragActive
                     ? "border-[var(--brand)] bg-[var(--brand-primary-muted)]"
                     : "border-[var(--dash-border-default)] hover:border-[var(--brand)]"
-                }`}
+                  }`}
               >
                 <input
                   ref={fileInputRef}
@@ -303,11 +300,21 @@ export default function VideoPage() {
             </div>
             <div className="divide-y divide-[var(--dash-border-subtle)]">
               {recentVideos.map((video) => (
-                <div key={video.id} className="px-6 py-4 flex items-center gap-4 hover:bg-[var(--surface-hover)] transition-colors">
-                  <div className="w-20 h-12 rounded-lg bg-[var(--surface-ground)] flex items-center justify-center flex-shrink-0">
-                    <Video className="w-6 h-6 text-[var(--dash-text-muted)]" />
+                <div key={video.id} className="px-6 py-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:bg-[var(--surface-hover)] transition-colors group">
+                  <div className="flex items-center gap-4 w-full sm:w-auto">
+                    <div className="w-20 h-12 rounded-lg bg-[var(--surface-ground)] flex items-center justify-center flex-shrink-0">
+                      <Video className="w-6 h-6 text-[var(--dash-text-muted)]" />
+                    </div>
+                    <div className="flex-1 min-w-0 sm:hidden">
+                      <h3 className="font-medium text-[var(--dash-text-primary)] truncate">{video.title}</h3>
+                      <div className="flex items-center gap-2 text-sm text-[var(--dash-text-tertiary)] mt-1">
+                        <Clock className="w-3 h-3" />
+                        {video.duration}
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex-1 min-w-0">
+
+                  <div className="flex-1 min-w-0 hidden sm:block">
                     <h3 className="font-medium text-[var(--dash-text-primary)] truncate">{video.title}</h3>
                     <div className="flex items-center gap-3 text-sm text-[var(--dash-text-tertiary)] mt-1">
                       <span className="flex items-center gap-1">
@@ -318,29 +325,33 @@ export default function VideoPage() {
                       {video.wordCount && <span>{video.wordCount.toLocaleString()} words</span>}
                     </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    {video.status === "complete" ? (
-                      <span className="flex items-center gap-1 text-sm text-[var(--status-success)]">
-                        <CheckCircle className="w-4 h-4" />
-                        Complete
-                      </span>
-                    ) : video.status === "processing" ? (
-                      <span className="flex items-center gap-1 text-sm text-[var(--status-warning)]">
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                        Processing
-                      </span>
-                    ) : (
-                      <span className="flex items-center gap-1 text-sm text-[var(--status-error)]">
-                        <AlertCircle className="w-4 h-4" />
-                        Error
-                      </span>
-                    )}
-                    <Link
-                      href={`/dashboard/knowledge/${video.id}`}
-                      className="p-2 rounded-lg hover:bg-[var(--surface-ground)] text-[var(--dash-text-tertiary)] hover:text-[var(--brand)]"
-                    >
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
+
+                  <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto mt-2 sm:mt-0 border-t sm:border-0 border-[var(--dash-border-subtle)] pt-2 sm:pt-0">
+                    <span className="text-xs text-[var(--dash-text-tertiary)] sm:hidden">{video.createdAt}</span>
+                    <div className="flex items-center gap-3 ml-auto">
+                      {video.status === "complete" ? (
+                        <span className="flex items-center gap-1 text-sm text-[var(--status-success)]">
+                          <CheckCircle className="w-4 h-4" />
+                          <span className="hidden sm:inline">Complete</span>
+                        </span>
+                      ) : video.status === "processing" ? (
+                        <span className="flex items-center gap-1 text-sm text-[var(--status-warning)]">
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          <span className="hidden sm:inline">Processing</span>
+                        </span>
+                      ) : (
+                        <span className="flex items-center gap-1 text-sm text-[var(--status-error)]">
+                          <AlertCircle className="w-4 h-4" />
+                          <span className="hidden sm:inline">Error</span>
+                        </span>
+                      )}
+                      <Link
+                        href={`/dashboard/knowledge/${video.id}`}
+                        className="p-2 rounded-lg hover:bg-[var(--surface-ground)] text-[var(--dash-text-tertiary)] hover:text-[var(--brand)]"
+                      >
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               ))}

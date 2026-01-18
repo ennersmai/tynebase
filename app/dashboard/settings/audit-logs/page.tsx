@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { 
-  Activity, 
-  Download, 
+import {
+  Activity,
+  Download,
   Search,
   FileText,
   User,
@@ -158,7 +158,7 @@ export default function AuditLogsPage() {
 
   const filteredLogs = auditLogs.filter((log) => {
     const matchesType = activeType === "all" || log.type === activeType;
-    const matchesSearch = 
+    const matchesSearch =
       log.actor.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       log.actor.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
       (log.target?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false) ||
@@ -198,11 +198,10 @@ export default function AuditLogsPage() {
                 <button
                   key={type.id}
                   onClick={() => setActiveType(type.id)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-primary)] focus-visible:ring-offset-2 ${
-                    activeType === type.id
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-primary)] focus-visible:ring-offset-2 ${activeType === type.id
                       ? "bg-[var(--brand-primary)] text-white"
                       : "bg-[var(--surface-ground)] text-[var(--text-secondary)] hover:bg-[var(--surface-card)]"
-                  }`}
+                    }`}
                 >
                   <type.icon className="w-4 h-4" />
                   {type.label}
@@ -220,20 +219,28 @@ export default function AuditLogsPage() {
             {filteredLogs.map((log) => {
               const ActionIcon = getActionIcon(log.action);
               const actionColor = getActionColor(log.action);
-              
+
               return (
                 <div key={log.id} className="p-5 hover:bg-[var(--surface-ground)] transition-colors">
-                  <div className="flex items-start gap-4">
-                    {/* Action Icon */}
-                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                      actionColor === "red" ? "bg-red-500/10 text-red-500" :
-                      "bg-[var(--brand)]/10 text-[var(--brand)]"
-                    }`}>
-                      <ActionIcon className="w-5 h-5" />
+                  <div className="flex flex-col sm:flex-row sm:items-start gap-4">
+                    <div className="flex items-start gap-4">
+                      {/* Action Icon */}
+                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${actionColor === "red" ? "bg-red-500/10 text-red-500" :
+                          "bg-[var(--brand)]/10 text-[var(--brand)]"
+                        }`}>
+                        <ActionIcon className="w-5 h-5" />
+                      </div>
+
+                      {/* Mobile Metadata (Top Right) -> Hidden on Desktop */}
+                      <div className="text-right flex-shrink-0 sm:hidden ml-auto">
+                        <p className="text-xs text-[var(--text-secondary)]">
+                          {formatTimestamp(log.timestamp)}
+                        </p>
+                      </div>
                     </div>
 
                     {/* Content */}
-                    <div className="flex-1 min-w-0">
+                    <div className="flex-1 min-w-0 pl-14 sm:pl-0 -mt-8 sm:mt-0">
                       <div className="flex items-center gap-2 flex-wrap">
                         <span className="font-medium text-[var(--text-primary)]">
                           {log.actor.name}
@@ -247,10 +254,10 @@ export default function AuditLogsPage() {
                           </span>
                         )}
                       </div>
-                      
+
                       {/* Details */}
                       {Object.keys(log.details).length > 0 && (
-                        <div className="flex items-center gap-3 mt-1 text-xs text-[var(--text-tertiary)]">
+                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-xs text-[var(--text-tertiary)]">
                           {Object.entries(log.details).map(([key, value]) => (
                             <span key={key} className="flex items-center gap-1">
                               <span className="capitalize">{key}:</span>
@@ -259,10 +266,15 @@ export default function AuditLogsPage() {
                           ))}
                         </div>
                       )}
+
+                      {/* Mobile IP */}
+                      <p className="text-xs text-[var(--text-tertiary)] sm:hidden mt-2">
+                        IP: {log.ip}
+                      </p>
                     </div>
 
-                    {/* Metadata */}
-                    <div className="text-right flex-shrink-0">
+                    {/* Desktop Metadata */}
+                    <div className="text-right flex-shrink-0 hidden sm:block">
                       <p className="text-sm text-[var(--text-secondary)]">
                         {formatTimestamp(log.timestamp)}
                       </p>
@@ -308,14 +320,21 @@ export default function AuditLogsPage() {
 
       {/* Retention Notice */}
       <Card className="bg-[var(--surface-ground)] border-[var(--border-subtle)]">
-        <CardContent className="p-5 flex items-center gap-4">
-          <Calendar className="w-5 h-5 text-[var(--text-tertiary)]" />
-          <div className="flex-1">
+        <CardContent className="p-5 flex flex-col sm:flex-row sm:items-center gap-4">
+          <div className="flex items-center gap-4">
+            <Calendar className="w-5 h-5 text-[var(--text-tertiary)]" />
+            <div className="flex-1 sm:hidden">
+              <p className="text-sm text-[var(--text-secondary)]">
+                Audit logs are retained for <span className="font-medium">90 days</span> on your current plan.
+              </p>
+            </div>
+          </div>
+          <div className="hidden sm:block flex-1">
             <p className="text-sm text-[var(--text-secondary)]">
               Audit logs are retained for <span className="font-medium">90 days</span> on your current plan.
             </p>
           </div>
-          <Button variant="ghost" size="sm" className="text-sm text-[var(--brand-primary)]">
+          <Button variant="ghost" size="sm" className="text-sm text-[var(--brand-primary)] w-full sm:w-auto justify-start sm:justify-center pl-10 sm:pl-4">
             Upgrade for longer retention
           </Button>
         </CardContent>

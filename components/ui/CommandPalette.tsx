@@ -155,7 +155,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
 
   const filteredCommands = useMemo(() => {
     if (!query) return commands;
-    
+
     const lowerQuery = query.toLowerCase();
     return commands.filter((cmd) => {
       const matchTitle = cmd.title.toLowerCase().includes(lowerQuery);
@@ -172,11 +172,11 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       recent: [],
       documents: [],
     };
-    
+
     filteredCommands.forEach((cmd) => {
       groups[cmd.category].push(cmd);
     });
-    
+
     return groups;
   }, [filteredCommands]);
 
@@ -194,7 +194,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       switch (e.key) {
         case "ArrowDown":
           e.preventDefault();
-          setSelectedIndex((prev) => 
+          setSelectedIndex((prev) =>
             Math.min(prev + 1, filteredCommands.length - 1)
           );
           break;
@@ -250,7 +250,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
         className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
         onClick={onClose}
       />
-      
+
       {/* Dialog */}
       <div className="fixed inset-x-4 top-[20%] mx-auto max-w-2xl z-50">
         <div className="bg-[var(--surface-card)] border border-[var(--border-subtle)] rounded-2xl shadow-2xl overflow-hidden">
@@ -259,7 +259,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
             <Search className="w-5 h-5 shrink-0 text-[var(--text-tertiary)]" />
             <input
               type="text"
-              placeholder="Search commands, documents, or type a question..."
+              placeholder="Search..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               className="flex-1 min-w-0 h-12 bg-transparent text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] focus:outline-none text-lg"
@@ -348,7 +348,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
 
           {/* Footer */}
           <div className="flex items-center justify-between px-4 py-3 border-t border-[var(--border-subtle)] bg-[var(--surface-ground)]">
-            <div className="flex items-center gap-4 text-xs text-[var(--text-tertiary)]">
+            <div className="hidden sm:flex items-center gap-4 text-xs text-[var(--text-tertiary)]">
               <span className="flex items-center gap-1">
                 <kbd className="px-1.5 py-0.5 bg-[var(--surface-card)] border border-[var(--border-subtle)] rounded">↑↓</kbd>
                 Navigate
@@ -362,7 +362,12 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
                 Close
               </span>
             </div>
-            <div className="flex items-center gap-2 text-xs text-[var(--text-tertiary)]">
+            {/* Mobile Footer Hint (Replaces Shortcuts) */}
+            <div className="sm:hidden text-xs text-[var(--text-tertiary)]">
+              Tap to select
+            </div>
+
+            <div className="flex items-center gap-2 text-xs text-[var(--text-tertiary)] whitespace-nowrap">
               <Zap className="w-3 h-3" />
               Powered by TyneBase
             </div>
@@ -383,29 +388,26 @@ function CommandRow({
   onSelect: () => void;
 }) {
   const Icon = command.icon;
-  
+
   return (
     <button
       onClick={onSelect}
-      className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-colors ${
-        isSelected
-          ? "bg-[var(--brand-primary)] text-white"
-          : "hover:bg-[var(--surface-ground)] text-[var(--text-primary)]"
-      }`}
+      className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-colors ${isSelected
+        ? "bg-[var(--brand-primary)] text-white"
+        : "hover:bg-[var(--surface-ground)] text-[var(--text-primary)]"
+        }`}
     >
-      <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-        isSelected 
-          ? "bg-white/20" 
-          : "bg-[var(--surface-ground)]"
-      }`}>
+      <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${isSelected
+        ? "bg-white/20"
+        : "bg-[var(--surface-ground)]"
+        }`}>
         <Icon className="w-4 h-4" />
       </div>
       <div className="flex-1 min-w-0">
         <p className="font-medium truncate">{command.title}</p>
         {command.description && (
-          <p className={`text-sm truncate ${
-            isSelected ? "text-white/70" : "text-[var(--text-tertiary)]"
-          }`}>
+          <p className={`text-sm truncate ${isSelected ? "text-white/70" : "text-[var(--text-tertiary)]"
+            }`}>
             {command.description}
           </p>
         )}

@@ -4,7 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
-import { 
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
+import {
   Users, Plus, MessageSquare, ThumbsUp, Eye, Pin, Search, TrendingUp,
   CheckCircle2, HelpCircle, Flame, Bell, BookmarkPlus, Lock, Reply,
   MoreHorizontal, Flag, Share2, Award, AtSign, Image as ImageIcon,
@@ -145,7 +146,7 @@ export default function CommunityPage() {
     if (!cat || !cat.icon) return null;
     const Icon = cat.icon;
     return (
-      <span 
+      <span
         className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium"
         style={{ backgroundColor: `${cat.color}15`, color: cat.color }}
       >
@@ -158,354 +159,230 @@ export default function CommunityPage() {
   return (
     <div className="h-full min-h-0 w-full flex flex-col gap-6">
       {/* Header */}
-      <div className="flex items-start justify-between gap-6 flex-shrink-0">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row items-start justify-between gap-4 sm:gap-6 flex-shrink-0 px-4 sm:px-0">
         <div>
-          <h1 className="text-2xl font-bold text-[var(--dash-text-primary)]">Community Forum</h1>
+          <h1 className="text-2xl font-bold text-[var(--dash-text-primary)]">Community</h1>
           <p className="text-[var(--dash-text-tertiary)] mt-1">
-            Connect with your team, ask questions, and share knowledge
+            Connect with community teams
           </p>
         </div>
-        <Button variant="primary" size="lg" className="gap-2 px-7" asChild>
+        <Button variant="primary" size="lg" className="w-full sm:w-auto gap-2 px-7" asChild>
           <Link href="/dashboard/community/new">
-          <Plus className="w-5 h-5" />
-          New Discussion
+            <Plus className="w-5 h-5" />
+            New Discussion
           </Link>
         </Button>
       </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 flex-shrink-0">
-        {stats.map((stat) => (
-          <div key={stat.label} className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl p-4 flex items-center gap-4">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: `${stat.color}15` }}>
-              <stat.icon className="w-5 h-5" style={{ color: stat.color }} />
-            </div>
-            <div>
-              <p className="text-2xl font-bold text-[var(--dash-text-primary)]">{stat.value}</p>
-              <p className="text-sm text-[var(--dash-text-tertiary)]">{stat.label}</p>
-            </div>
-          </div>
+      {/* Top Tabs (Categories) */}
+      <div className="flex flex-wrap gap-2 flex-shrink-0">
+        {categories.map((cat) => (
+          <button
+            key={cat.id}
+            onClick={() => setActiveCategory(cat.id)}
+            className={`
+              inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all
+              ${activeCategory === cat.id
+                ? "bg-[var(--brand)] text-white shadow-sm"
+                : "bg-[var(--surface-card)] text-[var(--dash-text-secondary)] border border-[var(--dash-border-subtle)] hover:bg-[var(--surface-hover)]"
+              }
+            `}
+          >
+            {activeCategory === cat.id && cat.icon && <cat.icon className="w-4 h-4" />}
+            {cat.label}
+            {activeCategory === cat.id && (
+              <span className="bg-white/20 text-white px-1.5 rounded-full text-[10px] min-w-[20px] text-center">
+                {cat.count}
+              </span>
+            )}
+          </button>
         ))}
       </div>
 
-      <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-6 items-start">
-        {/* Sidebar */}
-        <div className="space-y-6 lg:sticky lg:top-0 self-start">
-          {/* Categories */}
-          <div className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl">
-            <div className="px-4 py-3 border-b border-[var(--dash-border-subtle)]">
-              <h3 className="font-semibold text-[var(--dash-text-primary)]">Categories</h3>
+      {/* Stats - Optional, keeping for now or could minimize */}
+      {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 flex-shrink-0">
+        {stats.map((stat) => (
+          <div key={stat.label} className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl p-4 flex items-center gap-4">
+             ...
+          </div>
+        ))}
+      </div> */}
+      {/* Keeping stats hidden for now to match PRD "Discussion List" focus, or can be re-enabled if user wants */}
+
+      <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6 items-start">
+
+        {/* Main Discussion List */}
+        <div className="flex flex-col gap-4 min-h-0">
+          {/* Search & Sort Bar */}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="relative flex-1">
+              <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--dash-text-muted)]" />
+              <input
+                type="text"
+                placeholder="Search discussions..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-9 pr-4 py-2 bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-lg text-sm text-[var(--dash-text-primary)] placeholder:text-[var(--dash-text-muted)] focus:outline-none focus:border-[var(--brand)]"
+              />
             </div>
-            <div className="p-2">
-              {categories.map((cat) => (
+            <div className="flex items-center bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-lg p-1">
+              {(["recent", "popular", "unanswered"] as const).map((sort) => (
                 <button
-                  key={cat.id}
-                  onClick={() => setActiveCategory(cat.id)}
-                  className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors ${
-                    activeCategory === cat.id
-                      ? "bg-[var(--brand-primary-muted)] text-[var(--brand)]"
-                      : "text-[var(--dash-text-secondary)] hover:bg-[var(--surface-hover)]"
-                  }`}
+                  key={sort}
+                  onClick={() => setSortBy(sort)}
+                  className={`px-3 py-1 text-xs font-medium rounded-md transition-colors capitalize ${sortBy === sort
+                    ? "bg-[var(--brand)] text-white"
+                    : "text-[var(--dash-text-secondary)] hover:text-[var(--dash-text-primary)]"
+                    }`}
                 >
-                  <div className="flex items-center gap-2">
-                    {cat.icon && <cat.icon className="w-4 h-4" />}
-                    <span>{cat.label}</span>
-                  </div>
-                  <span className="text-xs">{cat.count}</span>
+                  {sort}
                 </button>
               ))}
             </div>
           </div>
-        </div>
 
-        {/* Main Content */}
-        <div className="flex flex-col gap-6 min-h-0 min-w-0">
-          {/* Search & Filters */}
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-              <div className="relative flex-1">
-                <Search className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--dash-text-muted)]" />
-                <input
-                  type="text"
-                  placeholder="Search discussions..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-11 pr-4 py-2.5 bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-lg text-[var(--dash-text-primary)] placeholder:text-[var(--dash-text-muted)] focus:outline-none focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--brand)]/20"
-                />
+          <Card className="flex-1 min-h-0 flex flex-col">
+            <CardHeader className="px-5 py-3 border-b border-[var(--dash-border-subtle)] flex flex-row items-center justify-between space-y-0">
+              <div className="flex items-center gap-2">
+                <CardTitle className="text-base">Threads</CardTitle>
+                <span className="text-xs text-[var(--dash-text-muted)] font-normal">
+                  {sortedDiscussions.length} results
+                </span>
               </div>
-              <div className="flex items-center gap-3">
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="md"
-                  className="px-5"
-                  onClick={() => setIsSearchOpen(true)}
-                >
-                  <Search className="w-4 h-4" />
-                  Search
-                </Button>
-                <div className="flex items-center bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-lg p-1">
-                  {(["recent", "popular", "unanswered"] as const).map((sort) => (
-                    <button
-                      key={sort}
-                      onClick={() => setSortBy(sort)}
-                      className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors capitalize ${
-                        sortBy === sort
-                          ? "bg-[var(--brand)] text-white"
-                          : "text-[var(--dash-text-secondary)] hover:text-[var(--dash-text-primary)]"
-                      }`}
-                    >
-                      {sort}
-                    </button>
-                  ))}
-                </div>
+              <div className="hidden md:flex gap-6 text-xs text-[var(--dash-text-muted)] font-medium mr-4">
+                <span className="w-16 text-right">Replies</span>
+                <span className="w-16 text-right">Views</span>
               </div>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              <div className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl overflow-hidden">
-                <div className="px-4 py-3 border-b border-[var(--dash-border-subtle)]">
-                  <h3 className="font-semibold text-[var(--dash-text-primary)] flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4 text-[var(--brand)]" />
-                    Trending
-                  </h3>
-                </div>
-                <div className="p-4 flex flex-wrap gap-2">
-                  {trendingTopics.map((topic) => (
-                    <button
-                      key={topic.tag}
-                      className="px-2.5 py-1.5 text-xs bg-[var(--surface-ground)] text-[var(--dash-text-secondary)] rounded-full hover:bg-[var(--brand-primary-muted)] hover:text-[var(--brand)] transition-colors"
-                    >
-                      #{topic.tag}
-                      <span className="ml-2 text-[10px] text-[var(--dash-text-muted)]">{topic.count}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl overflow-hidden">
-                <div className="px-4 py-3 border-b border-[var(--dash-border-subtle)]">
-                  <h3 className="font-semibold text-[var(--dash-text-primary)]">Top Contributors</h3>
-                </div>
-                <div className="p-4 space-y-3">
-                  {topContributors.map((user, index) => (
-                    <div key={user.name} className="flex items-center gap-3">
-                      <span className="w-5 h-5 rounded-full bg-[var(--surface-ground)] flex items-center justify-center text-xs font-medium text-[var(--dash-text-muted)]">
-                        {index + 1}
-                      </span>
-                      <div className="w-8 h-8 rounded-full bg-[var(--brand-primary-muted)] flex items-center justify-center text-[var(--brand)] font-semibold text-xs">
-                        {user.name.split(" ").map(n => n[0]).join("")}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-[var(--dash-text-primary)] truncate">{user.name}</p>
-                        <p className="text-xs text-[var(--dash-text-muted)]">{user.posts} posts · {user.helpful} helpful</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Discussions List */}
-          <div className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl overflow-hidden flex-1 min-h-0 flex flex-col">
-            <div className="px-5 py-3 border-b border-[var(--dash-border-subtle)] flex items-center justify-between gap-4">
-              <div className="min-w-0">
-                <div className="font-semibold text-[var(--dash-text-primary)] truncate">Threads</div>
-                <div className="text-xs text-[var(--dash-text-muted)]">
-                  Showing {sortedDiscussions.length} of {discussions.length}
-                </div>
-              </div>
-              <div className="hidden md:grid grid-cols-[1fr_80px_80px_120px] gap-3 text-xs text-[var(--dash-text-muted)] font-medium">
-                <div className="text-right">Replies</div>
-                <div className="text-right">Views</div>
-                <div className="text-right">Activity</div>
-              </div>
-            </div>
-
-            <div className="flex-1 min-h-0 overflow-auto dashboard-scroll divide-y divide-[var(--dash-border-subtle)]">
-              {sortedDiscussions.map((discussion) => (
-                <Link
-                  key={discussion.id}
-                  href={`/dashboard/community/${discussion.id}`}
-                  className="block px-5 py-4 hover:bg-[var(--surface-hover)] transition-colors cursor-pointer group"
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-[1fr_80px_80px_120px] gap-4 items-start">
-                    <div className="flex gap-4 min-w-0">
-                      <div className="w-10 h-10 rounded-full bg-[var(--brand-primary-muted)] flex items-center justify-center text-[var(--brand)] font-semibold text-sm flex-shrink-0">
+            </CardHeader>
+            <CardContent className="p-0 flex-1 overflow-auto dashboard-scroll">
+              <div className="divide-y divide-[var(--dash-border-subtle)]">
+                {sortedDiscussions.map((discussion) => (
+                  <Link
+                    key={discussion.id}
+                    href={`/dashboard/community/${discussion.id}`}
+                    className={`block px-5 py-4 hover:bg-[var(--surface-hover)] transition-colors cursor-pointer group ${discussion.isPinned ? "bg-[var(--surface-ground)]/50" : ""}`}
+                  >
+                    <div className="flex items-start gap-4">
+                      {/* Avatar */}
+                      <div className="mt-1 w-9 h-9 rounded-full bg-[var(--brand-primary-muted)] flex items-center justify-center text-[var(--brand)] font-semibold text-xs flex-shrink-0">
                         {discussion.author.split(" ").map(n => n[0]).join("")}
                       </div>
+
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
                           {discussion.isPinned && (
-                            <Pin className="w-3 h-3 text-[var(--brand)]" />
+                            <span className="inline-flex items-center text-[10px] bg-[var(--brand)] text-white px-1.5 py-0.5 rounded font-medium">
+                              <Pin className="w-3 h-3 mr-1" /> Pinned
+                            </span>
                           )}
                           {discussion.isResolved && (
-                            <CheckCircle2 className="w-4 h-4 text-[var(--status-success)]" />
+                            <span className="inline-flex items-center text-[10px] bg-[var(--status-success)]/10 text-[var(--status-success)] px-1.5 py-0.5 rounded font-medium">
+                              <CheckCircle2 className="w-3 h-3 mr-1" /> Solved
+                            </span>
                           )}
                           {getCategoryBadge(discussion.category)}
                         </div>
+
                         <h3 className="font-semibold text-[var(--dash-text-primary)] group-hover:text-[var(--brand)] transition-colors truncate">
                           {discussion.title}
                         </h3>
-                        <p className="text-sm text-[var(--dash-text-tertiary)] line-clamp-2 mt-1">
+                        <p className="text-sm text-[var(--dash-text-tertiary)] line-clamp-1 mt-1">
                           {discussion.excerpt}
                         </p>
-                        <div className="flex flex-wrap items-center gap-2 mt-3">
-                          <span className="text-xs text-[var(--dash-text-muted)]">
-                            <span className="font-medium text-[var(--dash-text-secondary)]">{discussion.author}</span>
-                            <span className="mx-2">·</span>
-                            {discussion.createdAt}
-                          </span>
-                          <span className="hidden sm:flex items-center gap-1 text-xs text-[var(--dash-text-muted)]">
-                            <ThumbsUp className="w-3 h-3" />
-                            {discussion.likes}
-                          </span>
-                          <div className="flex flex-wrap items-center gap-2">
-                            {discussion.tags.map((tag) => (
-                              <span
-                                key={tag}
-                                className="px-2.5 py-1 text-xs bg-[var(--surface-ground)] text-[var(--dash-text-muted)] rounded-full"
-                              >
-                                {tag}
-                              </span>
+
+                        <div className="flex flex-wrap items-center gap-y-2 gap-x-3 mt-2 text-xs text-[var(--dash-text-muted)]">
+                          <span className="font-medium text-[var(--dash-text-secondary)]">{discussion.author}</span>
+                          <span>•</span>
+                          <span>{discussion.createdAt}</span>
+                          <span className="hidden sm:inline">•</span>
+                          <div className="flex gap-1.5">
+                            {discussion.tags.map(tag => (
+                              <span key={tag} className="bg-[var(--surface-ground)] px-1.5 rounded text-[var(--dash-text-tertiary)] hidden sm:inline-block">#{tag}</span>
                             ))}
                           </div>
                         </div>
                       </div>
-                      <div className="hidden lg:flex items-start gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <Button
-                          type="button"
-                          variant="ghost"
-                          size="icon"
-                          className="h-10 w-10 text-[var(--dash-text-tertiary)] hover:bg-[var(--surface-ground)]"
-                          title="Bookmark"
-                        >
-                          <BookmarkPlus className="w-4 h-4" />
-                        </Button>
+
+                      {/* Stats for Desktop */}
+                      <div className="hidden md:flex flex-col items-end justify-center h-full gap-1 min-w-[140px]">
+                        <div className="flex items-center justify-end w-full gap-6 text-sm text-[var(--dash-text-secondary)]">
+                          <span className="w-16 text-right flex items-center justify-end gap-1">
+                            {discussion.replies} <MessageSquare className="w-3.5 h-3.5 text-[var(--dash-text-muted)]" />
+                          </span>
+                          <span className="w-16 text-right flex items-center justify-end gap-1">
+                            {discussion.views} <Eye className="w-3.5 h-3.5 text-[var(--dash-text-muted)]" />
+                          </span>
+                        </div>
                       </div>
                     </div>
-
-                    <div className="hidden md:flex items-center justify-end gap-2 text-sm text-[var(--dash-text-secondary)]">
-                      <span className="inline-flex items-center gap-1">
-                        <MessageSquare className="w-3.5 h-3.5 text-[var(--dash-text-muted)]" />
-                        {discussion.replies}
-                      </span>
-                    </div>
-
-                    <div className="hidden md:flex items-center justify-end gap-2 text-sm text-[var(--dash-text-secondary)]">
-                      <span className="inline-flex items-center gap-1">
-                        <Eye className="w-3.5 h-3.5 text-[var(--dash-text-muted)]" />
-                        {discussion.views}
-                      </span>
-                    </div>
-
-                    <div className="hidden md:flex items-center justify-end text-sm text-[var(--dash-text-secondary)]">
-                      <span className="inline-flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5 text-[var(--dash-text-muted)]" />
-                        {discussion.createdAt}
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
+                  </Link>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
 
           {/* Pagination */}
-          <div className="flex items-center justify-center gap-2">
-            <Button variant="outline" size="md" className="px-5" disabled>
-              Previous
-            </Button>
-            <Button variant="primary" size="md" className="px-5">
-              1
-            </Button>
-            <Button variant="outline" size="md" className="px-5">
-              2
-            </Button>
-            <Button variant="outline" size="md" className="px-5">
-              3
-            </Button>
-            <Button variant="outline" size="md" className="px-5">
-              Next
-            </Button>
+          <div className="flex items-center justify-center gap-2 mt-2">
+            <Button variant="outline" size="sm" disabled>Previous</Button>
+            <Button variant="primary" size="sm">1</Button>
+            <Button variant="outline" size="sm">2</Button>
+            <Button variant="outline" size="sm">Next</Button>
           </div>
+        </div>
+
+        {/* Right Side Widgets */}
+        <div className="space-y-6 flex flex-col gap-6">
+          {/* Trending */}
+          <Card>
+            <CardHeader className="py-3 px-4 border-b border-[var(--dash-border-subtle)]">
+              <CardTitle className="text-sm flex items-center gap-2">
+                <TrendingUp className="w-4 h-4 text-[var(--brand)]" />
+                Trending Topics
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-4">
+              <div className="flex flex-wrap gap-2">
+                {trendingTopics.map((topic) => (
+                  <button
+                    key={topic.tag}
+                    className="px-2.5 py-1.5 text-xs bg-[var(--surface-ground)] text-[var(--dash-text-secondary)] rounded-full hover:bg-[var(--brand-primary-muted)] hover:text-[var(--brand)] transition-colors flex items-center gap-1.5"
+                  >
+                    #{topic.tag}
+                    <span className="text-[var(--dash-text-muted)] opacity-60">| {topic.count}</span>
+                  </button>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Contributors */}
+          <Card>
+            <CardHeader className="py-3 px-4 border-b border-[var(--dash-border-subtle)]">
+              <CardTitle className="text-sm flex items-center gap-2">
+                <Award className="w-4 h-4 text-[var(--brand)]" />
+                Top Contributors
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-4 space-y-4">
+              {topContributors.map((user, index) => (
+                <div key={user.name} className="flex items-center gap-3">
+                  <span className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold ${index === 0 ? 'text-amber-500 bg-amber-500/10' : 'text-[var(--dash-text-muted)] bg-[var(--surface-ground)]'}`}>
+                    {index + 1}
+                  </span>
+                  <div className="w-8 h-8 rounded-full bg-[var(--brand-primary-muted)] flex items-center justify-center text-[var(--brand)] font-semibold text-xs">
+                    {user.name.split(" ").map(n => n[0]).join("")}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-[var(--dash-text-primary)] truncate">{user.name}</p>
+                    <p className="text-xs text-[var(--dash-text-muted)]">{user.posts} posts · {user.helpful} helpful</p>
+                  </div>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
         </div>
       </div>
-
-      <Modal
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
-        title="Search discussions"
-        description="Search threads, filter by category, and quickly jump to what you need."
-        size="lg"
-        className="max-w-2xl"
-      >
-        <div className="space-y-5">
-          <div className="relative">
-            <Search className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-tertiary)]" />
-            <input
-              type="text"
-              placeholder="Search by title, tag, or author..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-11 pr-4 py-3 bg-[var(--surface-card)] border border-[var(--border-default)] rounded-lg text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] focus:outline-none focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--brand)]/20"
-              autoFocus
-            />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {categories.filter(c => c.id !== "all").map((cat) => (
-              <button
-                key={cat.id}
-                type="button"
-                onClick={() => setActiveCategory(cat.id)}
-                className={
-                  "flex items-center justify-between gap-3 rounded-lg border px-4 py-3 text-sm transition-colors " +
-                  (activeCategory === cat.id
-                    ? "border-[var(--brand)] bg-[var(--brand-primary-muted)]"
-                    : "border-[var(--dash-border-subtle)] hover:bg-[var(--surface-hover)]")
-                }
-              >
-                <span className="flex items-center gap-2 text-[var(--dash-text-primary)]">
-                  {cat.icon && <cat.icon className="w-4 h-4" style={{ color: cat.color }} />}
-                  {cat.label}
-                </span>
-                <span className="text-xs text-[var(--dash-text-muted)]">{cat.count}</span>
-              </button>
-            ))}
-          </div>
-
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <div className="text-sm text-[var(--dash-text-tertiary)]">
-              Tip: use the category chips to narrow down results.
-            </div>
-            <div className="flex items-center justify-end gap-2">
-              <Button
-                type="button"
-                variant="outline"
-                size="md"
-                className="px-5"
-                onClick={() => {
-                  setSearchQuery("");
-                  setActiveCategory("all");
-                }}
-              >
-                Reset
-              </Button>
-              <Button
-                type="button"
-                variant="primary"
-                size="md"
-                className="px-6"
-                onClick={() => setIsSearchOpen(false)}
-              >
-                Show results
-              </Button>
-            </div>
-          </div>
-        </div>
-      </Modal>
     </div>
   );
 }

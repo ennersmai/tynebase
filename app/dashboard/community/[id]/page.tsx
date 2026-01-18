@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Textarea } from "@/components/ui/Textarea";
+import { Card, CardContent } from "@/components/ui/Card";
 import { DashboardPageHeader } from "@/components/layout/DashboardPageHeader";
 import {
   ArrowLeft,
@@ -93,7 +94,7 @@ const discussions = [
   },
 ] as const;
 
-export default function CommunityDiscussionPage({
+export default function DiscussionPage({
   params,
 }: {
   params: { id: string };
@@ -118,14 +119,16 @@ export default function CommunityDiscussionPage({
           </Button>
         </div>
 
-        <div className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl p-8">
-          <div className="text-lg font-semibold text-[var(--dash-text-primary)]">
-            Discussion not found
-          </div>
-          <div className="text-sm text-[var(--dash-text-tertiary)] mt-2">
-            The discussion you’re looking for doesn’t exist (yet).
-          </div>
-        </div>
+        <Card>
+          <CardContent className="p-8">
+            <div className="text-lg font-semibold text-[var(--dash-text-primary)]">
+              Discussion not found
+            </div>
+            <div className="text-sm text-[var(--dash-text-tertiary)] mt-2">
+              The discussion you’re looking for doesn’t exist (yet).
+            </div>
+          </CardContent>
+        </Card>
       </div>
     );
   }
@@ -184,109 +187,117 @@ export default function CommunityDiscussionPage({
 
       <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         <div className="lg:col-span-2 space-y-6 min-h-0">
-          <div className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl p-6 sm:p-8">
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <div className="w-11 h-11 rounded-full bg-[var(--brand-primary-muted)] flex items-center justify-center text-[var(--brand)] font-semibold text-sm flex-shrink-0">
-                  {discussion.author.split(" ").map((n) => n[0]).join("")}
+          <Card>
+            <CardContent className="p-6 sm:p-8">
+              <div className="space-y-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-11 h-11 rounded-full bg-[var(--brand-primary-muted)] flex items-center justify-center text-[var(--brand)] font-semibold text-sm flex-shrink-0">
+                    {discussion.author.split(" ").map((n) => n[0]).join("")}
+                  </div>
+                  <div className="min-w-0">
+                    <div className="font-semibold text-[var(--dash-text-primary)]">
+                      {discussion.author}
+                    </div>
+                    <div className="text-sm text-[var(--dash-text-tertiary)]">
+                      Posted {discussion.createdAt}
+                    </div>
+                  </div>
                 </div>
-                <div className="min-w-0">
-                  <div className="font-semibold text-[var(--dash-text-primary)]">
-                    {discussion.author}
-                  </div>
-                  <div className="text-sm text-[var(--dash-text-tertiary)]">
-                    Posted {discussion.createdAt}
-                  </div>
+
+                <div className="text-[var(--dash-text-primary)] leading-relaxed">
+                  {discussion.excerpt}
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2 pt-2">
+                  {discussion.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2.5 py-1 text-xs bg-[var(--surface-ground)] text-[var(--dash-text-muted)] rounded-full"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-2 pt-4">
+                  <Button variant="outline" size="md" className="px-5">
+                    <ThumbsUp className="w-4 h-4" />
+                    Like
+                  </Button>
+                  <Button variant="outline" size="md" className="px-5">
+                    <MessageSquare className="w-4 h-4" />
+                    Reply
+                  </Button>
                 </div>
               </div>
+            </CardContent>
+          </Card>
 
-              <div className="text-[var(--dash-text-primary)] leading-relaxed">
-                {discussion.excerpt}
-              </div>
+          <Card>
+            <CardContent className="p-6 sm:p-8">
+              <div className="font-semibold text-[var(--dash-text-primary)] mb-4">Replies</div>
 
-              <div className="flex flex-wrap items-center gap-2 pt-2">
-                {discussion.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-2.5 py-1 text-xs bg-[var(--surface-ground)] text-[var(--dash-text-muted)] rounded-full"
+              <div className="space-y-4">
+                {[1, 2, 3].map((i) => (
+                  <div
+                    key={i}
+                    className="border border-[var(--dash-border-subtle)] rounded-xl p-5"
                   >
-                    {tag}
-                  </span>
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-full bg-[var(--surface-ground)] flex items-center justify-center text-[var(--dash-text-secondary)] font-semibold text-xs flex-shrink-0">
+                        U{i}
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-sm font-semibold text-[var(--dash-text-primary)]">
+                          User {i}
+                        </div>
+                        <div className="text-xs text-[var(--dash-text-muted)]">1 day ago</div>
+                      </div>
+                    </div>
+                    <div className="text-sm text-[var(--dash-text-tertiary)] mt-3 leading-relaxed">
+                      This is a placeholder reply. We can wire this up to real data once the backend/forum model is ready.
+                    </div>
+                  </div>
                 ))}
               </div>
-
-              <div className="flex items-center gap-2 pt-4">
-                <Button variant="outline" size="md" className="px-5">
-                  <ThumbsUp className="w-4 h-4" />
-                  Like
-                </Button>
-                <Button variant="outline" size="md" className="px-5">
-                  <MessageSquare className="w-4 h-4" />
-                  Reply
-                </Button>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl p-6 sm:p-8">
-            <div className="font-semibold text-[var(--dash-text-primary)] mb-4">Replies</div>
-
-            <div className="space-y-4">
-              {[1, 2, 3].map((i) => (
-                <div
-                  key={i}
-                  className="border border-[var(--dash-border-subtle)] rounded-xl p-5"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-full bg-[var(--surface-ground)] flex items-center justify-center text-[var(--dash-text-secondary)] font-semibold text-xs flex-shrink-0">
-                      U{i}
-                    </div>
-                    <div className="min-w-0">
-                      <div className="text-sm font-semibold text-[var(--dash-text-primary)]">
-                        User {i}
-                      </div>
-                      <div className="text-xs text-[var(--dash-text-muted)]">1 day ago</div>
-                    </div>
-                  </div>
-                  <div className="text-sm text-[var(--dash-text-tertiary)] mt-3 leading-relaxed">
-                    This is a placeholder reply. We can wire this up to real data once the backend/forum model is ready.
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+            </CardContent>
+          </Card>
         </div>
 
         <div className="space-y-6">
-          <div className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl p-6">
-            <div className="font-semibold text-[var(--dash-text-primary)] mb-3">Write a reply</div>
-            <Textarea
-              value={reply}
-              onChange={(e) => setReply(e.target.value)}
-              placeholder="Add a helpful reply..."
-              rows={8}
-              className="px-4 py-3 bg-[var(--surface-card)]"
-            />
-            <div className="flex items-center justify-end gap-3 mt-4">
-              <Button variant="outline" size="md" className="px-5" onClick={() => setReply("")}
-                disabled={reply.trim().length === 0}
-              >
-                Clear
-              </Button>
-              <Button variant="primary" size="md" className="px-5" disabled={reply.trim().length === 0}>
-                <Send className="w-4 h-4" />
-                Post Reply
-              </Button>
-            </div>
-          </div>
+          <Card>
+            <CardContent className="p-6">
+              <div className="font-semibold text-[var(--dash-text-primary)] mb-3">Write a reply</div>
+              <Textarea
+                value={reply}
+                onChange={(e) => setReply(e.target.value)}
+                placeholder="Add a helpful reply..."
+                rows={8}
+                className="px-4 py-3 bg-[var(--surface-card)]"
+              />
+              <div className="flex items-center justify-end gap-3 mt-4">
+                <Button variant="outline" size="md" className="px-5" onClick={() => setReply("")}
+                  disabled={reply.trim().length === 0}
+                >
+                  Clear
+                </Button>
+                <Button variant="primary" size="md" className="px-5" disabled={reply.trim().length === 0}>
+                  <Send className="w-4 h-4" />
+                  Post Reply
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
 
-          <div className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl p-6">
-            <div className="font-semibold text-[var(--dash-text-primary)] mb-2">About</div>
-            <div className="text-sm text-[var(--dash-text-tertiary)] space-y-2">
-              <div>Keep conversations respectful and searchable.</div>
-              <div>Mark resolved answers where applicable.</div>
-            </div>
-          </div>
+          <Card>
+            <CardContent className="p-6">
+              <div className="font-semibold text-[var(--dash-text-primary)] mb-2">About</div>
+              <div className="text-sm text-[var(--dash-text-tertiary)] space-y-2">
+                <div>Keep conversations respectful and searchable.</div>
+                <div>Mark resolved answers where applicable.</div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>

@@ -205,7 +205,7 @@ export default function DraftsPage() {
       {/* Drafts List */}
       <div className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl overflow-hidden flex flex-col flex-1 min-h-0">
         {/* Table Header */}
-        <div className="px-5 py-4 border-b border-[var(--dash-border-subtle)] bg-[var(--surface-ground)] flex-shrink-0">
+        <div className="history-header hidden md:block px-5 py-4 border-b border-[var(--dash-border-subtle)] bg-[var(--surface-ground)] flex-shrink-0">
           <div className="flex items-center gap-4">
             <input
               type="checkbox"
@@ -241,19 +241,36 @@ export default function DraftsPage() {
             {sortedDrafts.map((draft) => (
               <div
                 key={draft.id}
-                className={`px-5 py-5 hover:bg-[var(--surface-hover)] transition-colors group ${
-                  selectedDrafts.includes(draft.id) ? "bg-[var(--brand-primary-muted)]" : ""
-                }`}
+                className={`px-5 py-5 hover:bg-[var(--surface-hover)] transition-colors group ${selectedDrafts.includes(draft.id) ? "bg-[var(--brand-primary-muted)]" : ""
+                  }`}
               >
-                <div className="flex items-center gap-4">
+                <div className="flex flex-col md:flex-row md:items-center gap-4 w-full">
+                  {/* Mobile Header Row */}
+                  <div className="flex items-start justify-between md:hidden w-full">
+                    <div className="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        checked={selectedDrafts.includes(draft.id)}
+                        onChange={() => toggleSelect(draft.id)}
+                        className="w-4 h-4 rounded accent-[var(--brand)]"
+                      />
+                      <div>
+                        <Link href={`/dashboard/knowledge/${draft.id}`} className="font-medium text-[var(--dash-text-primary)] line-clamp-1">{draft.title}</Link>
+                        <span className="text-xs text-[var(--dash-text-tertiary)]">{draft.category}</span>
+                      </div>
+                    </div>
+                    <button className="p-1"><MoreHorizontal className="w-4 h-4 text-[var(--dash-text-muted)]" /></button>
+                  </div>
+
+                  {/* Desktop Checkbox */}
                   <input
                     type="checkbox"
                     checked={selectedDrafts.includes(draft.id)}
                     onChange={() => toggleSelect(draft.id)}
-                    className="w-4 h-4 rounded accent-[var(--brand)]"
+                    className="hidden md:block w-4 h-4 rounded accent-[var(--brand)]"
                   />
-                  
-                  <div className="flex-1 min-w-0">
+
+                  <div className="flex-1 min-w-0 md:block hidden">
                     <Link href={`/dashboard/knowledge/${draft.id}`} className="group/link">
                       <h3 className="font-medium text-[var(--dash-text-primary)] group-hover/link:text-[var(--brand)] transition-colors flex items-center gap-2">
                         {draft.title}
@@ -265,26 +282,35 @@ export default function DraftsPage() {
                       {draft.category}
                     </span>
                   </div>
-                  
-                  <div className="w-24 flex flex-col items-center">
-                    <span className="text-sm font-medium text-[var(--dash-text-primary)]">{draft.completeness}%</span>
-                    <div className="w-full h-1.5 bg-[var(--surface-ground)] rounded-full mt-1 overflow-hidden">
-                      <div
-                        className={`h-full rounded-full ${getCompletenessColor(draft.completeness)}`}
-                        style={{ width: `${draft.completeness}%` }}
-                      />
+
+                  {/* Progress & Meta - Mobile: Horizontal Row, Desktop: Columns */}
+                  <div className="flex items-center gap-4 w-full md:w-auto mt-2 md:mt-0">
+                    <div className="flex-1 md:w-24 flex flex-col md:items-center">
+                      <span className="text-xs md:text-sm font-medium text-[var(--dash-text-primary)]">{draft.completeness}% <span className="md:hidden text-[var(--dash-text-muted)] font-normal">complete</span></span>
+                      <div className="w-full h-1.5 bg-[var(--surface-ground)] rounded-full mt-1 overflow-hidden">
+                        <div
+                          className={`h-full rounded-full ${getCompletenessColor(draft.completeness)}`}
+                          style={{ width: `${draft.completeness}%` }}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="w-24 text-right hidden md:block">
+                      <span className="text-sm text-[var(--dash-text-secondary)]">{draft.wordCount.toLocaleString()}</span>
+                    </div>
+
+                    <div className="w-32 text-right hidden md:block">
+                      <span className="text-sm text-[var(--dash-text-tertiary)]">{draft.lastEdited}</span>
+                    </div>
+
+                    {/* Mobile Stats */}
+                    <div className="flex items-center gap-3 text-xs text-[var(--dash-text-muted)] md:hidden ml-auto">
+                      <span>{draft.wordCount} words</span>
+                      <span>{draft.lastEdited}</span>
                     </div>
                   </div>
-                  
-                  <div className="w-24 text-right">
-                    <span className="text-sm text-[var(--dash-text-secondary)]">{draft.wordCount.toLocaleString()}</span>
-                  </div>
-                  
-                  <div className="w-32 text-right">
-                    <span className="text-sm text-[var(--dash-text-tertiary)]">{draft.lastEdited}</span>
-                  </div>
-                  
-                  <div className="w-24 flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+
+                  <div className="w-24 hidden md:flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                     <Link
                       href={`/dashboard/knowledge/${draft.id}`}
                       className="p-2 rounded-lg hover:bg-[var(--surface-ground)] text-[var(--dash-text-tertiary)] hover:text-[var(--brand)]"

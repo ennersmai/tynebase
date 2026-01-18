@@ -200,7 +200,7 @@ export default function ImportsPage() {
       </div>
 
       <div className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl overflow-hidden">
-        <div className="grid grid-cols-12 gap-4 px-5 py-3 bg-[var(--surface-ground)] border-b border-[var(--dash-border-subtle)] text-xs font-medium text-[var(--dash-text-muted)] uppercase tracking-wider">
+        <div className="hidden md:grid grid-cols-12 gap-4 px-5 py-3 bg-[var(--surface-ground)] border-b border-[var(--dash-border-subtle)] text-xs font-medium text-[var(--dash-text-muted)] uppercase tracking-wider">
           <div className="col-span-3">Source</div>
           <div className="col-span-2">Status</div>
           <div className="col-span-2">Items</div>
@@ -217,39 +217,71 @@ export default function ImportsPage() {
             </div>
           ) : (
             filtered.map((job) => (
-              <div key={job.id} className="grid grid-cols-12 gap-4 px-5 py-4 items-center hover:bg-[var(--surface-hover)] transition-colors">
-                <div className="col-span-3 flex items-center gap-3">
-                  <span className="w-10 h-10 rounded-xl bg-[var(--surface-ground)] flex items-center justify-center">
-                    <Download className="w-5 h-5 text-[var(--dash-text-tertiary)]" />
-                  </span>
-                  <div>
-                    <p className="font-medium text-[var(--dash-text-primary)]">{job.source}</p>
-                    <p className="text-xs text-[var(--dash-text-muted)]">{job.id}</p>
+              <div key={job.id} className="block hover:bg-[var(--surface-hover)] transition-colors">
+                {/* Desktop Table View */}
+                <div className="hidden md:grid grid-cols-12 gap-4 px-5 py-4 items-center">
+                  <div className="col-span-3 flex items-center gap-3">
+                    <span className="w-10 h-10 rounded-xl bg-[var(--surface-ground)] flex items-center justify-center">
+                      <Download className="w-5 h-5 text-[var(--dash-text-tertiary)]" />
+                    </span>
+                    <div>
+                      <p className="font-medium text-[var(--dash-text-primary)]">{job.source}</p>
+                      <p className="text-xs text-[var(--dash-text-muted)]">{job.id}</p>
+                    </div>
+                  </div>
+
+                  <div className="col-span-2">
+                    <StatusBadge status={job.status} />
+                  </div>
+
+                  <div className="col-span-2">
+                    <p className="text-sm text-[var(--dash-text-secondary)]">{job.items.toLocaleString()}</p>
+                  </div>
+
+                  <div className="col-span-2">
+                    <p className="text-sm text-[var(--dash-text-secondary)]">{job.createdAt}</p>
+                  </div>
+
+                  <div className="col-span-2">
+                    <p className="text-sm text-[var(--dash-text-secondary)]">{job.updatedAt}</p>
+                    {job.notes && <p className="text-xs text-[var(--dash-text-muted)] truncate">{job.notes}</p>}
+                  </div>
+
+                  <div className="col-span-1 flex items-center justify-end">
+                    <button className="inline-flex items-center gap-1 text-sm font-medium text-[var(--brand)] hover:underline">
+                      Details
+                      <ExternalLink className="w-4 h-4" />
+                    </button>
                   </div>
                 </div>
 
-                <div className="col-span-2">
-                  <StatusBadge status={job.status} />
-                </div>
+                {/* Mobile Card View */}
+                <div className="flex md:hidden flex-col gap-3 p-4">
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center gap-3">
+                      <span className="w-10 h-10 rounded-xl bg-[var(--surface-ground)] flex items-center justify-center">
+                        <Download className="w-5 h-5 text-[var(--dash-text-tertiary)]" />
+                      </span>
+                      <div>
+                        <p className="font-medium text-[var(--dash-text-primary)]">{job.source}</p>
+                        <div className="flex items-center gap-2 text-xs text-[var(--dash-text-muted)]">
+                          <span>{job.id}</span>
+                          <span>•</span>
+                          <span>{job.items} items</span>
+                        </div>
+                      </div>
+                    </div>
+                    <StatusBadge status={job.status} />
+                  </div>
 
-                <div className="col-span-2">
-                  <p className="text-sm text-[var(--dash-text-secondary)]">{job.items.toLocaleString()}</p>
-                </div>
+                  {job.notes && <p className="text-sm text-[var(--dash-text-tertiary)] bg-[var(--surface-ground)] p-2 rounded-lg">{job.notes}</p>}
 
-                <div className="col-span-2">
-                  <p className="text-sm text-[var(--dash-text-secondary)]">{job.createdAt}</p>
-                </div>
-
-                <div className="col-span-2">
-                  <p className="text-sm text-[var(--dash-text-secondary)]">{job.updatedAt}</p>
-                  {job.notes && <p className="text-xs text-[var(--dash-text-muted)] truncate">{job.notes}</p>}
-                </div>
-
-                <div className="col-span-1 flex items-center justify-end">
-                  <button className="inline-flex items-center gap-1 text-sm font-medium text-[var(--brand)] hover:underline">
-                    Details
-                    <ExternalLink className="w-4 h-4" />
-                  </button>
+                  <div className="flex items-center justify-between text-xs text-[var(--dash-text-muted)] pt-2 border-t border-[var(--dash-border-subtle)]">
+                    <span>Updated {job.updatedAt}</span>
+                    <button className="inline-flex items-center gap-1 text-sm font-medium text-[var(--brand)]">
+                      Details <ExternalLink className="w-3 h-3" />
+                    </button>
+                  </div>
                 </div>
               </div>
             ))

@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { 
-  Plus, Search, Filter, Grid, List, MoreHorizontal, FileText, 
-  Folder, Clock, Users, Star, Edit3, Eye, Tag, Sparkles, 
-  TrendingUp, GitBranch, MessageSquare, Share2, Download, 
+import {
+  Plus, Search, Filter, Grid, List, MoreHorizontal, FileText,
+  Folder, Clock, Users, Star, Edit3, Eye, Tag, Sparkles,
+  TrendingUp, GitBranch, MessageSquare, Share2, Download,
   Copy, Trash2, Archive, ChevronDown, SortAsc, Calendar,
   CheckCircle, AlertCircle, FileQuestion, BarChart3, Zap,
   Globe, Lock, History, BookOpen, Database, FileSearch, HeartPulse
@@ -199,7 +199,7 @@ export default function KnowledgePage() {
         <div className="flex items-center gap-3">
           {quickActions.map((action) => (
             <Link key={action.label} href={action.href}>
-              <button 
+              <button
                 className="flex items-center gap-2 h-10 px-5 bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl text-sm text-[var(--dash-text-secondary)] hover:border-[var(--brand)] hover:text-[var(--brand)] transition-all"
               >
                 <span style={{ color: action.color }}>
@@ -358,21 +358,19 @@ export default function KnowledgePage() {
             <button
               key={cat.name}
               onClick={() => setSelectedCategory(cat.name)}
-              className={`px-5 py-3 rounded-xl text-sm font-medium transition-all flex items-center gap-2 ${
-                selectedCategory === cat.name
+              className={`px-5 py-3 rounded-xl text-sm font-medium transition-all flex items-center gap-2 ${selectedCategory === cat.name
                   ? "bg-[var(--brand)] text-white shadow-sm"
                   : "bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] text-[var(--dash-text-secondary)] hover:border-[var(--brand)] hover:text-[var(--brand)]"
-              }`}
+                }`}
             >
               <span style={{ color: selectedCategory === cat.name ? 'white' : cat.color }}>
                 <Icon className="w-4 h-4" />
               </span>
               {cat.name}
-              <span className={`px-1.5 py-0.5 text-xs rounded-md ${
-                selectedCategory === cat.name 
-                  ? 'bg-white/20 text-white' 
+              <span className={`px-1.5 py-0.5 text-xs rounded-md ${selectedCategory === cat.name
+                  ? 'bg-white/20 text-white'
                   : 'bg-[var(--surface-ground)] text-[var(--dash-text-muted)]'
-              }`}>
+                }`}>
                 {cat.count}
               </span>
             </button>
@@ -436,7 +434,7 @@ export default function KnowledgePage() {
         {viewMode === 'list' ? (
           <div className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl overflow-hidden flex flex-col flex-1 min-h-0">
             {/* Table Header */}
-            <div className="grid grid-cols-12 gap-4 px-6 py-3 bg-[var(--surface-ground)] border-b border-[var(--dash-border-subtle)] text-xs font-medium text-[var(--dash-text-muted)] uppercase tracking-wider">
+            <div className="hidden md:grid grid-cols-12 gap-4 px-6 py-3 bg-[var(--surface-ground)] border-b border-[var(--dash-border-subtle)] text-xs font-medium text-[var(--dash-text-muted)] uppercase tracking-wider">
               <div className="col-span-5">Document</div>
               <div className="col-span-2">Category</div>
               <div className="col-span-1 text-center">Status</div>
@@ -447,61 +445,99 @@ export default function KnowledgePage() {
             <div className="divide-y divide-[var(--dash-border-subtle)] flex-1 min-h-0 overflow-auto">
               {filteredDocs.map((doc) => (
                 <Link key={doc.id} href={`/dashboard/knowledge/${doc.id}`}>
-                  <div className="grid grid-cols-12 gap-4 px-6 py-4 hover:bg-[var(--surface-hover)] transition-colors cursor-pointer group items-center">
-                    {/* Document Info */}
-                    <div className="col-span-5 flex items-center gap-4 min-w-0">
-                      <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: categories.find(c => c.name === doc.category)?.color + '15' }}>
-                        <FileText className="w-5 h-5" style={{ color: categories.find(c => c.name === doc.category)?.color }} />
-                      </div>
-                      <div className="min-w-0">
-                        <div className="flex items-center gap-2">
-                          <h3 className="font-medium text-[var(--dash-text-primary)] group-hover:text-[var(--brand)] truncate">
-                            {doc.title}
-                          </h3>
-                          {doc.starred && <Star className="w-4 h-4 text-amber-500 fill-amber-500 flex-shrink-0" />}
-                          {getVisibilityIcon(doc.visibility)}
+                  <div className="block hover:bg-[var(--surface-hover)] transition-colors cursor-pointer group">
+                    {/* Desktop Table View */}
+                    <div className="hidden md:grid grid-cols-12 gap-4 px-6 py-4 items-center">
+                      {/* Document Info */}
+                      <div className="col-span-5 flex items-center gap-4 min-w-0">
+                        <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: categories.find(c => c.name === doc.category)?.color + '15' }}>
+                          <FileText className="w-5 h-5" style={{ color: categories.find(c => c.name === doc.category)?.color }} />
                         </div>
-                        <p className="text-sm text-[var(--dash-text-tertiary)] truncate">{doc.description}</p>
+                        <div className="min-w-0">
+                          <div className="flex items-center gap-2">
+                            <h3 className="font-medium text-[var(--dash-text-primary)] group-hover:text-[var(--brand)] truncate">
+                              {doc.title}
+                            </h3>
+                            {doc.starred && <Star className="w-4 h-4 text-amber-500 fill-amber-500 flex-shrink-0" />}
+                            {getVisibilityIcon(doc.visibility)}
+                          </div>
+                          <p className="text-sm text-[var(--dash-text-tertiary)] truncate">{doc.description}</p>
+                        </div>
+                      </div>
+                      {/* Category */}
+                      <div className="col-span-2">
+                        <span className="text-sm text-[var(--dash-text-secondary)]">{doc.category}</span>
+                      </div>
+                      {/* Status */}
+                      <div className="col-span-1 text-center">
+                        <span className={`inline-flex px-3 py-1.5 text-xs font-medium rounded-full ${getStateColor(doc.state)}`}>
+                          {doc.state.replace("_", " ")}
+                        </span>
+                      </div>
+                      {/* AI Score */}
+                      <div className="col-span-1 text-center">
+                        <span className={`inline-flex items-center gap-1 text-sm font-medium ${getAiScoreColor(doc.aiScore)}`}>
+                          <Sparkles className="w-3.5 h-3.5" />
+                          {doc.aiScore}%
+                        </span>
+                      </div>
+                      {/* Updated */}
+                      <div className="col-span-2">
+                        <p className="text-sm text-[var(--dash-text-secondary)]">{doc.updatedAt}</p>
+                        <p className="text-xs text-[var(--dash-text-muted)]">by {doc.lastEditor}</p>
+                      </div>
+                      {/* Actions */}
+                      <div className="col-span-1 flex items-center justify-end gap-1">
+                        <div className="flex items-center gap-1 text-xs text-[var(--dash-text-muted)]">
+                          <Eye className="w-3.5 h-3.5" />
+                          {doc.views.toLocaleString()}
+                        </div>
+                        <div className="flex items-center gap-1 text-xs text-[var(--dash-text-muted)] ml-2">
+                          <MessageSquare className="w-3.5 h-3.5" />
+                          {doc.comments}
+                        </div>
+                        <button
+                          className="p-1.5 rounded-lg hover:bg-[var(--surface-ground)] text-[var(--dash-text-tertiary)] ml-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                          onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+                        >
+                          <MoreHorizontal className="w-4 h-4" />
+                        </button>
                       </div>
                     </div>
-                    {/* Category */}
-                    <div className="col-span-2">
-                      <span className="text-sm text-[var(--dash-text-secondary)]">{doc.category}</span>
-                    </div>
-                    {/* Status */}
-                    <div className="col-span-1 text-center">
-                      <span className={`inline-flex px-3 py-1.5 text-xs font-medium rounded-full ${getStateColor(doc.state)}`}>
-                        {doc.state.replace("_", " ")}
-                      </span>
-                    </div>
-                    {/* AI Score */}
-                    <div className="col-span-1 text-center">
-                      <span className={`inline-flex items-center gap-1 text-sm font-medium ${getAiScoreColor(doc.aiScore)}`}>
-                        <Sparkles className="w-3.5 h-3.5" />
-                        {doc.aiScore}%
-                      </span>
-                    </div>
-                    {/* Updated */}
-                    <div className="col-span-2">
-                      <p className="text-sm text-[var(--dash-text-secondary)]">{doc.updatedAt}</p>
-                      <p className="text-xs text-[var(--dash-text-muted)]">by {doc.lastEditor}</p>
-                    </div>
-                    {/* Actions */}
-                    <div className="col-span-1 flex items-center justify-end gap-1">
-                      <div className="flex items-center gap-1 text-xs text-[var(--dash-text-muted)]">
-                        <Eye className="w-3.5 h-3.5" />
-                        {doc.views.toLocaleString()}
+
+                    {/* Mobile Card View */}
+                    <div className="flex md:hidden flex-col gap-3 p-4">
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex items-start gap-3 min-w-0">
+                          <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: categories.find(c => c.name === doc.category)?.color + '15' }}>
+                            <FileText className="w-5 h-5" style={{ color: categories.find(c => c.name === doc.category)?.color }} />
+                          </div>
+                          <div className="min-w-0">
+                            <div className="flex items-center gap-1.5 mb-0.5">
+                              <h3 className="font-medium text-[var(--dash-text-primary)] text-sm line-clamp-1">{doc.title}</h3>
+                              {doc.starred && <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500 flex-shrink-0" />}
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <span className={`inline-flex px-2 py-0.5 text-[10px] font-medium rounded-full ${getStateColor(doc.state)}`}>
+                                {doc.state.replace("_", " ")}
+                              </span>
+                              <span className="text-xs text-[var(--dash-text-secondary)] flex items-center gap-1">
+                                <Sparkles className="w-3 h-3" /> {doc.aiScore}%
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <button className="p-1 text-[var(--dash-text-tertiary)]"><MoreHorizontal className="w-4 h-4" /></button>
                       </div>
-                      <div className="flex items-center gap-1 text-xs text-[var(--dash-text-muted)] ml-2">
-                        <MessageSquare className="w-3.5 h-3.5" />
-                        {doc.comments}
+
+                      <div className="flex items-center justify-between text-xs text-[var(--dash-text-muted)] pt-2 border-t border-[var(--dash-border-subtle)]">
+                        <span className="truncate max-w-[120px]">by {doc.lastEditor}</span>
+                        <div className="flex items-center gap-3">
+                          <span className="flex items-center gap-1"><Eye className="w-3 h-3" /> {doc.views}</span>
+                          <span className="flex items-center gap-1"><MessageSquare className="w-3 h-3" /> {doc.comments}</span>
+                          <span>{doc.updatedAt}</span>
+                        </div>
                       </div>
-                      <button 
-                        className="p-1.5 rounded-lg hover:bg-[var(--surface-ground)] text-[var(--dash-text-tertiary)] ml-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                        onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
-                      >
-                        <MoreHorizontal className="w-4 h-4" />
-                      </button>
                     </div>
                   </div>
                 </Link>
@@ -529,7 +565,7 @@ export default function KnowledgePage() {
                       {doc.title}
                     </h3>
                     <p className="text-sm text-[var(--dash-text-tertiary)] line-clamp-2 mb-4 flex-1">{doc.description}</p>
-                    
+
                     {/* Meta row */}
                     <div className="flex items-center justify-between text-xs text-[var(--dash-text-muted)] mb-3">
                       <span className="flex items-center gap-1">
@@ -541,7 +577,7 @@ export default function KnowledgePage() {
                         {doc.aiScore}% AI Score
                       </span>
                     </div>
-                    
+
                     {/* Stats row */}
                     <div className="flex items-center gap-4 text-xs text-[var(--dash-text-muted)] pt-3 border-t border-[var(--dash-border-subtle)]">
                       <span className="flex items-center gap-1">

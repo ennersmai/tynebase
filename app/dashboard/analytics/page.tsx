@@ -4,14 +4,14 @@ import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { DashboardPageHeader } from "@/components/layout/DashboardPageHeader";
-import { 
-  BarChart3, 
-  TrendingUp, 
+import {
+  BarChart3,
+  TrendingUp,
   TrendingDown,
-  Users, 
-  FileText, 
-  Eye, 
-  Clock, 
+  Users,
+  FileText,
+  Eye,
+  Clock,
   Search,
   ArrowUpRight,
   ArrowDownRight,
@@ -28,34 +28,34 @@ const timeRanges = [
 ];
 
 const stats = [
-  { 
-    label: "Total Views", 
-    value: "24,521", 
-    change: "+12.5%", 
+  {
+    label: "Total Views",
+    value: "24,521",
+    change: "+12.5%",
     trend: "up",
     icon: Eye,
     color: "blue"
   },
-  { 
-    label: "Unique Visitors", 
-    value: "3,847", 
-    change: "+8.2%", 
+  {
+    label: "Unique Visitors",
+    value: "3,847",
+    change: "+8.2%",
     trend: "up",
     icon: Users,
     color: "purple"
   },
-  { 
-    label: "Documents", 
-    value: "156", 
-    change: "+23", 
+  {
+    label: "Documents",
+    value: "156",
+    change: "+23",
     trend: "up",
     icon: FileText,
     color: "pink"
   },
-  { 
-    label: "Avg. Time on Page", 
-    value: "4m 32s", 
-    change: "-0.8%", 
+  {
+    label: "Avg. Time on Page",
+    value: "4m 32s",
+    change: "-0.8%",
     trend: "down",
     icon: Clock,
     color: "cyan"
@@ -109,11 +109,10 @@ export default function AnalyticsPage() {
                 <button
                   key={range.id}
                   onClick={() => setTimeRange(range.id)}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-md transition-all ${
-                    timeRange === range.id
+                  className={`px-3 py-1.5 text-sm font-medium rounded-md transition-all ${timeRange === range.id
                       ? "bg-[var(--brand-primary)] text-white"
                       : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-                  }`}
+                    }`}
                 >
                   {range.label}
                 </button>
@@ -131,14 +130,13 @@ export default function AnalyticsPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat) => (
           <Card key={stat.label}>
-            <CardContent className="p-5">
+            <CardContent className="p-6">
               <div className="flex items-start justify-between">
                 <div className={`w-10 h-10 rounded-lg bg-[var(--brand)]/10 flex items-center justify-center`}>
                   <stat.icon className={`w-5 h-5 text-[var(--brand)]`} />
                 </div>
-                <div className={`flex items-center gap-1 text-sm font-medium ${
-                  stat.trend === "up" ? "text-green-500" : "text-red-500"
-                }`}>
+                <div className={`flex items-center gap-1 text-sm font-medium ${stat.trend === "up" ? "text-green-500" : "text-red-500"
+                  }`}>
                   {stat.trend === "up" ? (
                     <ArrowUpRight className="w-4 h-4" />
                   ) : (
@@ -168,12 +166,12 @@ export default function AnalyticsPage() {
               {activityData.map((day) => (
                 <div key={day.day} className="flex-1 flex flex-col items-center gap-2">
                   <div className="w-full flex flex-col gap-1">
-                    <div 
+                    <div
                       className="w-full bg-[var(--brand-primary)] rounded-t-sm transition-all hover:opacity-80"
                       style={{ height: `${(day.views / maxViews) * 180}px` }}
                       title={`${day.views} views`}
                     />
-                    <div 
+                    <div
                       className="w-full bg-[var(--accent-purple)] rounded-t-sm transition-all hover:opacity-80"
                       style={{ height: `${(day.edits / maxViews) * 180}px` }}
                       title={`${day.edits} edits`}
@@ -217,9 +215,8 @@ export default function AnalyticsPage() {
                       {doc.views.toLocaleString()} views
                     </p>
                   </div>
-                  <div className={`flex items-center gap-1 text-xs font-medium ${
-                    doc.change >= 0 ? "text-green-500" : "text-red-500"
-                  }`}>
+                  <div className={`flex items-center gap-1 text-xs font-medium ${doc.change >= 0 ? "text-green-500" : "text-red-500"
+                    }`}>
                     {doc.change >= 0 ? (
                       <TrendingUp className="w-3 h-3" />
                     ) : (

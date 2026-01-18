@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/components/ui/Toast";
-import { 
-  User, Mail, Lock, Bell, Shield, Globe, Camera, 
+import {
+  User, Mail, Lock, Bell, Shield, Globe, Camera,
   Save, Eye, EyeOff, Check
 } from "lucide-react";
 
@@ -13,7 +13,7 @@ export default function ProfileSettingsPage() {
   const { addToast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  
+
   const [formData, setFormData] = useState({
     fullName: user?.full_name || "",
     email: user?.email || "",
@@ -78,7 +78,7 @@ export default function ProfileSettingsPage() {
           </h2>
         </div>
         <div className="p-6">
-          <div className="flex items-start gap-6">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
             {/* Avatar */}
             <div className="flex-shrink-0">
               <div className="relative">
@@ -90,7 +90,7 @@ export default function ProfileSettingsPage() {
                 </button>
               </div>
             </div>
-            
+
             {/* Form Fields */}
             <div className="flex-1 space-y-4">
               <div>
@@ -155,7 +155,7 @@ export default function ProfileSettingsPage() {
               </button>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-[var(--dash-text-secondary)] mb-2">
                 New Password
@@ -184,7 +184,7 @@ export default function ProfileSettingsPage() {
           <button
             onClick={handlePasswordChange}
             disabled={isLoading || !formData.currentPassword || !formData.newPassword}
-            className="px-5 py-2.5 bg-[var(--surface-ground)] border border-[var(--dash-border-subtle)] text-[var(--dash-text-secondary)] rounded-lg font-medium hover:border-[var(--brand)] hover:text-[var(--brand)] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            className="w-full sm:w-auto px-5 py-2.5 bg-[var(--surface-ground)] border border-[var(--dash-border-subtle)] text-[var(--dash-text-secondary)] rounded-lg font-medium hover:border-[var(--brand)] hover:text-[var(--brand)] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
             Update Password
           </button>
@@ -207,19 +207,17 @@ export default function ProfileSettingsPage() {
             { key: "marketingEmails", label: "Marketing Emails", desc: "Receive news and product updates" },
           ].map((item) => (
             <div key={item.key} className="flex items-center justify-between py-3 border-b border-[var(--dash-border-subtle)] last:border-0 last:pb-0">
-              <div>
+              <div className="flex-1 pr-4">
                 <p className="font-medium text-[var(--dash-text-primary)]">{item.label}</p>
                 <p className="text-sm text-[var(--dash-text-tertiary)]">{item.desc}</p>
               </div>
               <button
                 onClick={() => setFormData({ ...formData, [item.key]: !formData[item.key as keyof typeof formData] })}
-                className={`w-12 h-7 rounded-full transition-colors relative ${
-                  formData[item.key as keyof typeof formData] ? "bg-[var(--brand)]" : "bg-[var(--dash-border-default)]"
-                }`}
+                className={`w-12 h-7 rounded-full transition-colors relative flex-shrink-0 ${formData[item.key as keyof typeof formData] ? "bg-[var(--brand)]" : "bg-[var(--dash-border-default)]"
+                  }`}
               >
-                <span className={`absolute top-1 w-5 h-5 bg-white rounded-full shadow transition-transform ${
-                  formData[item.key as keyof typeof formData] ? "translate-x-6" : "translate-x-1"
-                }`} />
+                <span className={`absolute left-1 top-1/2 -translate-y-1/2 w-5 h-5 bg-white rounded-full shadow transition-transform ${formData[item.key as keyof typeof formData] ? "translate-x-5" : "translate-x-0"
+                  }`} />
               </button>
             </div>
           ))}
@@ -234,7 +232,7 @@ export default function ProfileSettingsPage() {
             Regional Settings
           </h2>
         </div>
-        <div className="p-6 grid grid-cols-2 gap-6">
+        <div className="p-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
             <label className="block text-sm font-medium text-[var(--dash-text-secondary)] mb-2">
               Language
@@ -274,7 +272,7 @@ export default function ProfileSettingsPage() {
         <button
           onClick={handleSave}
           disabled={isLoading}
-          className="flex items-center gap-2 px-6 py-3 bg-[var(--brand)] hover:bg-[var(--brand-dark)] disabled:opacity-50 text-white rounded-xl font-semibold transition-all hover:shadow-lg"
+          className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-[var(--brand)] hover:bg-[var(--brand-dark)] disabled:opacity-50 text-white rounded-xl font-semibold transition-all hover:shadow-lg"
         >
           {isLoading ? (
             <>

@@ -17,6 +17,7 @@ import {
   ListTree,
   FileText,
 } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/Card";
 
 type NormalizedDoc = {
   id: string;
@@ -266,7 +267,7 @@ export default function NormalizedMarkdownPage() {
             </button>
           </div>
 
-          <div className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl overflow-hidden">
+          <Card className="overflow-hidden">
             <div className="px-4 py-3 border-b border-[var(--dash-border-subtle)] bg-[var(--surface-ground)]">
               <div className="flex items-center gap-2">
                 <FileSearch className="w-4 h-4 text-[var(--dash-text-tertiary)]" />
@@ -291,9 +292,8 @@ export default function NormalizedMarkdownPage() {
                     <button
                       key={d.id}
                       onClick={() => setSelectedId(d.id)}
-                      className={`w-full text-left px-4 py-3 hover:bg-[var(--surface-hover)] transition-colors ${
-                        active ? "bg-[var(--brand)]/10" : ""
-                      }`}
+                      className={`w-full text-left px-4 py-3 hover:bg-[var(--surface-hover)] transition-colors ${active ? "bg-[var(--brand)]/10" : ""
+                        }`}
                     >
                       <p className="font-semibold text-[var(--dash-text-primary)] truncate">{d.title}</p>
                       <p className="text-xs text-[var(--dash-text-muted)] truncate mt-0.5">
@@ -304,9 +304,9 @@ export default function NormalizedMarkdownPage() {
                   );
                 })}
             </div>
-          </div>
+          </Card>
 
-          <div className="rounded-xl border border-[var(--dash-border-subtle)] bg-[var(--surface-card)] overflow-hidden">
+          <Card className="overflow-hidden">
             <div className="px-4 py-3 border-b border-[var(--dash-border-subtle)] bg-[var(--surface-ground)]">
               <div className="flex items-center gap-2">
                 <ListTree className="w-4 h-4 text-[var(--dash-text-tertiary)]" />
@@ -337,9 +337,9 @@ export default function NormalizedMarkdownPage() {
                 </div>
               )}
             </div>
-          </div>
+          </Card>
 
-          <div className="rounded-xl border border-[var(--dash-border-subtle)] bg-[var(--surface-card)] p-4">
+          <Card className="p-4">
             <div className="flex items-center gap-2">
               <Database className="w-4 h-4 text-[var(--dash-text-tertiary)]" />
               <p className="text-sm font-semibold text-[var(--dash-text-primary)]">Normalization signals</p>
@@ -368,12 +368,12 @@ export default function NormalizedMarkdownPage() {
               <Sparkles className="w-4 h-4 text-[var(--brand)]" />
               PRD Part IV: normalize to Markdown before semantic chunking.
             </div>
-          </div>
+          </Card>
         </div>
 
         <div className="col-span-12 xl:col-span-8">
           {!selected && (
-            <div className="rounded-2xl border border-[var(--dash-border-subtle)] bg-[var(--surface-card)] overflow-hidden">
+            <Card className="overflow-hidden">
               <div className="px-6 py-5 border-b border-[var(--dash-border-subtle)] bg-[var(--surface-ground)]">
                 <div className="flex items-center gap-2">
                   <FileText className="w-4 h-4 text-[var(--dash-text-tertiary)]" />
@@ -386,12 +386,12 @@ export default function NormalizedMarkdownPage() {
               <div className="px-6 py-10 text-sm text-[var(--dash-text-tertiary)]">
                 Your normalized markdown is stored as `documents.normalized_md`.
               </div>
-            </div>
+            </Card>
           )}
 
           {selected && (
             <div className="space-y-4">
-              <div className="rounded-2xl border border-[var(--dash-border-subtle)] bg-[var(--surface-card)] overflow-hidden">
+              <Card className="overflow-hidden">
                 <div className="px-6 py-5 border-b border-[var(--dash-border-subtle)] bg-[var(--surface-ground)]">
                   <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0">
@@ -434,7 +434,7 @@ export default function NormalizedMarkdownPage() {
                     <p className="text-lg font-semibold text-[var(--dash-text-primary)]">{selectedSignals.images}</p>
                   </div>
                 </div>
-              </div>
+              </Card>
 
               <MarkdownReader content={selected.normalizedMd} />
             </div>
