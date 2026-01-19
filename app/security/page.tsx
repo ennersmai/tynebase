@@ -124,7 +124,7 @@ export default function SecurityPage() {
           <div style={{ width: '100%', maxWidth: '1152px' }}>
             <h2 style={{ fontSize: '1.875rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '16px', textAlign: 'center' }}>Security Practices</h2>
             <p style={{ color: 'var(--text-secondary)', textAlign: 'center', marginBottom: '48px', maxWidth: '672px', marginLeft: 'auto', marginRight: 'auto' }}>
-              Comprehensive security measures protecting your data at every layer
+              Enterprise-grade security features designed for organisations with strict compliance requirements
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -166,7 +166,7 @@ export default function SecurityPage() {
                 <div>
                   <h3 className="text-2xl font-semibold text-[var(--text-primary)] mb-2">Incident Response</h3>
                   <p className="text-[var(--text-secondary)] mb-6">
-                    We maintain a comprehensive incident response plan to quickly identify, contain, and resolve security incidents
+                    We maintain a comprehensive incident response plan to quickly identify, contain and resolve security incidents
                   </p>
                 </div>
               </div>

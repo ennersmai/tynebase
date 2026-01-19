@@ -31,7 +31,7 @@ export default function TermsPage() {
 
             <div>
               <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-4">2. Description of Service</h2>
-              <p className="leading-relaxed">TyneBase provides a knowledge management platform that enables organizations to create, organize, and share documentation. Our services include document editing, AI-assisted content generation, team collaboration, and white-label branding capabilities.</p>
+              <p className="leading-relaxed">TyneBase provides a knowledge management platform that enables organizations to create, organise, and share documentation. Our services include document editing, AI-assisted content generation, team collaboration, and white-label branding capabilities.</p>
             </div>
 
             <div>

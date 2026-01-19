@@ -78,7 +78,7 @@ export default function CollectionsPage() {
           <div>
             <h1 className="text-2xl font-bold text-[var(--dash-text-primary)]">Collections</h1>
             <p className="text-[var(--dash-text-tertiary)] mt-1">
-              Curate docs into structured collections with access control.
+              Curate articles into structured collections with access control.
             </p>
           </div>
           <div className="flex items-center gap-3">

@@ -52,7 +52,7 @@ export function DashboardHeader({ onOpenCommandPalette, onMenuClick }: Dashboard
             className="w-full hidden sm:flex items-center gap-3 px-4 py-2.5 bg-[var(--surface-ground)] border border-[var(--dash-border-subtle)] rounded-lg text-[var(--dash-text-tertiary)] hover:border-[var(--dash-border-default)] transition-colors"
           >
             <Search className="w-4 h-4" />
-            <span className="flex-1 text-left text-sm">Search documents, templates...</span>
+            <span className="flex-1 text-left text-sm">Search documents, templates and quick actions…</span>
             <kbd className="hidden md:flex items-center gap-1 px-2 py-0.5 bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded text-xs font-medium">
               <Command className="w-3 h-3" />
               <span>K</span>

@@ -211,7 +211,7 @@ curl -X GET "https://api.tynebase.com/v1/documents?state=published&limit=10" \\
       "state": "published",
       "category": {
         "id": "cat_xyz",
-        "name": "Quick Start"
+        "name": "Quick start"
       },
       "author": {
         "id": "usr_123",
@@ -696,7 +696,7 @@ Set up a local environment to develop and test TyneBase API integrations.
 - Docker (optional, for local API mock)
 - Git
 
-## Quick Start with SDK
+## Quick start with SDK
 
 ### JavaScript/TypeScript
 

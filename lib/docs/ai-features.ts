@@ -427,7 +427,7 @@ For technical documentation:
 
 ## Suggested Improvements
 
-AI continuously analyzes your docs and suggests:
+AI continuously Analyses your docs and suggests:
 
 - **Stale Content**: Needs updating
 - **Missing Sections**: Gaps in coverage

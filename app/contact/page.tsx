@@ -129,7 +129,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-[var(--text-primary)] mb-1">Email</h3>
                     <p className="text-[var(--text-secondary)]">support@tynebase.com</p>
-                    <p className="text-sm text-[var(--text-muted)]">We'll respond within 24 hours</p>
+                    <p className="text-sm text-[var(--text-muted)]">We'll respond within 48 hours</p>
                   </div>
                 </div>
               </div>

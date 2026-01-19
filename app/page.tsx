@@ -9,13 +9,13 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { CookieConsent } from "@/components/ui/CookieConsent";
 
 const enterpriseFeatures = [
-  { category: 'security', title: 'SSO Integration', description: 'Enable secure, seamless access with single sign-on (SSO) through providers like Okta, Google Workspace, and Azure AD.', icon: Key },
+  { category: 'security', title: 'SSO Integration', description: 'Enable secure, seamless access with single sign-on (SSO) through providers like Okta, Google Workspace and Azure AD.', icon: Key },
   { category: 'security', title: 'Advanced Provisioning', description: 'Automate user lifecycle management with SCIM provisioning for faster, safer onboarding and offboarding.', icon: UserCheck },
   { category: 'security', title: 'Granular Permissions', description: 'Control access at every level with flexible, detailed permissions for teams and projects.', icon: Lock },
   { category: 'compliance', title: 'SOC 2 Type II Compliance', description: 'Meet rigorous security standards with SOC II Type II certification, ensuring enterprise-grade data protection.', icon: Shield },
   { category: 'compliance', title: 'HIPAA Compliance', description: 'Execute a Business Associate Agreement (BAA) to ensure HIPAA-compliant infrastructure with encryption and access controls.', icon: ShieldCheck },
   { category: 'compliance', title: 'GDPR Compliance', description: 'Operate confidently across regions with GDPR-compliant practices that safeguard data privacy.', icon: Globe },
-  { category: 'customization', title: 'Personalized Onboarding', description: 'Kickstart adoption with onboarding tailored to your workflows, guided by our customer success team.', icon: Headphones },
+  { category: 'customization', title: 'Personalised Onboarding', description: 'Kickstart adoption with onboarding tailored to your workflows, guided by our customer success team.', icon: Headphones },
   { category: 'customization', title: 'Reader-Only Roles', description: 'Share knowledge broadly while maintaining control by assigning read-only access to specific users.', icon: Users },
   { category: 'customization', title: 'SLA Guarantee', description: 'Count on guaranteed uptime and response times with a service-level agreement built for enterprise reliability.', icon: Clock },
   { category: 'customization', title: 'Dedicated Support', description: "Access priority, hands-on support from specialists who understand your team's needs.", icon: Headphones },
@@ -42,7 +42,7 @@ const knowledgeFeatures = [
   {
     id: 'bulk-ops',
     title: 'Bulk operations for knowledge management',
-    description: 'Move, archive, or update multiple documents at once with powerful batch actions.',
+    description: 'Move, archive or update multiple documents at once with powerful batch actions.',
     image: '/images/feature-bulk.png'
   },
   {
@@ -157,34 +157,32 @@ export default function Home() {
                 height={72}
                 style={{ width: '42px', height: '42px' }}
               />
-              <span style={{ fontSize: '16px', color: 'var(--text-secondary)' }}>Bridging the Gap Between What You Know and What You Can Find.</span>
+              <span style={{ fontSize: '16px', color: 'var(--text-secondary)' }}>Bridging the gap between what you know and what you can find</span>
             </div>
           </div>
 
           {/* Main headline */}
           <h1 style={{ fontSize: 'clamp(3rem, 8vw, 5rem)', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.05, letterSpacing: '-0.02em', marginBottom: '48px', padding: '16px 0' }} className="animate-in animate-delay-2">
-            Build knowledge bases
+            Build a knowledge base
             <br />
-            <span className="text-gradient text-glow">that actually scale</span>
+            <span className="text-gradient text-glow">that actually scales</span>
           </h1>
 
           {/* Subheadline */}
           <div style={{ textAlign: 'center', marginBottom: '48px', padding: '24px 0' }} className="animate-in animate-delay-3">
-            <p style={{ fontSize: '24px', color: 'var(--text-primary)', maxWidth: '900px', margin: '0 auto 32px auto', lineHeight: 1.5, fontWeight: 500, textAlign: 'center' }}>
-              The AI-Native Knowledge Base That Integrates With Your Team
-            </p>
-
-            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'left', gap: '12px', maxWidth: '800px', margin: '0 auto' }}>
-              <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: 'var(--brand)', marginTop: '8px', flexShrink: 0 }} />
-              <p style={{ fontSize: '18px', color: 'var(--text-secondary)', lineHeight: 1.6, textAlign: 'left' }}>
-                Knowledge is no longer a static archive:
-                <br />
-                It is a semantic conversation. Use AI to your teams advantage, not only to create content, but to find and organize it.
-                <br />
-                <br />
-                Deploy a white-label platform that transforms your team's raw data into refined, accessible wisdom, seamlessly branded as your own.
-                <br />
-              </p>
+            <div style={{ maxWidth: '900px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', textAlign: 'left' }}>
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--brand)', marginTop: '8px', flexShrink: 0 }}></span>
+                <p style={{ fontSize: '18px', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>
+                  Knowledge is no longer a static archive - it is a semantic conversation. Utilise AI to your company's advantage. Not only to create content, but to find, organise and maintain it.
+                </p>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', textAlign: 'left' }}>
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--brand)', marginTop: '8px', flexShrink: 0 }}></span>
+                <p style={{ fontSize: '18px', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>
+                  Deploy a white-label platform that transforms your team's raw data into refined, accessible knowledge, effortlessly branded as your own.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -233,11 +231,22 @@ export default function Home() {
             </div>
             <p style={{ fontSize: '14px', fontWeight: 600, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '24px' }}>Features</p>
             <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '-0.02em', marginBottom: '32px' }}>
-              Everything you need to <span className="text-gradient">manage knowledge</span>
+              Everything you need to <span className="text-gradient">manage your knowledge</span>
             </h2>
-            <p style={{ fontSize: '20px', color: 'var(--text-secondary)', maxWidth: '800px', margin: '0 auto 64px auto', textAlign: 'center', lineHeight: 1.9 }}>
-              A complete platform for documentation, community, and team knowledge management. Create, organize, and share information with powerful AI assistance, real-time collaboration, and enterprise-grade security.
-            </p>
+            <div style={{ maxWidth: '800px', margin: '0 auto 64px auto', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', textAlign: 'left' }}>
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--brand)', marginTop: '10px', flexShrink: 0 }}></span>
+                <p style={{ fontSize: '20px', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>
+                  A complete platform for documentation, community and team knowledge management.
+                </p>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', textAlign: 'left' }}>
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--brand)', marginTop: '10px', flexShrink: 0 }}></span>
+                <p style={{ fontSize: '20px', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>
+                  Create, organise and keep your information up to date with powerful AI assistance, real-time collaboration and enterprise-grade security.
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Bento grid */}
@@ -252,7 +261,7 @@ export default function Home() {
               </h3>
               <p style={{ color: 'var(--text-secondary)', marginBottom: '24px', maxWidth: '400px', lineHeight: 1.6 }}>
                 Create beautiful, structured documentation with our powerful block-based editor.
-                Organize content with nested pages, real-time collaboration, version history, and instant search across all your knowledge.
+                Organise content with nested pages, real-time collaboration, version control and instant search across all your knowledge.
               </p>
               <div style={{ marginTop: 'auto', paddingTop: '24px' }}>
                 <div style={{ background: 'var(--bg-secondary)', borderRadius: '12px', padding: '20px', border: '1px solid var(--border-subtle)' }}>
@@ -308,7 +317,7 @@ export default function Home() {
                 AI-Powered Assistant
               </h3>
               <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                Generate documentation from prompts, videos, or screenshots. Ask questions and get instant answers from your knowledge base. EU-compliant AI with advanced RAG retrieval keeps your data secure.
+                Generate documentation from prompts, videos and screenshots. Ask questions and get instant answers from your knowledge base. EU-compliant AI with advanced RAG retrieval, keeping your data secure.
               </p>
             </div>
 
@@ -321,7 +330,7 @@ export default function Home() {
                 Real-Time Collaboration
               </h3>
               <p className="text-sm text-[var(--text-secondary)]">
-                Work together seamlessly with live editing, comments, mentions, and notifications. See who's viewing and editing in real-time with presence indicators.
+                Work together seamlessly with live editing, comments, mentions and notifications. See who is viewing and editing in real-time with presence indicators.
               </p>
             </div>
 
@@ -334,7 +343,7 @@ export default function Home() {
                 Multi-Tenant & White-Label
               </h3>
               <p className="text-sm text-[var(--text-secondary)]">
-                Complete customization for each workspace. Custom domains, branded colors, logos, and subdomain routing. Perfect for agencies and SaaS platforms.
+                Complete customisation for each workspace. Custom domains, branded colours, logos and subdomain routing – perfect for agencies and SaaS platforms.
               </p>
             </div>
 
@@ -350,7 +359,7 @@ export default function Home() {
                   Enterprise-Grade Performance & Security
                 </h3>
                 <p className="text-sm text-[var(--text-secondary)] max-w-lg leading-relaxed mb-8">
-                  Lightning-fast performance with sub-100ms response times on a global edge network. Enterprise-ready with SOC2 compliance, GDPR adherence, role-based access control, and audit logs.
+                  Lightning-fast performance with sub-100ms response times on a global edge network. Enterprise-ready with SOC2 compliance, GDPR adherence, role-based access control and audit logs.
                 </p>
 
                 {/* Features with icon on the right */}
@@ -403,10 +412,10 @@ export default function Home() {
             </div>
             <p style={{ fontSize: '14px', fontWeight: 600, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '24px' }}>Knowledge Management</p>
             <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '-0.02em', marginBottom: '32px' }}>
-              Knowledge bases get messy.  <br />  <span className="text-gradient text-glow">TyneBase doesn't.</span>
+              <span className="text-gradient text-glow">TyneBase</span> keeps your knowledge management simple
             </h2>
             <p style={{ fontSize: '20px', color: 'var(--text-secondary)', maxWidth: '800px', margin: '0 auto 64px auto', textAlign: 'center', lineHeight: 1.6 }}>
-              Built-in tools to keep your documentation accurate, organized, and up-to-date.
+              Built-in tools to keep your documentation accurate, organised and up-to-date.
             </p>
           </div>
 
@@ -458,10 +467,10 @@ export default function Home() {
             </div>
             <p style={{ fontSize: '14px', fontWeight: 600, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '24px' }}>Templates</p>
             <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '-0.02em', marginBottom: '32px' }}>
-              Templates that work for <span className="text-gradient text-glow">every team</span>
+              Templates that benefit <span className="text-gradient text-glow">every team</span>
             </h2>
             <p style={{ fontSize: '20px', color: 'var(--text-secondary)', maxWidth: '800px', margin: '0 auto 64px auto', textAlign: 'center', lineHeight: 1.6 }}>
-              Get started quickly with pre-built templates designed for your specific team needs.
+              Get started quickly with templates for your team's frequently used resources
             </p>
           </div>
 
@@ -511,7 +520,7 @@ export default function Home() {
               <p style={{ fontSize: '14px', fontWeight: 600, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>AI-Powered Search</p>
             </div>
             <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '-0.02em', marginBottom: '32px' }}>
-              What's the use of knowledge <span className="text-gradient">if you can't find it?</span>
+              Ensuring your knowledge is <span className="text-gradient">accessible, searchable and usable</span>
             </h2>
             <p style={{ fontSize: '20px', color: 'var(--text-secondary)', maxWidth: '800px', margin: '0 auto 64px auto', textAlign: 'center', lineHeight: 1.6 }}>
               Ask transforms scattered knowledge into instant answers, delivering the right information in seconds.
@@ -570,7 +579,7 @@ export default function Home() {
                     </p>
                     <ol className="mt-4 space-y-3 text-sm text-[var(--text-secondary)]">
                       <li>1. Navigate to <strong>Settings → Security → SSO Configuration</strong></li>
-                      <li>2. Select your identity provider (Okta, Azure AD, or Google Workspace)</li>
+                      <li>2. Select your identity provider (Okta, Azure AD or Google Workspace)</li>
                       <li>3. Enter your <strong>Entity ID</strong> and <strong>SSO URL</strong> from your IdP</li>
                       <li>4. Upload your SAML certificate and save changes</li>
                     </ol>
@@ -591,10 +600,10 @@ export default function Home() {
           <div style={{ textAlign: 'center', marginBottom: '96px' }}>
             <p style={{ fontSize: '14px', fontWeight: 600, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '24px' }}>Enterprise</p>
             <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '-0.02em', marginBottom: '32px' }}>
-              Scales with your <span className="text-gradient">ambitions</span>
+              We scale with your <span className="text-gradient">ambitions</span>
             </h2>
             <p style={{ fontSize: '20px', color: 'var(--text-secondary)', maxWidth: '800px', margin: '0 auto 64px auto', textAlign: 'center', lineHeight: 1.6 }}>
-              Enterprise-grade security, control, and flexibility to scale knowledge-sharing with confidence.
+              Enterprise-grade security, control and flexibility enabling scaled knowledge-sharing with confidence.
             </p>
           </div>
 
@@ -640,7 +649,7 @@ export default function Home() {
             </div>
             <p style={{ fontSize: '14px', fontWeight: 600, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '24px' }}>Pricing</p>
             <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '-0.02em', marginBottom: '24px' }}>
-              Start free, scale as you grow
+              Start free and scale as you grow
             </h2>
             <p style={{ fontSize: '20px', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto 40px auto', textAlign: 'center', lineHeight: 1.6 }}>
               No hidden fees. No credit card required.
@@ -693,7 +702,7 @@ export default function Home() {
               <div className="flex-1" style={{ display: 'flex', flexDirection: 'column' }}>
                 <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
                   <ul className="space-y-3">
-                    {['1 solo account', '100 documents max', '10 AI queries/month', 'Basic search', 'Community support'].map((feature) => (
+                    {['1 solo account', '100 documents max', '10 AI queries per month', 'Basic search', 'Community support'].map((feature) => (
                       <li key={feature} className="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
                         <Check className="w-4 h-4 text-[var(--brand)] flex-shrink-0" />
                         {feature}
@@ -731,7 +740,7 @@ export default function Home() {
               <div className="flex-1" style={{ display: 'flex', flexDirection: 'column' }}>
                 <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
                   <ul className="space-y-3">
-                    {['Up to 5 users', 'Unlimited documents', '1GB Storage limit', '100 AI queries/month', 'Full AI capabilities', 'Version control', 'Priority support'].map((feature) => (
+                    {['Up to 5 users', 'Unlimited documents', '1GB Storage limit', '100 AI queries per month', 'Full AI capabilities', 'Version control'].map((feature) => (
                       <li key={feature} className="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
                         <Check className="w-4 h-4 text-[var(--brand)] flex-shrink-0" />
                         {feature}
@@ -741,7 +750,7 @@ export default function Home() {
                 </div>
                 <div style={{ marginTop: '28px' }}>
                   <Link href="/signup" className="btn btn-primary w-full" style={{ padding: '16px 32px', fontSize: '15px' }}>
-                    Upgrade Now
+                    Get started
                   </Link>
                 </div>
               </div>
@@ -766,7 +775,7 @@ export default function Home() {
               <div className="flex-1" style={{ display: 'flex', flexDirection: 'column' }}>
                 <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
                   <ul className="space-y-3">
-                    {['Up to 10 users', 'Unlimited documents', '10GB Storage limit', '500 AI queries/month', 'White-label branding', 'Advanced analytics', 'Custom domain', 'Audit logs'].map((feature) => (
+                    {['Up to 10 users', 'Unlimited documents', '10GB Storage limit', '500 AI queries per month', 'White-label branding', 'Advanced analytics', 'Custom domain', 'Priority support', 'Audit logs'].map((feature) => (
                       <li key={feature} className="flex items-center gap-3 text-sm text-[var(--text-secondary)]" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
                         <Check className="w-4 h-4 text-[var(--brand)] flex-shrink-0" />
                         {feature}
@@ -776,7 +785,7 @@ export default function Home() {
                 </div>
                 <div style={{ marginTop: '28px' }}>
                   <Link href="/signup" className="btn btn-secondary w-full" style={{ padding: '16px 32px', fontSize: '15px' }}>
-                    Upgrade Now
+                    Get started
                   </Link>
                 </div>
               </div>
@@ -831,7 +840,7 @@ export default function Home() {
                 </h3>
                 <p className="text-[var(--text-secondary)]">
                   Purchase query top-ups anytime. Never run out of AI power for your team.
-                  <span className="block mt-1 text-xs text-[var(--text-muted)]">Available for all paid plans. Expire at month end.</span>
+                  <span className="block mt-1 text-xs text-[var(--text-muted)]">Available for all paid plans. Expires at month end.</span>
                 </p>
               </div>
               <div className="flex flex-col items-center gap-4">
@@ -863,10 +872,10 @@ export default function Home() {
             </div>
             <p style={{ fontSize: '14px', fontWeight: 600, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '32px' }}>Document Editor</p>
             <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '-0.02em', marginBottom: '32px' }}>
-              The editor that <span className="text-gradient text-glow">gets out of your way</span>
+              The editor that <span className="text-gradient text-glow">supports you</span>
             </h2>
             <p style={{ fontSize: '20px', color: 'var(--text-secondary)', maxWidth: '800px', margin: '0 auto 64px auto', textAlign: 'center', lineHeight: 1.6 }}>
-              A delightful writing experience. Fast, flexible, and packed with features that make documentation a joy.
+              A smooth writing experience. Fast, flexible and packed with features that makes documentation a joy, not a chore.
             </p>
           </div>
 
@@ -884,7 +893,7 @@ export default function Home() {
 
               <div className="editor-feature-group">
                 <h4 className="editor-feature-title">Beyond words</h4>
-                <p style={{ fontSize: '14px', color: 'var(--text-secondary)', marginBottom: '24px', textAlign: 'center' }}>Use images, videos, embeds, and hundreds of integrations to get ideas across clearly.</p>
+                <p style={{ fontSize: '14px', color: 'var(--text-secondary)', marginBottom: '24px' }}>Use images, videos, embeds and hundreds of integrations to get ideas across clearly.</p>
                 <div className="editor-feature-grid">
                   {['Images', 'Video', 'Gallery', 'Attachments', 'Embeds', 'Diagrams', 'Math Equations', 'Callouts'].map((item) => (
                     <span key={item} className="editor-feature-tag">{item}</span>
@@ -899,14 +908,14 @@ export default function Home() {
                     <Users className="w-5 h-5 text-[var(--brand)] flex-shrink-0" style={{ marginTop: '0' }} />
                     <div style={{ marginTop: '0', marginBottom: '0' }}>
                       <strong style={{ display: 'block', marginBottom: '2px', color: '#ffffff' }}>Real-time collaboration</strong>
-                      <p style={{ margin: '0', lineHeight: '1.4' }}>Write together with your team, see changes instantly</p>
+                      <p style={{ margin: '0', lineHeight: '1.4' }}>Write together with your team and see changes instantly</p>
                     </div>
                   </div>
                   <div style={{ marginBottom: '16px', display: 'flex', alignItems: 'flex-start', gap: '14px', margin: '0 0 16px 0', padding: '0' }}>
                     <FileText className="w-5 h-5 text-[var(--brand)] flex-shrink-0" style={{ marginTop: '0' }} />
                     <div style={{ marginTop: '0', marginBottom: '0' }}>
                       <strong style={{ display: 'block', marginBottom: '2px', color: '#ffffff' }}>Markdown support</strong>
-                      <p style={{ margin: '0', lineHeight: '1.4' }}>Type in Markdown, export to .md anytime</p>
+                      <p style={{ margin: '0', lineHeight: '1.4' }}>Type in Markdown and export to .md anytime</p>
                     </div>
                   </div>
                   <div style={{ marginBottom: '16px', display: 'flex', alignItems: 'flex-start', gap: '14px', margin: '0 0 16px 0', padding: '0' }}>
@@ -920,7 +929,7 @@ export default function Home() {
                     <Clock className="w-5 h-5 text-[var(--brand)] flex-shrink-0" style={{ marginTop: '0' }} />
                     <div style={{ marginTop: '0', marginBottom: '0' }}>
                       <strong style={{ display: 'block', marginBottom: '2px', color: '#ffffff' }}>Version history</strong>
-                      <p style={{ margin: '0', lineHeight: '1.4' }}>Travel back in time, restore any version</p>
+                      <p style={{ margin: '0', lineHeight: '1.4' }}>Travel back in time and restore any version</p>
                     </div>
                   </div>
                 </div>
@@ -962,10 +971,10 @@ export default function Home() {
 
                 {/* Editor content */}
                 <div className="editor-content">
-                  <h1 className="editor-h1">Getting Started with TyneBase</h1>
+                  <h1 className="editor-h1">Getting started with TyneBase</h1>
                   <p className="editor-paragraph">Welcome to your new knowledge base. This guide will help you get up and running in minutes.</p>
 
-                  <h2 className="editor-h2">Quick Start</h2>
+                  <h2 className="editor-h2">Quick start</h2>
                   <ul className="editor-list">
                     <li><Check className="w-4 h-4 text-[var(--brand)]" /> Create your first document</li>
                     <li><Check className="w-4 h-4 text-[var(--brand)]" /> Invite team members</li>
@@ -999,7 +1008,7 @@ export default function Home() {
                 Ready to get started?
               </h2>
               <p style={{ fontSize: '18px', color: 'var(--text-secondary)', maxWidth: '600px', marginBottom: '40px', lineHeight: 1.6 }}>
-                Join thousands of teams using TyneBase to build and share knowledge.
+                Start using TyneBase today to build and share knowledge.
               </p>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
                 <Link href="/signup" className="btn btn-primary btn-lg">

@@ -158,7 +158,7 @@ export default function SourcesPage() {
         <div>
           <h1 className="text-2xl font-bold text-[var(--dash-text-primary)]">Knowledge Sources</h1>
           <p className="text-[var(--dash-text-tertiary)] mt-1 max-w-3xl leading-relaxed">
-            Upload PDFs, DOCX, and Markdown. TyneBase normalizes to Markdown and builds embeddings for RAG.
+            Upload PDFs, DOCX and Markdown. TyneBase normalizes to Markdown and builds embeddings for RAG.
           </p>
         </div>
         <div className="flex flex-col sm:flex-row sm:items-center gap-3">

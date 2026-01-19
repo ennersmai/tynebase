@@ -19,7 +19,7 @@ export const categories = [
   {
     id: 'quick-start',
     slug: 'quick-start',
-    title: 'Quick Start',
+    title: 'Quick start',
     description: 'Get up and running with TyneBase in under 5 minutes.',
     icon: 'Zap',
     color: 'brand',

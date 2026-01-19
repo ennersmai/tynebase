@@ -19,7 +19,7 @@ const values = [
   {
     icon: Shield,
     title: "Enterprise Ready",
-    description: "Security isn't an afterthought. SOC2, HIPAA, and enterprise-grade from day one."
+    description: "Security isn't an afterthought. SOC2, HIPAA and enterprise-grade from day one."
   },
   {
     icon: Zap,
@@ -60,11 +60,11 @@ export default function AboutPage() {
           <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 600, lineHeight: 1.05, letterSpacing: '-0.02em', marginBottom: '32px', textAlign: 'center' }}>
             Building the future of
             <br />
-            <span className="text-gradient">team knowledge</span>
+            <span className="text-gradient">collaborative knowledge</span>
           </h1>
           <p style={{ fontSize: '20px', color: 'var(--text-secondary)', maxWidth: '700px', textAlign: 'center' }}>
             We're on a mission to help teams build, share, and find knowledge effortlessly. 
-            No more scattered docs, no more lost information.
+            No more scattered docs and no more lost information.
           </p>
         </div>
       </section>
@@ -77,14 +77,14 @@ export default function AboutPage() {
             <div className="space-y-6 text-lg text-[var(--text-secondary)] leading-relaxed">
               <p>
                 TyneBase was born from a simple frustration: knowledge management tools weren't keeping up with how modern teams actually work. 
-                Documentation was scattered, search was broken, and AI felt like an afterthought.
+                Documentation was scattered, search was broken and AI felt like an afterthought.
               </p>
               <p>
-                We started building TyneBase in 2024 with a clear vision: create a knowledge platform that's AI-native from the ground up, 
-                privacy-first by design, and beautiful enough that people actually want to use it.
+                We started building TyneBase in 2026 with a clear vision: to create a knowledge platform that's AI-native from the ground up, 
+                privacy-first by design and beautiful enough that people actually want to use it.
               </p>
               <p>
-                Today, we're helping teams across the globe transform how they create, organize, and discover knowledge. 
+                Today, we're aiming to help team across the globe transform how they create, organise and discover knowledge. 
                 From startups to enterprises, from engineering teams to HR departments-TyneBase scales with your ambitions.
               </p>
             </div>

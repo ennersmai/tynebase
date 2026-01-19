@@ -8,7 +8,7 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 const posts = [
   {
     title: "Introducing TyneBase AI: Your Knowledge Assistant",
-    excerpt: "We're excited to announce TyneBase AI, a powerful assistant that helps you create, find, and organize knowledge effortlessly.",
+    excerpt: "We're excited to announce TyneBase AI, a powerful assistant that helps you create, find, and organise knowledge effortlessly.",
     date: "Jan 8, 2026",
     readTime: "5 min read",
     category: "Product",
@@ -76,7 +76,7 @@ export default function BlogPage() {
             Insights & Updates
           </h1>
           <p style={{ fontSize: '20px', color: 'var(--text-secondary)', maxWidth: '600px', textAlign: 'center' }}>
-            Product news, best practices, and insights on knowledge management.
+            Product news, best practices and insights on knowledge management.
           </p>
         </div>
       </section>

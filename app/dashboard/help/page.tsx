@@ -15,7 +15,7 @@ const helpCategories = [
     icon: Zap,
     color: "#10b981",
     articles: [
-      { title: "Quick Start Guide", href: "#" },
+      { title: "Quick start Guide", href: "#" },
       { title: "Creating Your First Document", href: "#" },
       { title: "Understanding the Dashboard", href: "#" },
       { title: "Inviting Team Members", href: "#" },

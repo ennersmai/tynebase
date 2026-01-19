@@ -70,7 +70,7 @@ const discussions = [
   {
     id: 4,
     title: "Best practices for organizing large knowledge bases",
-    excerpt: "As our documentation grows, what are some recommended approaches for keeping everything organized and easily searchable?",
+    excerpt: "As our documentation grows, what are some recommended approaches for keeping everything organised and easily searchable?",
     author: "Mike Johnson",
     avatar: null,
     category: "questions",

@@ -133,7 +133,7 @@ export default function ImportsPage() {
         <div className="max-w-2xl">
           <h1 className="text-2xl font-bold text-[var(--dash-text-primary)]">Imports</h1>
           <p className="text-[var(--dash-text-tertiary)] mt-1">
-            Bring your existing knowledge in. Track jobs and retry failures.
+            Import your existing knowledge. Track your jobs and retry failures.
           </p>
         </div>
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 w-full">

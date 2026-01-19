@@ -34,7 +34,7 @@ const categories: Category[] = [
     documentCount: 8,
     lastUpdated: "2 hours ago",
     subcategories: [
-      { id: 11, name: "Quick Start", documentCount: 3 },
+      { id: 11, name: "Quick start", documentCount: 3 },
       { id: 12, name: "First Steps", documentCount: 5 },
     ],
   },
@@ -115,7 +115,7 @@ export default function CategoriesPage() {
           </div>
           <h1 className="text-2xl font-bold text-[var(--dash-text-primary)]">Categories</h1>
           <p className="text-[var(--dash-text-tertiary)] mt-1">
-            Organize your documentation into logical groups
+            Organise your documentation into logical groups
           </p>
         </div>
         <button

@@ -50,10 +50,10 @@ export default function AuditPage() {
     <div className="min-h-full flex flex-col space-y-10 pb-2">
       {/* Header */}
       <DashboardPageHeader
-        title={<h1 className="text-2xl font-bold text-[var(--dash-text-primary)]">Content Audit</h1>}
+        title={<h1 className="text-2xl font-bold text-[var(--dash-text-primary)]">Content audit</h1>}
         description={
           <p className="text-[var(--dash-text-tertiary)] mt-1">
-            Monitor content health, identify stale articles, and manage reviews
+            Monitor content health, identify stale articles and manage reviews
           </p>
         }
         right={
@@ -109,7 +109,7 @@ export default function AuditPage() {
         <div className="lg:col-span-2 bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl">
           <div className="px-6 py-5 border-b border-[var(--dash-border-subtle)]">
             <h2 className="font-semibold text-[var(--dash-text-primary)]">Content Health Distribution</h2>
-            <p className="text-sm text-[var(--dash-text-tertiary)]">Overview of content quality</p>
+            <p className="text-sm text-[var(--dash-text-tertiary)]">Analyse content health</p>
           </div>
           <div className="p-6 space-y-4">
             {contentHealth.map((item) => (

@@ -2,7 +2,7 @@
 
 This directory contains the Supabase configuration and database migrations for TyneBase.
 
-## Quick Start
+## Quick start
 
 ### For Production Deployment
 

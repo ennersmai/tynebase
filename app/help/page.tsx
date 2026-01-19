@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Search, BookOpen, MessageSquare, FileText, Users, Settings, Zap, Shield } from "lucide-react";
 import { SiteNavbar } from "@/components/layout/SiteNavbar";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -27,12 +28,20 @@ export default function HelpPage() {
   return (
     <div className="min-h-screen relative">
       <div className="hero-gradient" />
-      <div className="grid-overlay" />
 
       <SiteNavbar currentPage="other" />
 
-      <section className="section pt-[180px] pb-[60px]">
+      <section style={{ position: 'relative', zIndex: 10, paddingTop: '180px', paddingBottom: '24px' }}>
         <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 24px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '64px', height: '64px', borderRadius: '16px', background: 'linear-gradient(135deg, var(--brand), var(--accent-pink))', marginBottom: '24px' }}>
+            <Image
+              src="/help_logo.png"
+              alt="Help"
+              width={32}
+              height={32}
+              style={{ width: '32px', height: '32px' }}
+            />
+          </div>
           <p style={{ fontSize: '14px', fontWeight: 600, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '16px' }}>Help Center</p>
           <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 3.75rem)', fontWeight: 600, lineHeight: 1.05, letterSpacing: '-0.02em', marginBottom: '32px', textAlign: 'center' }}>
             How can we help?
@@ -50,7 +59,7 @@ export default function HelpPage() {
         </div>
       </section>
 
-      <section className="section py-16">
+      <section style={{ position: 'relative', zIndex: 10, paddingTop: '32px', paddingBottom: '64px' }}>
         <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 24px' }}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" style={{ width: '100%', maxWidth: '1024px' }}>
             {categories.map((category) => (

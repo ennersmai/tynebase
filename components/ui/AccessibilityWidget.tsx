@@ -89,7 +89,7 @@ export function AccessibilityWidget({ customTrigger }: { customTrigger?: ReactNo
                 <p className="font-semibold text-[var(--dash-text-primary)]">Accessibility</p>
               </div>
               <p className="text-xs text-[var(--dash-text-tertiary)] mt-1">
-                Personalize the UI for your environment.
+                Personalise the UI for your environment.
               </p>
             </div>
 

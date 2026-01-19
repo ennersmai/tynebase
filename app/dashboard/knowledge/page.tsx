@@ -226,12 +226,12 @@ export default function KnowledgePage() {
             <p className="text-sm text-[var(--dash-text-tertiary)] mt-1">
               <span className="font-semibold text-[var(--dash-text-secondary)]">Articles</span> are authored content.
               <span className="mx-2">•</span>
-              <span className="font-semibold text-[var(--dash-text-secondary)]">Knowledge Sources (RAG)</span> are PDFs/DOCX/MD normalized to Markdown, chunked, embedded, and used for retrieval.
+              <span className="font-semibold text-[var(--dash-text-secondary)]">Knowledge Sources (RAG)</span> are PDFs/DOCX/MD normalized to Markdown, chunked, embedded and used for retrieval.
             </p>
           </div>
           <Link
             href="/dashboard/sources"
-            className="inline-flex items-center gap-2 h-10 px-5 bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white rounded-xl text-sm font-medium transition-all"
+            className="inline-flex items-center gap-2 h-10 px-5 bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl text-sm font-medium text-[var(--dash-text-secondary)] hover:border-[var(--brand)] hover:text-[var(--brand)] transition-all"
           >
             <Database className="w-4 h-4" />
             Manage Sources
@@ -384,7 +384,7 @@ export default function KnowledgePage() {
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--dash-text-muted)]" />
           <input
             type="text"
-            placeholder="Search by title, content, or author..."
+            placeholder="Search by title, content or author..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-11 pr-4 py-3 bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl text-[var(--dash-text-primary)] placeholder:text-[var(--dash-text-muted)] focus:outline-none focus:border-[var(--brand)] focus:ring-2 focus:ring-[var(--brand)]/20 transition-all"

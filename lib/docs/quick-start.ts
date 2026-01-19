@@ -6,7 +6,7 @@ export const quickStartArticles: DocArticle[] = [
     slug: 'creating-first-document',
     title: 'Creating Your First Document',
     description: 'Learn how to create, edit, and publish your first knowledge base article in TyneBase.',
-    category: 'Quick Start',
+    category: 'Quick start',
     readTime: '3 min',
     lastUpdated: '2026-01-10',
     tags: ['getting-started', 'documents', 'basics'],
@@ -47,7 +47,7 @@ Before publishing, configure your document:
 | Field | Description |
 |-------|-------------|
 | **Title** | Clear, searchable document title |
-| **Category** | Organize into your knowledge structure |
+| **Category** | Organise into your knowledge structure |
 | **Tags** | Add keywords for better discoverability |
 | **Visibility** | Public, Internal, or Restricted |
 
@@ -72,7 +72,7 @@ Click **Publish** to make your document live. It will immediately:
     slug: 'workspace-setup',
     title: 'Setting Up Your Workspace',
     description: 'Configure your TyneBase workspace with branding, categories, and team settings.',
-    category: 'Quick Start',
+    category: 'Quick start',
     readTime: '5 min',
     lastUpdated: '2026-01-10',
     tags: ['workspace', 'setup', 'configuration'],
@@ -100,7 +100,7 @@ Changes apply immediately with live preview.
 
 ## Step 2: Create Categories
 
-Categories organize your knowledge base. Go to **Knowledge → Categories**:
+Categories organise your knowledge base. Go to **Knowledge → Categories**:
 
 1. Click **+ New Category**
 2. Enter a name (e.g., "Engineering Docs")
@@ -141,7 +141,7 @@ In **Settings → AI Configuration**:
     slug: 'inviting-team',
     title: 'Inviting Your Team',
     description: 'Add team members to your workspace and assign appropriate roles.',
-    category: 'Quick Start',
+    category: 'Quick start',
     readTime: '3 min',
     lastUpdated: '2026-01-10',
     tags: ['team', 'users', 'invitations'],
@@ -209,7 +209,7 @@ After joining, you can:
     slug: 'first-ai-generation',
     title: 'Your First AI Generation',
     description: 'Use AI to automatically generate documentation from a simple prompt.',
-    category: 'Quick Start',
+    category: 'Quick start',
     readTime: '4 min',
     lastUpdated: '2026-01-10',
     tags: ['ai', 'generation', 'getting-started'],
@@ -254,7 +254,7 @@ Include sections on:
 
 Click **Generate** and wait 15-30 seconds. The AI will:
 
-1. Analyze your prompt
+1. Analyse your prompt
 2. Retrieve relevant context from your existing docs (RAG)
 3. Generate structured content
 4. Format with proper headings, lists, and code blocks
@@ -291,7 +291,7 @@ All AI-generated documents automatically track:
     slug: 'understanding-dashboard',
     title: 'Understanding Your Dashboard',
     description: 'Navigate the TyneBase dashboard and understand key metrics.',
-    category: 'Quick Start',
+    category: 'Quick start',
     readTime: '4 min',
     lastUpdated: '2026-01-10',
     tags: ['dashboard', 'navigation', 'overview'],

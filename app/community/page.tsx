@@ -30,7 +30,7 @@ export default function CommunityPage() {
             Join the <span className="text-gradient">conversation</span>
           </h1>
           <p style={{ fontSize: '20px', color: 'var(--text-secondary)', maxWidth: '700px', textAlign: 'center', marginBottom: '24px' }}>
-            Connect with other TyneBase users, share knowledge, and get help from our vibrant community.
+            Connect with other TyneBase users, share knowledge and get help from our vibrant community.
           </p>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', fontSize: '14px', color: 'var(--text-muted)', marginBottom: '40px' }}>
             <Lock className="w-4 h-4" />
@@ -89,7 +89,7 @@ export default function CommunityPage() {
       <section className="section py-16 bg-[var(--bg-secondary)]">
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-            <h2 style={{ fontSize: '36px', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '16px' }}>What You Get as a Member</h2>
+            <h2 style={{ fontSize: '36px', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '16px' }}>What you get as a member</h2>
             <p style={{ fontSize: '18px', color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto' }}>
               Access exclusive community features and connect with fellow TyneBase users
             </p>
@@ -104,7 +104,7 @@ export default function CommunityPage() {
                   </div>
                 </div>
                 <h3 className="font-semibold text-[var(--text-primary)] mb-2">Discussion Forums</h3>
-                <p className="text-sm text-[var(--text-secondary)]">Ask questions, share insights, and engage in threaded discussions with the community</p>
+                <p className="text-sm text-[var(--text-secondary)]">Ask questions, share insights and engage in threaded discussions with the community</p>
               </div>
 
               <div className="bg-[var(--bg-elevated)] border border-[var(--border-subtle)] rounded-xl p-6 text-center" style={{ paddingTop: '18px', paddingBottom: '13px', paddingLeft: '13px', paddingRight: '13px' }}>
@@ -114,7 +114,7 @@ export default function CommunityPage() {
                   </div>
                 </div>
                 <h3 className="font-semibold text-[var(--text-primary)] mb-2">Product Updates</h3>
-                <p className="text-sm text-[var(--text-secondary)]">Be the first to know about new features, updates, and announcements</p>
+                <p className="text-sm text-[var(--text-secondary)]">Be the first to know about new features, updates and announcements</p>
               </div>
 
               <div className="bg-[var(--bg-elevated)] border border-[var(--border-subtle)] rounded-xl p-6 text-center" style={{ paddingTop: '18px', paddingBottom: '13px', paddingLeft: '13px', paddingRight: '13px' }}>
@@ -144,7 +144,7 @@ export default function CommunityPage() {
                   </div>
                 </div>
                 <h3 className="font-semibold text-[var(--text-primary)] mb-2">Shared Resources</h3>
-                <p className="text-sm text-[var(--text-secondary)]">Access templates, guides, and best practices shared by the community</p>
+                <p className="text-sm text-[var(--text-secondary)]">Access templates, guides and best practices shared by the community</p>
               </div>
 
               <div className="bg-[var(--bg-elevated)] border border-[var(--border-subtle)] rounded-xl p-6 text-center" style={{ paddingTop: '18px', paddingBottom: '13px', paddingLeft: '13px', paddingRight: '13px' }}>
@@ -168,15 +168,15 @@ export default function CommunityPage() {
             <div style={{ textAlign: 'center', maxWidth: '700px' }}>
               <h2 style={{ fontSize: '36px', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '16px' }}>Ready to Join?</h2>
               <p style={{ fontSize: '18px', color: 'var(--text-secondary)', marginBottom: '32px' }}>
-                Sign up for TyneBase to unlock full community access and connect with thousands of users
+                Create a free account to unlock full community access
               </p>
               <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '16px', marginBottom: '24px', flexWrap: 'wrap' }}>
                 <Link href="/signup" className="btn btn-primary btn-lg">
-                  Create Free Account
+                  Create free account
                   <ArrowRight className="w-5 h-5" />
                 </Link>
                 <Link href="/pricing" className="btn btn-secondary btn-lg">
-                  View Pricing
+                  View pricing
                 </Link>
               </div>
               <p style={{ fontSize: '14px', color: 'var(--text-muted)' }}>

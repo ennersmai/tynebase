@@ -85,7 +85,7 @@ export default function EnhancePage() {
     doc.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const handleAnalyze = (doc: Document) => {
+  const handleAnalyse = (doc: Document) => {
     setSelectedDoc(doc);
     setIsAnalyzing(true);
     setSuggestions([]);
@@ -168,7 +168,7 @@ export default function EnhancePage() {
               {filteredDocs.map((doc) => (
                 <button
                   key={doc.id}
-                  onClick={() => handleAnalyze(doc)}
+                  onClick={() => handleAnalyse(doc)}
                   className={`w-full p-5 text-left hover:bg-[var(--surface-hover)] transition-colors ${
                     selectedDoc?.id === doc.id ? "bg-[var(--brand-primary-muted)]" : ""
                   }`}

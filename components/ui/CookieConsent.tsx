@@ -92,7 +92,7 @@ export function CookieConsent({
                 </h3>
                 <p className="text-sm text-[var(--text-secondary)] mb-4">
                   We use cookies to enhance your browsing experience, serve personalized content, 
-                  and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.{" "}
+                  and Analyse our traffic. By clicking "Accept All", you consent to our use of cookies.{" "}
                   <a href={privacyPolicyUrl} className="text-[var(--brand)] hover:underline">
                     Read our Privacy Policy
                   </a>

@@ -262,7 +262,7 @@ Documents not updated within their verification period:
 
 ### Content Quality
 
-AI analyzes documents for:
+AI Analyses documents for:
 - **Readability**: Flesch-Kincaid score
 - **Completeness**: Missing sections
 - **Accuracy**: Outdated references

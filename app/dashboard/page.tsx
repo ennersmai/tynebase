@@ -28,10 +28,10 @@ import {
 } from "lucide-react";
 
 const recentDocuments = [
-  { id: 1, title: "Getting Started Guide", state: "published", views: 234, updated: "2 hours ago" },
-  { id: 2, title: "API Documentation", state: "draft", views: 0, updated: "5 hours ago" },
-  { id: 3, title: "Best Practices for Teams", state: "published", views: 156, updated: "1 day ago" },
-  { id: 4, title: "Security Overview", state: "in_review", views: 0, updated: "2 days ago" },
+  { id: 1, title: "Getting Started Guide", state: "Published", views: 234, updated: "2 hours ago" },
+  { id: 2, title: "API Documentation", state: "Draft", views: 0, updated: "5 hours ago" },
+  { id: 3, title: "Best Practices for Teams", state: "Published", views: 156, updated: "1 day ago" },
+  { id: 4, title: "Security Overview", state: "In review", views: 0, updated: "2 days ago" },
 ];
 
 const recentActivity = [
@@ -45,10 +45,10 @@ export default function DashboardPage() {
   const { branding, subdomain } = useTenant();
 
   const getStateColor = (state: string) => {
-    switch (state) {
+    switch (state.toLowerCase()) {
       case "published": return "bg-[var(--status-success-bg)] text-[var(--status-success)]";
       case "draft": return "bg-[var(--dash-border-subtle)] text-[var(--dash-text-tertiary)]";
-      case "in_review": return "bg-[var(--status-warning-bg)] text-[var(--status-warning)]";
+      case "in review": return "bg-[var(--status-warning-bg)] text-[var(--status-warning)]";
       default: return "bg-[var(--dash-border-subtle)] text-[var(--dash-text-tertiary)]";
     }
   };
@@ -65,15 +65,15 @@ export default function DashboardPage() {
 
   // Customize stats based on user type
   const quickStats = isIndividualUser ? [
-    { label: "Total Documents", value: "24", change: "+3 this week", icon: BookOpen, color: "var(--brand)" },
-    { label: "AI Generations", value: "47", change: "12 remaining", icon: Sparkles, color: "var(--accent-purple)" },
+    { label: "Total documents", value: "24", change: "+3 this week", icon: BookOpen, color: "var(--brand)" },
+    { label: "AI generations", value: "47", change: "12 remaining", icon: Sparkles, color: "var(--accent-purple)" },
     { label: "Storage Used", value: "2.3GB", change: "5GB free", icon: TrendingUp, color: "var(--accent-blue)" },
-    { label: "Content Health", value: "87%", change: "Good", icon: BarChart3, color: "var(--status-success)" },
+    { label: "Content health", value: "87%", change: "Good", icon: BarChart3, color: "var(--status-success)" },
   ] : [
-    { label: "Total Documents", value: "24", change: "+3 this week", icon: BookOpen, color: "var(--brand)" },
-    { label: "Team Members", value: "8", change: "+1 this month", icon: Users, color: "var(--accent-blue)" },
-    { label: "AI Generations", value: "47", change: "12 remaining", icon: Sparkles, color: "var(--accent-purple)" },
-    { label: "Content Health", value: "87%", change: "Good", icon: BarChart3, color: "var(--status-success)" },
+    { label: "Total documents", value: "24", change: "+3 this week", icon: BookOpen, color: "var(--brand)" },
+    { label: "Team members", value: "8", change: "+1 this month", icon: Users, color: "var(--accent-blue)" },
+    { label: "AI generations", value: "47", change: "12 remaining", icon: Sparkles, color: "var(--accent-purple)" },
+    { label: "Content health", value: "87%", change: "Good", icon: BarChart3, color: "var(--status-success)" },
   ];
 
   return (
@@ -169,9 +169,9 @@ export default function DashboardPage() {
                 </div>
                 <div className="flex-1">
                   <h3 className="font-semibold text-[var(--dash-text-primary)] group-hover:text-[var(--accent-blue)]">
-                    Content Audit
+                    Content audit
                   </h3>
-                  <p className="text-sm text-[var(--dash-text-tertiary)]">Analyze content health</p>
+                  <p className="text-sm text-[var(--dash-text-tertiary)]">Analyse content health</p>
                 </div>
                 <ArrowRight className="w-5 h-5 text-[var(--dash-text-muted)] group-hover:text-[var(--accent-blue)] group-hover:translate-x-1 transition-all" />
               </CardContent>
@@ -208,7 +208,7 @@ export default function DashboardPage() {
                       <p className="font-medium text-[var(--dash-text-primary)] truncate">{doc.title}</p>
                       <div className="flex items-center gap-3 mt-1">
                         <span className={`px-3 py-1 text-xs font-medium rounded-full ${getStateColor(doc.state)}`}>
-                          {doc.state.replace("_", " ")}
+                          {doc.state}
                         </span>
                         <span className="text-xs text-[var(--dash-text-muted)] flex items-center gap-1">
                           <Clock className="w-3 h-3" />
@@ -231,7 +231,7 @@ export default function DashboardPage() {
                       <p className="font-medium text-[var(--dash-text-primary)] text-sm mb-1 line-clamp-2">{doc.title}</p>
                       <div className="flex flex-wrap items-center gap-2">
                         <span className={`px-2 py-0.5 text-[10px] font-medium rounded-full ${getStateColor(doc.state)}`}>
-                          {doc.state.replace("_", " ")}
+                          {doc.state}
                         </span>
                         <span className="text-[10px] text-[var(--dash-text-muted)] flex items-center gap-1">
                           <Clock className="w-3 h-3" />

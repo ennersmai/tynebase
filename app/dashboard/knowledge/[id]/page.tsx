@@ -49,7 +49,7 @@ const mockDocuments: Record<string, {
   title: string;
   content: string;
   folder: string;
-  status: "draft" | "published";
+  status: "Draft" | "Published";
   visibility: "public" | "private" | "team";
   author: string;
   createdAt: string;
@@ -60,11 +60,11 @@ const mockDocuments: Record<string, {
     title: "Getting Started Guide",
     content: `<h2>Welcome to TyneBase</h2>
 <p>This guide will help you get started with TyneBase, your AI-powered knowledge management platform.</p>
-<h3>Quick Start</h3>
+<h3>Quick start</h3>
 <ol>
 <li>Create your first document by clicking "New Document"</li>
 <li>Use the AI Assistant to help generate content</li>
-<li>Organize your documents into folders</li>
+<li>Organise your documents into folders</li>
 <li>Invite team members to collaborate</li>
 </ol>
 <h3>Key Features</h3>
@@ -76,7 +76,7 @@ const mockDocuments: Record<string, {
 </ul>
 <blockquote>Pro tip: Use keyboard shortcuts to speed up your workflow. Press <code>Ctrl+B</code> for bold, <code>Ctrl+I</code> for italic.</blockquote>`,
     folder: "Onboarding",
-    status: "published",
+    status: "Published",
     visibility: "public",
     author: "Sarah Chen",
     createdAt: "2026-01-07T10:00:00Z",
@@ -103,7 +103,7 @@ const mockDocuments: Record<string, {
 <li>5000 requests per minute for Enterprise plans</li>
 </ul>`,
     folder: "API Docs",
-    status: "published",
+    status: "Published",
     visibility: "team",
     author: "John Smith",
     createdAt: "2026-01-05T14:00:00Z",
@@ -122,7 +122,7 @@ const mockDocuments: Record<string, {
 <li><strong>Viewer</strong> - Read-only access to published content</li>
 </ul>`,
     folder: "Admin",
-    status: "draft",
+    status: "Draft",
     visibility: "private",
     author: "Emily Davis",
     createdAt: "2026-01-08T09:15:00Z",
@@ -138,7 +138,7 @@ export default function EditDocumentPage() {
   const [document, setDocument] = useState(mockDocuments[documentId] || null);
   const [title, setTitle] = useState(document?.title || "");
   const [content, setContent] = useState(document?.content || "");
-  const [status, setStatus] = useState<"draft" | "published">(document?.status || "draft");
+  const [status, setStatus] = useState<"Draft" | "Published">(document?.status || "Draft");
   const [isSaving, setIsSaving] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
@@ -197,14 +197,14 @@ export default function EditDocumentPage() {
   const handlePublish = async () => {
     setIsSaving(true);
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    setStatus("published");
+    setStatus("Published");
     setIsSaving(false);
   };
 
   const handleUnpublish = async () => {
     setIsSaving(true);
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    setStatus("draft");
+    setStatus("Draft");
     setIsSaving(false);
   };
 
@@ -257,11 +257,11 @@ export default function EditDocumentPage() {
           </div>
 
           {/* Status Badge */}
-          <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium ${status === "draft"
+          <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium ${status === "Draft"
             ? "bg-amber-500/10 text-amber-600"
             : "bg-green-500/10 text-green-600"
             }`}>
-            {status === "draft" ? (
+            {status === "Draft" ? (
               <>
                 <Clock className="w-3.5 h-3.5" />
                 Draft
@@ -291,7 +291,7 @@ export default function EditDocumentPage() {
           </Button>
 
           {/* Publish/Unpublish */}
-          {status === "draft" ? (
+          {status === "Draft" ? (
             <Button variant="primary" onClick={handlePublish} disabled={isSaving}>
               <Globe className="w-4 h-4 mr-2" />
               Publish

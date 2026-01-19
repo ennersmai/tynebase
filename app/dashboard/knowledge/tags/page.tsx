@@ -163,7 +163,7 @@ export default function TagsPage() {
         <div>
           <h1 className="text-2xl font-bold text-[var(--dash-text-primary)]">Tags</h1>
           <p className="text-[var(--dash-text-tertiary)] mt-1">
-            Organize docs with tags. Use AI suggestions to reduce duplicates.
+            Organise articles with tags, using AI suggestions to reduce duplicates.
           </p>
         </div>
         <div className="flex items-center gap-3">

@@ -48,7 +48,7 @@ export default function KnowledgeSuitePage() {
             Knowledge Suite
           </h1>
           <p className="text-xl text-[var(--text-secondary)] max-w-[700px] mx-auto mb-10">
-            Transform how your organization creates, organizes, and discovers knowledge with TyneBase's complete knowledge management solution.
+            Transform how your organization creates, organises, and discovers knowledge with TyneBase's complete knowledge management solution.
           </p>
           <Link href="/signup" className="btn btn-primary btn-lg">
             Start Free Trial

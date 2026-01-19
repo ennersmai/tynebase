@@ -16,6 +16,16 @@ const outputOptions = [
   { id: 'full', label: 'Full Article', desc: 'Comprehensive document' },
   { id: 'summary', label: 'Summary', desc: 'Key points overview' },
   { id: 'outline', label: 'Outline', desc: 'Structure only' },
+  { id: 'template', label: 'From Template', desc: 'Use existing template' },
+];
+
+const availableTemplates = [
+  { id: 'api-doc', name: 'API Documentation', desc: 'REST API endpoints and examples' },
+  { id: 'onboarding', name: 'Onboarding Guide', desc: 'New team member guide' },
+  { id: 'troubleshooting', name: 'Troubleshooting Guide', desc: 'Common issues and solutions' },
+  { id: 'release-notes', name: 'Release Notes', desc: 'Product updates and changes' },
+  { id: 'how-to', name: 'How-To Guide', desc: 'Step-by-step instructions' },
+  { id: 'runbook', name: 'Runbook', desc: 'Operational procedures' },
 ];
 
 const aiProviders = [
@@ -30,6 +40,7 @@ export default function AIAssistantPage() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [selectedProvider, setSelectedProvider] = useState('openai');
   const [outputType, setOutputType] = useState('full');
+  const [selectedTemplate, setSelectedTemplate] = useState('');
 
   const tabs = [
     { id: 'prompt' as TabType, icon: FileText, label: 'From Prompt', description: 'Generate from text description' },
@@ -129,7 +140,7 @@ export default function AIAssistantPage() {
                 {/* Output Options */}
                 <div>
                   <p className="text-sm font-medium text-[var(--dash-text-secondary)] mb-3">Output type:</p>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                     {outputOptions.map((opt) => (
                       <button
                         key={opt.id}
@@ -154,9 +165,39 @@ export default function AIAssistantPage() {
                   </div>
                 </div>
 
+                {/* Template Selection - Show when 'From Template' is selected */}
+                {outputType === 'template' && (
+                  <div>
+                    <p className="text-sm font-medium text-[var(--dash-text-secondary)] mb-3">Choose a template:</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {availableTemplates.map((template) => (
+                        <button
+                          key={template.id}
+                          onClick={() => setSelectedTemplate(template.id)}
+                          className={`p-4 rounded-xl border-2 text-left transition-all ${
+                            selectedTemplate === template.id
+                              ? 'border-[var(--brand)] bg-[var(--brand-primary-muted)]'
+                              : 'border-[var(--dash-border-subtle)] hover:border-[var(--dash-border-default)]'
+                          }`}
+                        >
+                          <div className="flex items-center gap-2 mb-1">
+                            <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
+                              selectedTemplate === template.id ? 'border-[var(--brand)] bg-[var(--brand)]' : 'border-[var(--dash-border-default)]'
+                            }`}>
+                              {selectedTemplate === template.id && <Check className="w-2.5 h-2.5 text-white" />}
+                            </div>
+                            <span className="font-medium text-[var(--dash-text-primary)]">{template.name}</span>
+                          </div>
+                          <p className="text-xs text-[var(--dash-text-tertiary)] ml-6">{template.desc}</p>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 <button
                   onClick={handleGenerate}
-                  disabled={!prompt.trim() || isGenerating}
+                  disabled={!prompt.trim() || isGenerating || (outputType === 'template' && !selectedTemplate)}
                   className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[var(--brand)] hover:bg-[var(--brand-dark)] disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-all"
                 >
                   {isGenerating ? (
@@ -167,7 +208,7 @@ export default function AIAssistantPage() {
                   ) : (
                     <>
                       <Sparkles className="w-4 h-4" />
-                      Generate Document
+                      {outputType === 'template' ? `Generate from ${availableTemplates.find(t => t.id === selectedTemplate)?.name || 'Template'}` : 'Generate Document'}
                     </>
                   )}
                 </button>
@@ -317,6 +358,77 @@ export default function AIAssistantPage() {
                 <Check className="w-3 h-3 text-[var(--status-success)]" />
                 All providers use EU/UK data centers for GDPR compliance.
               </p>
+            </div>
+          </div>
+
+          {/* From Template Section */}
+          <div className="bg-[var(--surface-card)] border border-[var(--dash-border-subtle)] rounded-xl">
+            <div className="px-6 py-4 border-b border-[var(--dash-border-subtle)]">
+              <h2 className="font-semibold text-[var(--dash-text-primary)]">From Template</h2>
+              <p className="text-sm text-[var(--dash-text-tertiary)]">Create full articles using existing templates</p>
+            </div>
+            <div className="p-6">
+              <div className="space-y-3">
+                {availableTemplates.map((template) => (
+                  <button
+                    key={template.id}
+                    onClick={() => setSelectedTemplate(template.id)}
+                    className={`w-full p-4 rounded-xl border-2 text-left transition-all group ${
+                      selectedTemplate === template.id
+                        ? 'border-[var(--brand)] bg-[var(--brand-primary-muted)]'
+                        : 'border-[var(--dash-border-subtle)] hover:border-[var(--brand)] hover:bg-[var(--surface-hover)]'
+                    }`}
+                  >
+                    <div className="flex items-start gap-3">
+                      <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center mt-0.5 flex-shrink-0 ${
+                        selectedTemplate === template.id ? 'border-[var(--brand)] bg-[var(--brand)]' : 'border-[var(--dash-border-default)] group-hover:border-[var(--brand)]'
+                      }`}>
+                        {selectedTemplate === template.id && <Check className="w-2.5 h-2.5 text-white" />}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className={`font-medium mb-0.5 ${
+                          selectedTemplate === template.id ? 'text-[var(--brand)]' : 'text-[var(--dash-text-primary)] group-hover:text-[var(--brand)]'
+                        }`}>
+                          {template.name}
+                        </p>
+                        <p className="text-xs text-[var(--dash-text-tertiary)]">{template.desc}</p>
+                      </div>
+                      <FileText className={`w-4 h-4 flex-shrink-0 ${
+                        selectedTemplate === template.id ? 'text-[var(--brand)]' : 'text-[var(--dash-text-muted)] group-hover:text-[var(--brand)]'
+                      }`} />
+                    </div>
+                  </button>
+                ))}
+              </div>
+              
+              {selectedTemplate && (
+                <div className="mt-4 pt-4 border-t border-[var(--dash-border-subtle)]">
+                  <button 
+                    onClick={() => {
+                      setOutputType('template');
+                      setIsGenerating(true);
+                      setTimeout(() => setIsGenerating(false), 2000);
+                    }}
+                    disabled={!prompt.trim() || isGenerating}
+                    className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[var(--brand)] hover:bg-[var(--brand-dark)] disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-all"
+                  >
+                    {isGenerating ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Generating...
+                      </>
+                    ) : (
+                      <>
+                        <Sparkles className="w-4 h-4" />
+                        Generate from {availableTemplates.find(t => t.id === selectedTemplate)?.name}
+                      </>
+                    )}
+                  </button>
+                  <p className="text-xs text-[var(--dash-text-muted)] mt-2 text-center">
+                    Enter a prompt above to generate content using this template
+                  </p>
+                </div>
+              )}
             </div>
           </div>
 

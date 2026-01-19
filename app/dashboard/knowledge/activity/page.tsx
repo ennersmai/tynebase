@@ -94,7 +94,7 @@ export default function KnowledgeActivityPage() {
             <h1 className="text-2xl font-bold text-[var(--dash-text-primary)]">Activity</h1>
           </div>
           <p className="text-[var(--dash-text-tertiary)] mt-1">
-            Track edits, comments, publishes, and imports across the knowledge base.
+            Track edits, comments, publishes and imports across the knowledge base.
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-3">

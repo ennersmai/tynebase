@@ -27,7 +27,7 @@ const aiFeatures = [
   { 
     icon: FileText, 
     title: "From Prompt", 
-    description: "Describe what you need in natural language. AI creates comprehensive articles, guides, and runbooks."
+    description: "Describe what you need in natural language. AI creates comprehensive articles, guides and runbooks."
   },
   { 
     icon: Search, 
@@ -37,7 +37,7 @@ const aiFeatures = [
 ];
 
 const enterpriseFeatures = [
-  { icon: Lock, title: "SSO/SAML Integration", description: "Okta, Azure AD, Google Workspace" },
+  { icon: Lock, title: "SSO/SAML Integration", description: "Okta, Azure AD and Google Workspace" },
   { icon: Shield, title: "SOC 2 Type II", description: "Enterprise-grade compliance" },
   { icon: Globe, title: "GDPR Compliant", description: "EU data residency options" },
   { icon: BarChart3, title: "Analytics Dashboard", description: "Usage insights and adoption metrics" },
@@ -143,7 +143,7 @@ export default function DocsPage() {
               Discover TyneBase
             </h1>
             <p style={{ fontSize: '20px', color: 'var(--text-secondary)', marginBottom: '48px', lineHeight: 1.6 }}>
-              Everything you need to build, manage, and scale your knowledge base. 
+              Everything you need to build, manage and scale your knowledge base. 
               From quick start guides to advanced AI features and enterprise security.
             </p>
             
@@ -235,10 +235,10 @@ export default function DocsPage() {
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <h2 style={{ fontSize: '28px', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '16px' }}>
-              Browse by Category
+              Browse by category
             </h2>
             <p style={{ fontSize: '16px', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-              Find the documentation you need, organized by topic.
+              Find the documentation you need, organised by topic.
             </p>
           </div>
           
@@ -366,7 +366,7 @@ export default function DocsPage() {
                 Popular Articles
               </h2>
               <p style={{ fontSize: '16px', color: 'var(--text-secondary)' }}>
-                Most read guides and tutorials from our documentation.
+                The most read guides and tutorials from our documentation.
               </p>
             </div>
             
