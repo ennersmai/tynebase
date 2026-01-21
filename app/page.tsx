@@ -174,7 +174,7 @@ export default function Home() {
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', textAlign: 'left' }}>
                 <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--brand)', marginTop: '8px', flexShrink: 0 }}></span>
                 <p style={{ fontSize: '18px', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>
-                  Knowledge is no longer a static archive - it is a semantic conversation. Utilise AI to your company's advantage. Not only to create content, but to find, organise and maintain it.
+                  We believe knowledge isn't a static archive - it is a semantic conversation. Utilise AI to your company's advantage. Not only to create content, but to find, organise and maintain it.
                 </p>
               </div>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', textAlign: 'left' }}>
