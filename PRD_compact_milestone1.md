@@ -1,10 +1,10 @@
-# TyneBase — Milestone 1 PRD
+# TyneBase - Milestone 1 PRD
 ## UI Framework & Foundation
 
 **Version**: 1.1  
 **Milestone**: 1 of 3  
 **Timeline**: 7 days  
-**Budget**: €1,500
+**Budget**: £1,500
 
 **Full Reference**: TyneBase_PRD_v4.2_FINAL.md
 
@@ -36,7 +36,7 @@ TyneBase is a multi-tenant SaaS knowledge management platform with AI-assisted d
 - **Database**: Supabase (PostgreSQL)
 - **Authentication**: Supabase Auth
 - **File Storage**: Supabase Storage
-- **API Server**: Fly.io (Node.js + Fastify) — setup only in M1
+- **API Server**: Fly.io (Node.js + Fastify) - setup only in M1
 
 ### Deployment
 - **Frontend**: Vercel
@@ -82,7 +82,7 @@ These cannot be used by tenants: `www`, `api`, `app`, `admin`, `auth`, `login`, 
 
 ## 4. User Roles
 
-📖 *Full details: Part III (Roles), Part XXII (Permission/RBAC UI) in main PRD*
+📖 *Full details: Part III (Roles), Part XXII (PermissionRBAC UI) in main PRD*
 
 | Role | Access Level |
 |------|--------------|
@@ -254,30 +254,30 @@ The main domain `tynebase.com` serves as the marketing landing page for new cust
 📖 *Full details: Part II (UI Specifications - Page Layouts) in main PRD*
 
 ### Public Pages (No Auth Required)
-- `/` — Marketing landing page
-- `/pricing` — Pricing details
-- `/login` — Sign in
-- `/signup` — Create account + tenant
-- `/auth/callback` — OAuth callback
-- `/auth/verify` — Magic link verification
-- `/auth/reset-password` — Password reset
+- `/` - Marketing landing page
+- `/pricing` - Pricing details
+- `/login` - Sign in
+- `/signup` - Create account + tenant
+- `/auth/callback` - OAuth callback
+- `/auth/verify` - Magic link verification
+- `/auth/reset-password` - Password reset
 
 ### Protected Pages (Auth Required)
-- `/dashboard` — Main dashboard with stats
-- `/dashboard/documents` — Document list
-- `/dashboard/documents/new` — Create document
-- `/dashboard/documents/[id]` — View/edit document
-- `/dashboard/ai-assistant` — AI generation hub
-- `/dashboard/community` — Discussions list
-- `/dashboard/templates` — Template library
-- `/dashboard/settings` — Tenant settings
-- `/dashboard/settings/branding` — White-label customization
-- `/dashboard/settings/users` — User management (Admin only)
+- `/dashboard` - Main dashboard with stats
+- `/dashboard/documents` - Document list
+- `/dashboard/documents/new` - Create document
+- `/dashboard/documents/[id]` - View/edit document
+- `/dashboard/ai-assistant` - AI generation hub
+- `/dashboard/community` - Discussions list
+- `/dashboard/templates` - Template library
+- `/dashboard/settings` - Tenant settings
+- `/dashboard/settings/branding` - White-label customization
+- `/dashboard/settings/users` - User management (Admin only)
 
 ### Super Admin Pages
-- `/admin` — Super Admin dashboard
-- `/admin/tenants` — Manage all tenants
-- `/admin/tenants/new` — Create tenant
+- `/admin` - Super Admin dashboard
+- `/admin/tenants` - Manage all tenants
+- `/admin/tenants/new` - Create tenant
 
 ---
 
@@ -286,10 +286,10 @@ The main domain `tynebase.com` serves as the marketing landing page for new cust
 📖 *Full details: Part II (Component Specifications), Part XIV (Loading States), Part XV (Empty States) in main PRD*
 
 ### Layout Components
-- `AppShell` — Main layout wrapper with sidebar and header
-- `Sidebar` — Navigation sidebar (collapsible on tablet, drawer on mobile)
-- `Header` — Top bar with search, notifications, user menu
-- `MobileNav` — Bottom navigation bar for mobile
+- `AppShell` - Main layout wrapper with sidebar and header
+- `Sidebar` - Navigation sidebar (collapsible on tablet, drawer on mobile)
+- `Header` - Top bar with search, notifications, user menu
+- `MobileNav` - Bottom navigation bar for mobile
 
 ### Navigation
 - Sidebar shows: Knowledge Base, AI Assistant, Community, Templates
@@ -298,16 +298,16 @@ The main domain `tynebase.com` serves as the marketing landing page for new cust
 - Collapse to icons on tablet
 
 ### Common UI Components
-- `Button` — Primary, secondary, outline, ghost, destructive variants
-- `Input` — Text, email, password with validation states
-- `Select` — Dropdown selection
-- `Modal` — Dialog overlays
-- `Toast` — Notification toasts (success, error, warning, info)
-- `Card` — Content containers
-- `Badge` — Status badges (document states, roles)
-- `Avatar` — User avatars with fallback initials
-- `Skeleton` — Loading placeholders
-- `EmptyState` — Empty content placeholders with CTAs
+- `Button` - Primary, secondary, outline, ghost, destructive variants
+- `Input` - Text, email, password with validation states
+- `Select` - Dropdown selection
+- `Modal` - Dialog overlays
+- `Toast` - Notification toasts (success, error, warning, info)
+- `Card` - Content containers
+- `Badge` - Status badges (document states, roles)
+- `Avatar` - User avatars with fallback initials
+- `Skeleton` - Loading placeholders
+- `EmptyState` - Empty content placeholders with CTAs
 
 ---
 
@@ -402,7 +402,7 @@ The main domain `tynebase.com` serves as the marketing landing page for new cust
 
 ---
 
-## 14. Kanban Task List — Milestone 1
+## 14. Kanban Task List - Milestone 1
 
 ### 📋 Backlog
 
@@ -498,7 +498,7 @@ Milestone 1 must deliver these for Milestone 2 to proceed:
 
 ---
 
-## 16. Quick Reference — Main PRD Sections
+## 16. Quick Reference - Main PRD Sections
 
 When you need deeper implementation details, look up these sections in **TyneBase_PRD_v4.2_FINAL.md**:
 

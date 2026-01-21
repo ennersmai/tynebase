@@ -4,7 +4,7 @@
 
 <div align="center">
 
-**Version 4.3 — Final Execution-Ready Specification (Security Hardened + EU Compliant + Enhanced RAG)**
+**Version 4.3 - Final Execution-Ready Specification (Security Hardened + EU Compliant + Enhanced RAG)**
 
 ⚠️ **This is the complete, execution-ready PRD including all specifications for:**
 - Multi-tenancy with subdomain routing (company.tynebase.com)
@@ -294,7 +294,7 @@ export const CACHE_HEADERS = {
 
 ### Aesthetic Direction: **"Tynebase Industrial"**
 
-TyneBase embraces a **Swiss-Industrial** aesthetic—timeless, high-contrast, and authoritative. We utilize the "Tynebase Gradient" (representing the foundry process from coal to heat) as a signature visual element against a clean, off-white canvas.
+TyneBase embraces a **Swiss-Industrial** aesthetic-timeless, high-contrast, and authoritative. We utilize the "Tynebase Gradient" (representing the foundry process from coal to heat) as a signature visual element against a clean, off-white canvas.
 
 **Key Principles:**
 - **Swiss Typography**: Use of **Helvetica** for objective, clean readability.
@@ -620,7 +620,7 @@ const adminNavigation: NavItem[] = [
 ║                    K N O W L E D G E   T H A T   S C A L E S                      ║
 ║                                                                                   ║
 ║                          Transform how your team captures,                        ║
-║                        organizes, and shares knowledge with                       ║
+║                        organises, and shares knowledge with                       ║
 ║                         AI-powered document intelligence.                         ║
 ║                                                                                   ║
 ║                                                                                   ║
@@ -3504,7 +3504,7 @@ CREATE TABLE user_consents (
 # Part VIII: Milestone Deliverables
 
 ## 8.1 Milestone 1: UI Framework (Week 1)
-**Payment**: €1,500
+**Payment**: £1,500
 
 ### Deliverables
 
@@ -3540,7 +3540,7 @@ CREATE TABLE user_consents (
 ---
 
 ## 8.2 Milestone 2: Backend & AI (Week 2)
-**Payment**: €1,500
+**Payment**: £1,500
 
 ### Deliverables
 
@@ -3595,7 +3595,7 @@ CREATE TABLE user_consents (
 ---
 
 ## 8.3 Milestone 3: Community, Search & Polish (Week 3)
-**Payment**: €800
+**Payment**: £800
 
 ### Deliverables
 
@@ -3942,7 +3942,7 @@ export async function processVideoJob(job: VideoJob): Promise<void> {
     await updateJobStatus(job.id, 'analyzing_multimodal', 50);
 
     const prompt = `
-      Analyze this video. You are an expert AI documentation assistant.
+      Analyse this video. You are an expert AI documentation assistant.
       
       Task:
       1. Provide a verbatim transcript of the speech. Label speakers if distinct (e.g., Speaker 1, Speaker 2).
@@ -8729,7 +8729,7 @@ This addendum should be integrated into the main PRD. Key sections to update:
 
 # Part XXIV: Security & Optimization Fixes
 
-**Priority**: CRITICAL — Must be implemented before any production deployment
+**Priority**: CRITICAL - Must be implemented before any production deployment
 
 ---
 
@@ -9918,7 +9918,7 @@ const STATUS_STYLES: Record<DocumentState, { bg: string; text: string }> = {
 
 <div align="center">
 
-**— END OF DOCUMENT —**
+**- END OF DOCUMENT -**
 
 *TyneBase PRD v4.3 • January 2026 • Security Hardened • EU Compliant • Enhanced RAG*
 
