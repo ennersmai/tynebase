@@ -33,6 +33,7 @@
 ## Completed Tasks Summary:
 - [x] **1.1**: [DB] Initialize Supabase Project
 - [x] **1.2**: [DB] Create Core Identity Tables
+  - **Note:** Corrective migration applied post-completion to add missing 'base' tier (20260125064100_fix_add_base_tier.sql)
 
 ---
 

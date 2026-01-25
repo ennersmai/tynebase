@@ -49,3 +49,11 @@ Migration successfully applied to remote database. Tables created with proper co
 - Ready for RLS policies in Task 1.3
 - Users table cannot be fully tested until auth.users entries exist (will be tested in auth implementation tasks)
 - All columns, constraints, and indexes match PRD requirements
+
+## Corrective Action (Post-Completion)
+**Issue Identified:** Missing 'base' tier in CHECK constraint (Pricing FRD defines 4 tiers: free, base, pro, enterprise)
+**Fix Applied:** Created migration `20260125064100_fix_add_base_tier.sql`
+- Dropped existing CHECK constraint
+- Added new constraint with all 4 tiers: `CHECK (tier IN ('free', 'base', 'pro', 'enterprise'))`
+- Updated column comment to reflect pricing model
+**Status:** ✅ Applied successfully to remote database
