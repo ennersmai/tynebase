@@ -118,7 +118,10 @@
       "phase": "Phase 1: Foundation (Database & Auth)",
       "title": "[DB] Create Hybrid Search RPC Function",
       "action": "Create SQL function hybrid_search combining vector + full-text search",
-      "passes": false
+      "passes": true,
+      "in_progress": false,
+      "started_at": "2026-01-25T09:48:12.298526",
+      "completed_at": "2026-01-25T09:51:25.304463"
     },
     {
       "id": "2.1",
