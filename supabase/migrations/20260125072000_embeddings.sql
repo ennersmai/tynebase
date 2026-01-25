@@ -17,6 +17,13 @@ CREATE INDEX idx_document_embeddings_tenant_id ON document_embeddings(tenant_id)
 -- Create HNSW index using halfvec for 3072 dimensions (pgvector 0.7.0+)
 -- halfvec allows indexing up to 4,000 dimensions while maintaining good performance
 -- Full precision is stored in the vector(3072) column, halfvec is only used for indexing
+--
+-- IMPORTANT: Query pattern to use this index:
+-- SELECT * FROM document_embeddings
+-- ORDER BY embedding::halfvec(3072) <=> '[query_vector]'::halfvec(3072)
+-- LIMIT 10;
+--
+-- The cast to halfvec(3072) in the query is REQUIRED for the index to be used
 CREATE INDEX idx_document_embeddings_embedding ON document_embeddings 
 USING hnsw ((embedding::halfvec(3072)) halfvec_cosine_ops)
 WITH (m = 16, ef_construction = 64);
