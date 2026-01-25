@@ -2,16 +2,16 @@
 
 **Project:** TyneBase Backend - Milestone 2  
 **Protocol:** RALPH v2.0  
-**Last Updated:** 2026-01-25 09:42
+**Last Updated:** 2026-01-25 09:47
 
 ---
 
 ## Progress Overview
 - **Total Tasks:** 121 (excl. 8 deferred)
-- **Completed:** 10
+- **Completed:** 11
 - **In Progress:** 0
 - **Blocked:** 0
-- **Remaining:** 111
+- **Remaining:** 110
 
 ---
 
@@ -41,12 +41,16 @@
 - [x] **1.8**: [DB] Create Document Lineage Table
 - [x] **1.9**: [DB] Create User Consents Table
 - [x] **1.10**: [DB] Create Credit Tracking Tables
+- [x] **1.11**: [DB] Create Storage Buckets with RLS
 
 ---
 
 ## Execution History (Last 10):
 | Timestamp | Task | Action | Result |
 |-----------|------|--------|--------|
+| 2026-01-25T09:47 | 1.11 | completed | PASS |
+| 2026-01-25T09:44 | 1.11 | started | in_progress |
+| 2026-01-25T09:43 | None | commit | feat(task-1.10): create credit... |
 | 2026-01-25T09:42 | 1.10 | completed | PASS |
 | 2026-01-25T09:39 | 1.10 | started | in_progress |
 | 2026-01-25T09:36 | None | commit | feat(task-1.9): create user co... |
@@ -54,6 +58,3 @@
 | 2026-01-25T09:34 | 1.9 | started | in_progress |
 | 2026-01-25T09:32 | None | commit | feat(task-1.8): create documen... |
 | 2026-01-25T09:32 | 1.8 | completed | PASS |
-| 2026-01-25T09:29 | 1.8 | started | in_progress |
-| 2026-01-25T09:25 | None | commit | feat(task-1.7): create job que... |
-| 2026-01-25T09:25 | 1.7 | completed | PASS |

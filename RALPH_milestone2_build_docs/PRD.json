@@ -108,7 +108,10 @@
       "phase": "Phase 1: Foundation (Database & Auth)",
       "title": "[DB] Create Storage Buckets with RLS",
       "action": "Create buckets in Supabase: tenant-uploads, tenant-documents",
-      "passes": false
+      "passes": true,
+      "in_progress": false,
+      "started_at": "2026-01-25T09:44:27.756488",
+      "completed_at": "2026-01-25T09:47:06.473632"
     },
     {
       "id": "1.12",
