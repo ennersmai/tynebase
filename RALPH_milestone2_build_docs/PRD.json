@@ -98,7 +98,10 @@
       "phase": "Phase 1: Foundation (Database & Auth)",
       "title": "[DB] Create Credit Tracking Tables",
       "action": "Create migration 007_credits.sql with credit_pools and query_usage",
-      "passes": false
+      "passes": true,
+      "in_progress": false,
+      "started_at": "2026-01-25T09:39:55.797266",
+      "completed_at": "2026-01-25T09:42:55.190142"
     },
     {
       "id": "1.11",
