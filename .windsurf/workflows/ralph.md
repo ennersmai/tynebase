@@ -20,13 +20,16 @@ All Supabase CLI commands use `npx supabase`:
 | Command | Description |
 |---------|-------------|
 | `npx supabase status` | Check local Supabase status |
-| `npx supabase start` | Start local Supabase instance |
-| `npx supabase stop` | Stop local Supabase instance |
-| `npx supabase db reset` | Reset database and run all migrations |
+| `npx supabase projects list` | List all linked projects |
+| `npx supabase db push` | Push migrations to remote database (PREFERRED) |
+| `npx supabase db reset` | Reset LOCAL database and run all migrations |
 | `npx supabase migration list` | List all migrations |
-| `npx supabase db push` | Push migrations to remote database |
 
-**For database tasks**: Migrations are in `supabase/migrations/` and run automatically with `npx supabase db reset`.
+**For database tasks**: 
+- Migrations are in `supabase/migrations/`
+- **ALWAYS use `npx supabase db push` to test on remote database**
+- Remote database is linked: **TyneBase DB** (fsybthuvikyetueizado)
+- Local testing with `db reset` is optional, but remote push is REQUIRED for validation
 
 ---
 
@@ -88,13 +91,28 @@ Follow the RALPH coding standards:
 
 ---
 
-## Step 6: Run Validation
+## Step 6: Push to Remote Database (For DB Tasks)
 
-Execute the validation steps specified in the task. Paste actual output, not "it worked".
+**For database migration tasks ONLY**, push to remote database:
+
+// turbo
+```bash
+npx supabase db push
+```
+
+Verify the output shows successful migration application. This tests against the **actual production-linked database**.
 
 ---
 
-## Step 7: Create Execution Summary
+## Step 7: Run Validation
+
+Execute the validation steps specified in the task. Paste actual output, not "it worked".
+
+**For database tasks**: Validation is complete once `npx supabase db push` succeeds without errors.
+
+---
+
+## Step 8: Create Execution Summary
 
 Create file `RALPH_milestone2_build_docs/execution_summaries/execution_summary_taskX_X.md`:
 
@@ -123,7 +141,7 @@ Create file `RALPH_milestone2_build_docs/execution_summaries/execution_summary_t
 
 ---
 
-## Step 8: Mark Task Complete
+## Step 9: Mark Task Complete
 
 If validation PASSED:
 ```bash
@@ -137,7 +155,7 @@ cd RALPH_milestone2_build_docs && python ralph_runner.py fail TASK_ID
 
 ---
 
-## Step 9: Commit Changes
+## Step 10: Commit Changes
 
 Stage and commit with proper message format:
 
@@ -153,7 +171,7 @@ cd RALPH_milestone2_build_docs && python ralph_runner.py commit "feat(task-X.X):
 
 ---
 
-## Step 10: Push to Staging Branch
+## Step 11: Push to Staging Branch
 
 ```bash
 git push origin ralph/milestone2-staging
@@ -161,7 +179,7 @@ git push origin ralph/milestone2-staging
 
 ---
 
-## Step 11: Report to Supervisor
+## Step 12: Report to Supervisor
 
 Stop and report:
 - Task ID and title

@@ -2,16 +2,16 @@
 
 **Project:** TyneBase Backend - Milestone 2  
 **Protocol:** RALPH v2.0  
-**Last Updated:** 2026-01-25 09:25
+**Last Updated:** 2026-01-25 09:32
 
 ---
 
 ## Progress Overview
 - **Total Tasks:** 121 (excl. 8 deferred)
-- **Completed:** 7
+- **Completed:** 8
 - **In Progress:** 0
 - **Blocked:** 0
-- **Remaining:** 114
+- **Remaining:** 113
 
 ---
 
@@ -38,12 +38,16 @@
 - [x] **1.5**: [DB] Enable pgvector Extension
 - [x] **1.6**: [DB] Create Embeddings Table with Indexes
 - [x] **1.7**: [DB] Create Job Queue Infrastructure
+- [x] **1.8**: [DB] Create Document Lineage Table
 
 ---
 
 ## Execution History (Last 10):
 | Timestamp | Task | Action | Result |
 |-----------|------|--------|--------|
+| 2026-01-25T09:32 | 1.8 | completed | PASS |
+| 2026-01-25T09:29 | 1.8 | started | in_progress |
+| 2026-01-25T09:25 | None | commit | feat(task-1.7): create job que... |
 | 2026-01-25T09:25 | 1.7 | completed | PASS |
 | 2026-01-25T09:22 | 1.7 | started | in_progress |
 | 2026-01-25T09:18 | None | commit | feat(task-1.6): create embeddi... |
@@ -51,6 +55,3 @@
 | 2026-01-25T09:13 | 1.6 | started | in_progress |
 | 2026-01-25T09:12 | None | commit | feat(task-1.5): enable pgvecto... |
 | 2026-01-25T09:12 | 1.5 | completed | PASS |
-| 2026-01-25T09:07 | 1.5 | started | in_progress |
-| 2026-01-25T09:07 | None | commit | feat(task-1.4): create knowled... |
-| 2026-01-25T09:06 | 1.4 | completed | PASS |

@@ -78,7 +78,10 @@
       "phase": "Phase 1: Foundation (Database & Auth)",
       "title": "[DB] Create Document Lineage Table",
       "action": "Create migration 005_lineage.sql with immutable audit trail",
-      "passes": false
+      "passes": true,
+      "in_progress": false,
+      "started_at": "2026-01-25T09:29:30.121500",
+      "completed_at": "2026-01-25T09:32:12.639480"
     },
     {
       "id": "1.9",
