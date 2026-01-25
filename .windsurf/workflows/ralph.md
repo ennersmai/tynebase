@@ -108,7 +108,30 @@ Verify the output shows successful migration application. This tests against the
 
 Execute the validation steps specified in the task. Paste actual output, not "it worked".
 
-**For database tasks**: Validation is complete once `npx supabase db push` succeeds without errors.
+**For database tasks**: 
+
+1. **Primary validation**: `npx supabase db push` succeeds without errors
+2. **Schema verification**: Use schema dump to verify all components created:
+
+```bash
+npx supabase db dump --schema public --data-only=false | Select-String -Pattern "table_name|function_name" -Context 2,2
+```
+
+Replace `table_name|function_name` with the actual names you're validating (e.g., `credit_pools|query_usage|deduct_credits`).
+
+This confirms:
+- ✅ Tables created with correct schema
+- ✅ Indexes created
+- ✅ RLS enabled
+- ✅ RLS policies created
+- ✅ Functions/triggers created
+- ✅ Foreign key constraints
+- ✅ Check constraints
+
+**Alternative validation methods**:
+- Create a `test_validation_X_X.sql` file with test queries
+- Use Supabase dashboard SQL editor to run validation queries
+- Query system tables directly (pg_class, pg_indexes, pg_constraint, etc.)
 
 ---
 
