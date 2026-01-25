@@ -1,0 +1,110 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { Search, BookOpen, MessageSquare, FileText, Users, Settings, Zap, Shield } from "lucide-react";
+import { SiteNavbar } from "@/components/layout/SiteNavbar";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+
+const categories = [
+  { icon: BookOpen, title: "Getting Started", description: "Learn the basics of TyneBase", count: 12 },
+  { icon: FileText, title: "Documentation", description: "Create and manage documents", count: 24 },
+  { icon: Users, title: "Team Management", description: "Invite and manage team members", count: 8 },
+  { icon: Settings, title: "Settings & Config", description: "Configure your workspace", count: 15 },
+  { icon: Zap, title: "AI Features", description: "Use AI to generate content", count: 10 },
+  { icon: Shield, title: "Security & Privacy", description: "SSO, permissions, and compliance", count: 18 }
+];
+
+const popularArticles = [
+  "How to create your first document",
+  "Inviting team members to your workspace",
+  "Setting up SSO for your organization",
+  "Using AI to generate documentation",
+  "Configuring custom branding",
+  "Understanding permissions and roles"
+];
+
+export default function HelpPage() {
+  return (
+    <div className="min-h-screen relative">
+      <div className="hero-gradient" />
+
+      <SiteNavbar currentPage="other" />
+
+      <section style={{ position: 'relative', zIndex: 10, paddingTop: '180px', paddingBottom: '24px' }}>
+        <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 24px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '64px', height: '64px', borderRadius: '16px', background: 'linear-gradient(135deg, var(--brand), var(--accent-pink))', marginBottom: '24px' }}>
+            <Image
+              src="/help_logo.png"
+              alt="Help"
+              width={32}
+              height={32}
+              style={{ width: '32px', height: '32px' }}
+            />
+          </div>
+          <p style={{ fontSize: '14px', fontWeight: 600, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '16px' }}>Help Center</p>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 3.75rem)', fontWeight: 600, lineHeight: 1.05, letterSpacing: '-0.02em', marginBottom: '32px', textAlign: 'center' }}>
+            How can we help?
+          </h1>
+          <div style={{ width: '100%', maxWidth: '700px' }}>
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--text-muted)]" />
+              <input 
+                type="text" 
+                placeholder="Search for help articles..." 
+                className="w-full pl-12 pr-4 py-4 bg-[var(--bg-secondary)] border border-[var(--border-subtle)] rounded-xl text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--brand)] text-lg"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ position: 'relative', zIndex: 10, paddingTop: '32px', paddingBottom: '64px' }}>
+        <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 24px' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" style={{ width: '100%', maxWidth: '1024px' }}>
+            {categories.map((category) => (
+              <div key={category.title} className="bento-item cursor-pointer group">
+                <div className="feature-icon feature-icon-brand mb-4">
+                  <category.icon className="w-5 h-5" />
+                </div>
+                <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[var(--brand)] transition-colors">
+                  {category.title}
+                </h3>
+                <p className="text-sm text-[var(--text-secondary)] mb-3">{category.description}</p>
+                <p className="text-xs text-[var(--text-muted)]">{category.count} articles</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section py-16 bg-[var(--bg-secondary)]">
+        <div className="container">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-2xl font-semibold text-[var(--text-primary)] mb-8 text-center">Popular Articles</h2>
+            <div className="space-y-3">
+              {popularArticles.map((article) => (
+                <div key={article} className="bg-[var(--bg-elevated)] border border-[var(--border-subtle)] rounded-lg p-4 cursor-pointer hover:border-[var(--brand)] transition-colors">
+                  <span className="text-[var(--text-primary)]">{article}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section py-16">
+        <div className="container text-center">
+          <h2 className="text-2xl font-semibold text-[var(--text-primary)] mb-4">Still need help?</h2>
+          <p className="text-[var(--text-secondary)] mb-6">Our support team is here to assist you.</p>
+          <Link href="/contact" className="btn btn-primary">
+            <MessageSquare className="w-4 h-4" />
+            Contact Support
+          </Link>
+        </div>
+      </section>
+
+      <SiteFooter currentPage="help" />
+    </div>
+  );
+}
