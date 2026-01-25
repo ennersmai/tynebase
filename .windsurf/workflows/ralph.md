@@ -1,0 +1,186 @@
+---
+description: Run a RALPH development loop for autonomous AI-to-AI task execution
+---
+
+# RALPH Development Loop Workflow
+
+This workflow executes the RALPH (Rapid Autonomous Loop for Programmatic Handling) protocol for TyneBase Milestone 2.
+
+## Prerequisites
+- Working directory: `RALPH_milestone2_build_docs/`
+- Files: `PRD.md`, `RALPH.md`, `PRD.json`, `ralph_state.json`, `ralph_runner.py`
+
+---
+
+## Step 1: Check Current Status
+
+// turbo
+```bash
+cd RALPH_milestone2_build_docs && python ralph_runner.py status
+```
+
+Review the current state before proceeding.
+
+---
+
+## Step 2: Get Next Task
+
+// turbo
+```bash
+cd RALPH_milestone2_build_docs && python ralph_runner.py next
+```
+
+Read the task details carefully.
+
+---
+
+## Step 3: Start the Task
+
+Replace `TASK_ID` with the actual task ID (e.g., `1.1`):
+
+```bash
+cd RALPH_milestone2_build_docs && python ralph_runner.py start TASK_ID
+```
+
+---
+
+## Step 4: Consult PRD Documentation
+
+Before implementing, read the relevant section in:
+- `RALPH_milestone2_build_docs/PRD.md` - Full requirements and context
+- `RALPH_milestone2_build_docs/RALPH.md` - Detailed task description with validation steps
+
+Look for:
+- **Action**: What to implement
+- **Validation**: How to verify it works
+- **Security**: Security considerations
+
+---
+
+## Step 5: Implement the Feature
+
+Follow the RALPH coding standards:
+- TypeScript strict mode
+- Error handling with try-catch
+- Input validation with Zod
+- JSDoc comments
+- Meaningful variable names
+- RLS policies on all tables
+- Never commit secrets
+
+---
+
+## Step 6: Run Validation
+
+Execute the validation steps specified in the task. Paste actual output, not "it worked".
+
+---
+
+## Step 7: Create Execution Summary
+
+Create file `RALPH_milestone2_build_docs/execution_summaries/execution_summary_taskX_X.md`:
+
+```markdown
+# Execution Summary - Task [X.X]: [Task Name]
+
+**Status:** ✅ PASS / ❌ FAIL  
+**Completed:** [timestamp]  
+**Validation:** [PASS/FAIL]
+
+## What Was Implemented
+[Brief description]
+
+## Files Created/Modified
+- `path/to/file.ts` - [what changed]
+
+## Validation Results
+[paste actual output]
+
+## Security Considerations
+- [List measures applied]
+
+## Notes for Supervisor
+[Anything important]
+```
+
+---
+
+## Step 8: Mark Task Complete
+
+If validation PASSED:
+```bash
+cd RALPH_milestone2_build_docs && python ralph_runner.py pass TASK_ID
+```
+
+If validation FAILED (after 2 retries):
+```bash
+cd RALPH_milestone2_build_docs && python ralph_runner.py fail TASK_ID
+```
+
+---
+
+## Step 9: Commit Changes
+
+Stage and commit with proper message format:
+
+```bash
+git add .
+git commit -m "feat(task-X.X): [clear description under 50 chars]"
+```
+
+Record the commit:
+```bash
+cd RALPH_milestone2_build_docs && python ralph_runner.py commit "feat(task-X.X): description"
+```
+
+---
+
+## Step 10: Push to Staging Branch
+
+```bash
+git push origin ralph/milestone2-staging
+```
+
+---
+
+## Step 11: Report to Supervisor
+
+Stop and report:
+- Task ID and title
+- Status (PASS/FAIL)
+- Summary of changes
+- Any concerns or questions
+
+---
+
+## When to STOP
+
+❌ **STOP immediately if:**
+- Validation fails after 2 retry attempts
+- Ambiguity in PRD requirements (mark task with [?])
+- Missing external dependencies (API keys, credentials)
+- Security concern you're unsure about
+- Architectural decision needed
+
+---
+
+## Quick Commands Reference
+
+| Command | Description |
+|---------|-------------|
+| `python ralph_runner.py status` | Show current state |
+| `python ralph_runner.py next` | Get next task details |
+| `python ralph_runner.py start X.X` | Start a task |
+| `python ralph_runner.py pass X.X` | Mark task passed |
+| `python ralph_runner.py fail X.X` | Mark task blocked |
+| `python ralph_runner.py summary` | Show progress by phase |
+| `python ralph_runner.py commit "msg"` | Record a commit |
+
+---
+
+## Loop Continuation
+
+After completing a task and reporting, say:
+> "Continue RALPH loop" or "/ralph"
+
+To run the next iteration.
