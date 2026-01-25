@@ -34,6 +34,8 @@ Finished supabase db push.
 
 Migration successfully applied to remote database (TyneBase DB - fsybthuvikyetueizado).
 
+@test_validation_1_8.sql Success. No rows returned
+
 **Validation Criteria Met:**
 1. ✅ Migration file created with proper naming convention
 2. ✅ Table schema includes all required fields (id, document_id, event_type, actor_id, metadata, created_at)

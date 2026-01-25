@@ -88,7 +88,10 @@
       "phase": "Phase 1: Foundation (Database & Auth)",
       "title": "[DB] Create User Consents Table",
       "action": "Create migration 006_consents.sql",
-      "passes": false
+      "passes": true,
+      "in_progress": false,
+      "started_at": "2026-01-25T09:34:06.715984",
+      "completed_at": "2026-01-25T09:35:51.182436"
     },
     {
       "id": "1.10",
