@@ -9,6 +9,24 @@ This workflow executes the RALPH (Rapid Autonomous Loop for Programmatic Handlin
 ## Prerequisites
 - Working directory: `RALPH_milestone2_build_docs/`
 - Files: `PRD.md`, `RALPH.md`, `PRD.json`, `ralph_state.json`, `ralph_runner.py`
+- **Supabase CLI**: Access via `npx supabase <command>` (no global install needed)
+
+---
+
+## Supabase Commands Reference
+
+All Supabase CLI commands use `npx supabase`:
+
+| Command | Description |
+|---------|-------------|
+| `npx supabase status` | Check local Supabase status |
+| `npx supabase start` | Start local Supabase instance |
+| `npx supabase stop` | Stop local Supabase instance |
+| `npx supabase db reset` | Reset database and run all migrations |
+| `npx supabase migration list` | List all migrations |
+| `npx supabase db push` | Push migrations to remote database |
+
+**For database tasks**: Migrations are in `supabase/migrations/` and run automatically with `npx supabase db reset`.
 
 ---
 
